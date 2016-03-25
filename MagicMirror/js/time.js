@@ -1,22 +1,20 @@
 ﻿function updateTime() {
-	var now = moment().format("LLLL").split(" ", 4);
-	var date = now[0] + " " + now[1] + " " + now[2];
+	var now = moment();
+	var longDate = now.format("LLLL").split(" ", 4);
+	var date = longDate[0] + "<br/>" + longDate[1] + " " + longDate[2];
 	if (showDateWithYear) {
-		date += " " + now[3];
+		date += " " + longDate[3];
 	}
 
-	var clock;
+	var clock = now.format("LT");
 	if (showClockWithSeconds) {
-		clock = moment().format("LTS");
-	}
-	else {
-		clock = moment().format("LT");
+		clock += "<span class=\"seconds\">" + now.format("ss") + "</span>";
 	}
 
-	$(".clock").text(clock);
-	$(".date").text(date);
+	$(".clock").html(clock);
+	$(".date").html(date);
 
 	setTimeout(function () {
 		updateTime();
-	}, 1 * 1000);
+	}, 0.1 * 1000);
 }

@@ -4,7 +4,8 @@ $(document).ready(function () {
 	moment.locale(locale);
 
 	updateTime();
-	getGasPrice();
+	//getGasPrice();
+	$(".price").html("0.97<span class='milli'> 9 </span> €");
 	getCurrentWeather();
 	getWeatherForecast();
 });

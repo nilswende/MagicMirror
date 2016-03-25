@@ -27,7 +27,7 @@ function getCurrentWeather() {
 		datatype: "jsonp",
 		success: function (response) {
 			var iconCode = iconMap[response.currently.icon];
-			var iconHtml = "<i class=\"wi wi-forecast-io-" + iconCode + "\"></i>";
+			var iconHtml = "<i class='wi wi-forecast-io-" + iconCode + "'></i>";
 			$(".currentWeatherIcon").html(iconHtml);
 
 		}
@@ -38,7 +38,6 @@ function getCurrentWeather() {
 	}, 15 * 60 * 1000);
 }
 */
-debugger;
 
 function getCurrentWeather() {
 	$.get({
@@ -52,11 +51,11 @@ function getCurrentWeather() {
 		},
 		success: function (response) {
 			var weatherID = response.weather[0].id;
-			var iconHtml = "<i class=\"wi wi-owm-" + weatherID + "\"></i>";
+			var iconHtml = "<i class='wi wi-owm-" + weatherID + "'></i>";
 			$(".currentWeatherIcon").html(iconHtml);
 
-			var temp = response.main.temp;
-			$(".currentWeatherTemp").html(temp.toFixed(1) + " °C");
+			var temp = response.main.temp.toFixed(1) + " °C";
+			$(".currentWeatherTemp").html(temp);
 		}
 	});
 
@@ -111,7 +110,7 @@ function getWeatherForecast() {
 				if (main.temp_min < days[date].min) {
 					days[date].min = main.temp_min;
 				}
-				if (main.temp_max < days[date].max) {
+				if (main.temp_max > days[date].max) {
 					days[date].max = main.temp_max;
 				}
 			}
@@ -146,10 +145,15 @@ function getWeatherForecast() {
 			var day = days[key];
 
 			var dayName = moment(key).format("dd");
-			var dayHtml = "<td class=\"forecastDay\">" + dayName + "</td>";
-			var iconHtml = "<td class=\"forecastIcon\"><i class=\"wi wi-owm-" + day.icons + "\"></i></td>";
-			var tempHtml = "<td class=\"forecastTemp\">" + day.max.toFixed(1) + " °C – " + day.min.toFixed(1) + " °C" + "</td>";
-			$(trRef).html(dayHtml + iconHtml + tempHtml);
+			var dayHtml = "<td class='forecastDay'>" + dayName + "</td>";
+			var iconHtml = "<td class='forecastIcon'><i class='wi wi-owm-" + day.icons + "'></i></td>";
+			var maxHtml = "<td class='forecastTemp'>" + day.max.toFixed(1);
+			var minHtml = "<td class='forecastTemp'>" + day.min.toFixed(1);
+			if (showCelcius) {
+				maxHtml += " °C";
+				minHtml += " °C";
+			}
+			$(trRef).html(dayHtml + iconHtml + maxHtml + "</td>" + minHtml + "</td>");
 		}
 	}
 

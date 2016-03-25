@@ -10,19 +10,18 @@
 		success: function (response) {
 			if (response.ok) {
 				showNewGasPrice(response.prices);
-			} else {
-				showErrorMsgIfNeeded(false);
 			}
 		}
 	});
 		
 	function showNewGasPrice(prices) {
 		var command = "prices[stationID]." + gasType;
-		currentPrice = eval(command);
-		$(".price").text(currentPrice + " €");
+		var currentPrice = eval(command);
+		currentPrice = currentPrice.slice(0, -1);
+		$(".price").html(currentPrice + "<span class='milli'> 9 </span> €");
 	};
 
 	setTimeout(function () {
 		getGasPrice();
-	}, 5 * 60 * 1000);
+	}, 15 * 60 * 1000);
 }

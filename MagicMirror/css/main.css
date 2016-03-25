@@ -1,0 +1,103 @@
+﻿body {
+    background-color: black;
+    color: white;
+    font-family: avenirNext-Regular, sans-serif;
+	font-size: 25px;
+}
+
+.topLeft {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.topRight {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+/* time */
+.time {
+    width: 25%;
+	font-size: 30px;
+}
+
+.clock {
+	font-size: 60px;
+}
+
+.seconds {
+    opacity: 0.5;
+    vertical-align: 31px;
+	font-size: 15px;
+}
+
+/* weather */
+.weather {
+    width: 30%;
+}
+
+.indoorTemp {
+    text-align: left;
+	font-size: 20px;
+}
+
+.currentWeatherIcon, .currentWeatherTemp {
+    text-align: center;
+    font-size: 45px;
+}
+
+.currentWeatherIcon {
+    width: 30%;
+}
+
+.forecastDay, .forecastIcon {
+    width: 17%;
+}
+
+.forecastTemp {
+    text-align: right;
+    width: 33%;
+}
+
+.forecast1 {
+    opacity: 0.85;
+}
+
+.forecast2 {
+    opacity: 0.6;
+}
+
+.forecast3 {
+    opacity: 0.45;
+}
+
+.forecast4 {
+    opacity: 0.30;
+}
+
+/* gas */
+.gas {
+    position: absolute;
+    top: 165px;
+    left: 0px;
+}
+
+img {
+    height: 60px;
+    vertical-align: -16px;
+}
+
+.milli {
+	font-size: 12px;
+    opacity: 0.75;
+    vertical-align: 9px;
+    margin-left: -3px;
+}
+
+/* font */
+@font-face {
+    font-family: avenirNext-Regular;
+    src: url(../font/AvenirNextLTPro-Regular.otf);
+}

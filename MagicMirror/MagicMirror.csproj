@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\main.css" />
     <Content Include="js\controller.js" />
     <Content Include="js\gas.js" />
     <Content Include="js\lib\jquery-2.2.2.min.js" />
@@ -89,7 +90,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="css\" />
     <Folder Include="font\" />
   </ItemGroup>
   <PropertyGroup>
