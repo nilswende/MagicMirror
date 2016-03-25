@@ -1,3 +1,0 @@
-﻿JQuery
-Moment.js
-Weather Icons

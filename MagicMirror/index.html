@@ -5,34 +5,66 @@
     <title></title>
 	<meta charset="utf-8" />
     <meta name="google" value="notranslate" />
-    <script type="text/javascript" src="js/lib/jquery-2.2.2.min.js"></script>
-    <script type="text/javascript" src="js/lib/moment-with-locales.min.js"></script>
-    <script type="text/javascript" src="js/config.js"></script>
-    <script type="text/javascript" src="js/controller.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/weather-icons.min.css">
 </head>
 <body>
     <div class="time">
-        <div class="clock"></div>
-        <div class="date"></div>
+        <table class="timeTable">
+            <tr>
+                <td class="clock"></td>
+            </tr>
+            <tr>
+                <td class="date"></td>
+            </tr>
+        </table>
     </div>
     <div class="calendar">
-        <div class="subject"></div>
-        <div class="calTime"></div>
+        <table class="weatherTable">
+            <tr>
+                <td class="subject"></td>
+            </tr>
+            <tr>
+                <td class="calTime"></td>
+            </tr>
+        </table>
     </div>
     <div class="weather">
-        <div class="currentWeather"></div>
-        <div class="weather0"></div>
-        <div class="weather1"></div>
-        <div class="weather2"></div>
-        <div class="weather3"></div>
+        <table class="weatherTable">
+            <tr>
+                <td class="indoorTemp"></td>
+            </tr>
+            <tr class="currentWeather">
+                <td class="currentWeatherIcon"></td>
+                <td class="currentWeatherTemp"></td>
+            </tr>
+            <tr class="forecast0"></tr>
+            <tr class="forecast1"></tr>
+            <tr class="forecast2"></tr>
+            <tr class="forecast3"></tr>
+            <tr class="forecast4"></tr>
+        </table>
     </div>
     <div class="gas">
-        <div class="gasImg">
-            <img src="/img/diesel.svg" alt="Diesel-Zapfsäule" />
-        </div>
-        <div class="price"></div>
-        <div class="lowestPriceTime"></div>
+        <table class="weatherTable">
+            <tr>
+                <td class="gasImg"><img src="./img/diesel.svg" alt="Diesel-Zapfsäule" width="40" /></td>
+                <td class="price"></td>
+            </tr>
+            <tr>
+                <td class="lowestPriceTime"></td>
+            </tr>
+        </table>
     </div>
     <div class="eta"></div>
+    
+    <script type="text/javascript" src="js/lib/jquery-2.2.2.min.js"></script>
+    <script type="text/javascript" src="js/lib/moment-with-locales.min.js"></script>
+
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/gas.js"></script>
+    <script type="text/javascript" src="js/time.js"></script>
+    <script type="text/javascript" src="js/weather.js"></script>
+    <script type="text/javascript" src="js/controller.js"></script>
 </body>
 </html>
