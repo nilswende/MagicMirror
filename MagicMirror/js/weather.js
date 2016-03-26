@@ -1,45 +1,4 @@
-﻿/*
-iconMap = {
-	"day-sunny": "clear-day",
-	"night-clear": "clear-night",
-	"rain": "rain",
-	"snow": "snow",
-	"sleet": "sleet",
-	"strong-wind": "wind",
-	"fog": "fog",
-	"cloudy": "cloudy",
-	"day-cloudy": "partly-cloudy-day",
-	"night-cloudy": "partly-cloudy-night",
-	"hail": "hail",
-	"thunderstorm": "thunderstorm",
-	"tornado":"tornado"
-}
-
-function getCurrentWeather() {
-	$.ajax({
-		url: "https://api.forecast.io/forecast/" + forecastAPIKey + "/" + latitude + "," + longitude,
-		data: {
-			lang: locale,
-			units: "si",
-			exclude: "minutely,hourly,alerts,flags",
-			callback: "jsonp"
-		},
-		datatype: "jsonp",
-		success: function (response) {
-			var iconCode = iconMap[response.currently.icon];
-			var iconHtml = "<i class='wi wi-forecast-io-" + iconCode + "'></i>";
-			$(".currentWeatherIcon").html(iconHtml);
-
-		}
-	});
-
-	setTimeout(function () {
-		getCurrentWeather();
-	}, 15 * 60 * 1000);
-}
-*/
-
-function getCurrentWeather() {
+﻿function getCurrentWeather() {
 	$.get({
 		//url: "http://api.openweathermap.org/data/2.5/weather",
 		url: "../test/weather.json",
@@ -141,24 +100,18 @@ function getWeatherForecast() {
 	function writeForecastsToHtml(days) {
 		var opacity = 1;
 		for (var i = 0; i < 5; ++i) {
-			var trRef = ".forecast" + i;
 			var key = getKeyByCount(days, i);
-			var day = days[key];
-
-			var dayName = moment(key).format("dd");
-			var dayHtml = "<td class='forecastDay'>" + dayName + "</td>";
-			var iconHtml = "<td class='forecastIcon'><i class='wi wi-owm-" + day.icons + "'></i></td>";
-			var maxHtml = "<td class='forecastTemp'>" + day.max.toFixed(1);
-			var minHtml = "<td class='forecastTemp'>" + day.min.toFixed(1);
-			if (showCelcius) {
-				maxHtml += " °C";
-				minHtml += " °C";
+			var forecastHtml = getForecastHtml(days, key);
+			
+			if (i != 0) {
+				$(".forecast" + (i - 1)).fadeTo(duration, opacity);
+				opacity -= 0.15;
 			}
+			var trRef = ".forecast" + i;
 			$(trRef).fadeTo(duration, 0, function () { });
-			$(trRef).html(dayHtml + iconHtml + maxHtml + "</td>" + minHtml + "</td>");
-			$(trRef).fadeTo(duration, opacity, function () { });
-			opacity -= 0.15;
+			$(trRef).html(forecastHtml);
 		}
+		$(".forecast4").fadeTo(duration, opacity);
 	}
 
 	function getKeyByCount(days, count) {
@@ -170,7 +123,63 @@ function getWeatherForecast() {
 		return undefined;
 	}
 
+	function getForecastHtml(days, key) {
+		var day = days[key];
+		var dayName = moment(key).format("dd");
+		var dayHtml = "<td class='forecastDay'>" + dayName + "</td>";
+		var iconHtml = "<td class='forecastIcon'><i class='wi wi-owm-" + day.icons + "'></i></td>";
+		var maxHtml = "<td class='forecastTemp'>" + day.max.toFixed(1);
+		var minHtml = "<td class='forecastTemp'>" + day.min.toFixed(1);
+		if (showCelcius) {
+			maxHtml += " °C";
+			minHtml += " °C";
+		}
+		return dayHtml + iconHtml + maxHtml + "</td>" + minHtml + "</td>";
+	}
+
 	setTimeout(function () {
 		getWeatherForecast();
 	}, 1 * 10 * 1000);
 }
+
+
+/*
+iconMap = {
+	"day-sunny": "clear-day",
+	"night-clear": "clear-night",
+	"rain": "rain",
+	"snow": "snow",
+	"sleet": "sleet",
+	"strong-wind": "wind",
+	"fog": "fog",
+	"cloudy": "cloudy",
+	"day-cloudy": "partly-cloudy-day",
+	"night-cloudy": "partly-cloudy-night",
+	"hail": "hail",
+	"thunderstorm": "thunderstorm",
+	"tornado":"tornado"
+}
+
+function getCurrentWeather() {
+	$.ajax({
+		url: "https://api.forecast.io/forecast/" + forecastAPIKey + "/" + latitude + "," + longitude,
+		data: {
+			lang: locale,
+			units: "si",
+			exclude: "minutely,hourly,alerts,flags",
+			callback: "jsonp"
+		},
+		datatype: "jsonp",
+		success: function (response) {
+			var iconCode = iconMap[response.currently.icon];
+			var iconHtml = "<i class='wi wi-forecast-io-" + iconCode + "'></i>";
+			$(".currentWeatherIcon").html(iconHtml);
+
+		}
+	});
+
+	setTimeout(function () {
+		getCurrentWeather();
+	}, 15 * 60 * 1000);
+}
+*/
