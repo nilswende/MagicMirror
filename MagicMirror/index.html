@@ -11,6 +11,9 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
+    <div class="left"></div>
+    <div class="middle"></div>
+    <div class="right"></div>
     <div class="time topLeft">
         <table class="timeTable">
             <tr>
@@ -40,9 +43,9 @@
     <div class="gas">
         <table class="gasTable">
             <tr>
-                <td class="">
+                <td>
                     <div class="gasImg">
-                        <img src="./img/diesel.svg" alt="Diesel-Zapfsäule" />
+                        <img id="svg" src="./img/diesel.svg" alt="Diesel-Zapfsäule" />
                     </div>
                 </td>
                 <td class="price"></td>
@@ -54,7 +57,7 @@
     </div>
 
     <div class="calendar">
-        <table class="calTable">
+        <table class="calendarTable">
             <tr>
                 <td class="subject"></td>
             </tr>
@@ -69,9 +72,11 @@
     <script type="text/javascript" src="js/lib/moment-with-locales.min.js"></script>
 
     <script type="text/javascript" src="js/config.js"></script>
-    <script type="text/javascript" src="js/gas.js"></script>
+    <script type="text/javascript" src="js/position.js"></script>
     <script type="text/javascript" src="js/time.js"></script>
+    <script type="text/javascript" src="js/temperature.js"></script>
     <script type="text/javascript" src="js/weather.js"></script>
+    <script type="text/javascript" src="js/gas.js"></script>
     <script type="text/javascript" src="js/controller.js"></script>
 </body>
 </html>

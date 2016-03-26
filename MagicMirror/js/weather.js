@@ -42,7 +42,7 @@ function getCurrentWeather() {
 function getCurrentWeather() {
 	$.get({
 		//url: "http://api.openweathermap.org/data/2.5/weather",
-		url: "http://localhost:80/weather.json",
+		url: "../test/weather.json",
 		data: {
 			id: cityID,
 			lang: locale,
@@ -52,22 +52,22 @@ function getCurrentWeather() {
 		success: function (response) {
 			var weatherID = response.weather[0].id;
 			var iconHtml = "<i class='wi wi-owm-" + weatherID + "'></i>";
-			$(".currentWeatherIcon").html(iconHtml);
-
 			var temp = response.main.temp.toFixed(1) + " °C";
+
+			$(".currentWeatherIcon").html(iconHtml);
 			$(".currentWeatherTemp").html(temp);
 		}
 	});
 
 	setTimeout(function () {
 		getCurrentWeather();
-	}, 15 * 60 * 1000);
+	}, 10 * 60 * 1000);
 }
 
 function getWeatherForecast() {
 	$.get({
 		//url: "http://api.openweathermap.org/data/2.5/forecast",
-		url: "http://localhost:80/forecast.json",
+		url: "../test/forecast.json",
 		data: {
 			id: cityID,
 			lang: locale,
@@ -139,6 +139,7 @@ function getWeatherForecast() {
 	}
 
 	function writeForecastsToHtml(days) {
+		var opacity = 1;
 		for (var i = 0; i < 5; ++i) {
 			var trRef = ".forecast" + i;
 			var key = getKeyByCount(days, i);
@@ -153,7 +154,10 @@ function getWeatherForecast() {
 				maxHtml += " °C";
 				minHtml += " °C";
 			}
+			$(trRef).fadeTo(duration, 0, function () { });
 			$(trRef).html(dayHtml + iconHtml + maxHtml + "</td>" + minHtml + "</td>");
+			$(trRef).fadeTo(duration, opacity, function () { });
+			opacity -= 0.15;
 		}
 	}
 
@@ -168,5 +172,5 @@ function getWeatherForecast() {
 
 	setTimeout(function () {
 		getWeatherForecast();
-	}, 30 * 60 * 1000);
+	}, 1 * 10 * 1000);
 }

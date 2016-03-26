@@ -71,6 +71,8 @@
     <Content Include="js\gas.js" />
     <Content Include="js\lib\jquery-2.2.2.min.js" />
     <Content Include="js\lib\moment-with-locales.min.js" />
+    <Content Include="js\position.js" />
+    <Content Include="js\temperature.js" />
     <Content Include="js\time.js" />
     <Content Include="js\weather.js" />
     <Content Include="packages.config" />

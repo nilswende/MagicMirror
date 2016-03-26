@@ -2,7 +2,8 @@
 	var station_ids_string = JSON.stringify([stationID]);
 
 	$.get({
-		url: "https://creativecommons.tankerkoenig.de/json/prices.php",
+		//url: "https://creativecommons.tankerkoenig.de/json/prices.php",
+		url: "../test/gas.json",
 		data: {
 			ids: station_ids_string,
 			apikey: tankerkoenigAPIKey
@@ -13,11 +14,10 @@
 			}
 		}
 	});
-		
+
 	function showNewGasPrice(prices) {
-		var command = "prices[stationID]." + gasType;
-		var currentPrice = eval(command);
-		currentPrice = currentPrice.slice(0, -1);
+		var currentPrice = prices[stationID][gasType];
+		currentPrice = currentPrice.toString().slice(0, -1);
 		$(".price").html(currentPrice + "<span class='milli'> 9 </span> €");
 	};
 

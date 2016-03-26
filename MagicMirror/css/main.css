@@ -5,21 +5,30 @@
 	font-size: 25px;
 }
 
-.topLeft {
+.left {
     position: absolute;
-    top: 5px;
-    left: 5px;
+    left: 0px;
+    height: 100%;
+    width: 25%;
 }
 
-.topRight {
+.middle {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    left: 25%;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+}
+
+.right {
+    position: absolute;
+    right: 0px;
+    height: 100%;
+    width: 25%;
 }
 
 /* time */
 .time {
-    width: 25%;
 	font-size: 30px;
 }
 
@@ -35,7 +44,6 @@
 
 /* weather */
 .weather {
-    width: 30%;
 }
 
 .indoorTemp {
@@ -54,11 +62,16 @@
 
 .forecastDay, .forecastIcon {
     width: 17%;
+    opacity: inherit;
 }
 
 .forecastTemp {
     text-align: right;
     width: 33%;
+    opacity: inherit;
+}
+
+.forecast0 {
 }
 
 .forecast1 {
@@ -66,33 +79,31 @@
 }
 
 .forecast2 {
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
 .forecast3 {
-    opacity: 0.45;
+    opacity: 0.55;
 }
 
 .forecast4 {
-    opacity: 0.30;
+    opacity: 0.4;
 }
 
 /* gas */
-.gas {
-    position: absolute;
-    top: 165px;
-    left: 0px;
+.gasTable {
+	font-size: 20px;
 }
 
-img {
+#svg {
     height: 60px;
-    vertical-align: -16px;
+    vertical-align: -3px;
 }
 
 .milli {
 	font-size: 12px;
     opacity: 0.75;
-    vertical-align: 9px;
+    vertical-align: 6px;
     margin-left: -3px;
 }
 
