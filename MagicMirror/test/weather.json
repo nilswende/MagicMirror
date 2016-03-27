@@ -1,0 +1,7 @@
+{"coord":{"lon":8.36,"lat":49.59},"weather":[
+{"id":803,"main":"Clouds","description":"überwiegend bewölkt","icon":"04n"}
+],
+"base":"cmc stations","main":{"temp":27.16,"pressure":1015,"humidity":75,"temp_min":6.19,"temp_max":8.8},
+"wind":{"speed":2.6,"deg":180},"rain":{},"clouds":{"all":75},
+"dt":1458856723,"sys":{"type":3,"id":4881,"message":0.0071,"country":"DE","sunrise":1458796689,"sunset":1458841656},
+"id":6555235,"name":"Bobenheim-Roxheim","cod":200}

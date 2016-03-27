@@ -98,20 +98,18 @@ function getWeatherForecast() {
 	}
 
 	function writeForecastsToHtml(days) {
-		var opacity = 1;
-		for (var i = 0; i < 5; ++i) {
+		var opacity = 1.0;
+		$(".forecast").each(function (i) {
 			var key = getKeyByCount(days, i);
 			var forecastHtml = getForecastHtml(days, key);
-			
-			if (i != 0) {
-				$(".forecast" + (i - 1)).fadeTo(duration, opacity);
-				opacity -= 0.15;
-			}
-			var trRef = ".forecast" + i;
-			$(trRef).fadeTo(duration, 0, function () { });
-			$(trRef).html(forecastHtml);
-		}
-		$(".forecast4").fadeTo(duration, opacity);
+
+			$(this).delay(i * fadeDuration);
+			$(this).fadeTo(fadeDuration, 0, "linear", function () {
+				$(this).html(forecastHtml);
+			});
+			$(this).fadeTo(fadeDuration, opacity, "linear");
+			opacity -= 0.1;
+		});
 	}
 
 	function getKeyByCount(days, count) {

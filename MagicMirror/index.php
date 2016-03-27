@@ -33,11 +33,11 @@
                 <td class="currentWeatherIcon" colspan="2"></td>
                 <td class="currentWeatherTemp" colspan="2"></td>
             </tr>
-            <tr class="forecast f0"></tr>
-            <tr class="forecast f1"></tr>
-            <tr class="forecast f2"></tr>
-            <tr class="forecast f3"></tr>
-            <tr class="forecast f4"></tr>
+            <tr class="forecast0"></tr>
+            <tr class="forecast1"></tr>
+            <tr class="forecast2"></tr>
+            <tr class="forecast3"></tr>
+            <tr class="forecast4"></tr>
         </table>
     </div>
     <div class="gas">
