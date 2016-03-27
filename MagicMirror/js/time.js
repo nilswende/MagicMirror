@@ -17,8 +17,8 @@
 		clock += "<span class='seconds'>" + now.format("ss") + "</span>";
 	}
 
-	$(".clock").html(clock);
 	$(".date").html(date);
+	$(".clock").html(clock);
 
 	setTimeout(function () {
 		updateTime();

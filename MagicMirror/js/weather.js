@@ -1,5 +1,5 @@
 ﻿function getCurrentWeather() {
-	$.get({
+	$.getJSON({
 		//url: "http://api.openweathermap.org/data/2.5/weather",
 		url: "../test/weather.json",
 		data: {
@@ -24,7 +24,7 @@
 }
 
 function getWeatherForecast() {
-	$.get({
+	$.getJSON({
 		//url: "http://api.openweathermap.org/data/2.5/forecast",
 		url: "../test/forecast.json",
 		data: {
@@ -38,7 +38,7 @@ function getWeatherForecast() {
 			writeForecastsToHtml(forecastsPerDay);
 		}
 	});
-	
+
 	function extractForecasts(list) {
 		var days = {};
 		var dayCounter = 0;
@@ -82,7 +82,7 @@ function getWeatherForecast() {
 	}
 
 	//if two have the same number of ocurrences, one is returned at random
-	function getMostCommonIconPerDay(day){
+	function getMostCommonIconPerDay(day) {
 		var sortedDay = sortObjectDescToArray(day.icons);
 		return sortedDay[0][0];
 		//return (sortedDay[0][1] == sortedDay[1][1]) ? undefined : sortedDay[0][0];

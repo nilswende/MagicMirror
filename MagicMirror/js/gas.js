@@ -1,7 +1,7 @@
 ﻿function getGasPrice() {
 	var station_ids_string = JSON.stringify([stationID]);
 
-	$.get({
+	$.getJSON({
 		//url: "https://creativecommons.tankerkoenig.de/json/prices.php",
 		url: "../test/gas.json",
 		data: {
