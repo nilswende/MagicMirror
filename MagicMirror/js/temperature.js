@@ -3,7 +3,7 @@
 function writeIndoorTemp() {
 	$.getJSON({
 		//url: "http://localhost/magicmirror/php/temp.php",
-		url: "http://localhost/magicmirror/test/temp.json",
+		url: "http://localhost/magicmirror/test/temp.php",
 		success: function (response) {
 			if (response.status == "yes") {
 				tempPollFailCounter = 0;

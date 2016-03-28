@@ -12,14 +12,27 @@
 			if (response.ok) {
 				showNewGasPrice(response.prices);
 			}
+			else {
+				handleFail();
+			}
+		},
+		error: function (response) {
+			handleFail();
 		}
 	});
 
 	function showNewGasPrice(prices) {
 		var currentPrice = prices[stationID][gasType];
 		currentPrice = currentPrice.toString().slice(0, -1);
-		$(".price").html(currentPrice + "<span class='milli'> 9 </span> €");
+		$(".euro").html(currentPrice);
 	};
+
+	function handleFail() {
+		++tempPollFailCounter;
+		if (tempPollFailCounter > 5) {
+			$(".euro").html("-.--");
+		}
+	}
 
 	setTimeout(getGasPrice, 15 * 60000);
 }
