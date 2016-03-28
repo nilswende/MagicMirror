@@ -18,9 +18,7 @@
 		}
 	});
 
-	setTimeout(function () {
-		getCurrentWeather();
-	}, 10 * 60 * 1000);
+	setTimeout(getCurrentWeather, 10 * 60000);
 }
 
 function getWeatherForecast() {
@@ -135,9 +133,7 @@ function getWeatherForecast() {
 		return dayHtml + iconHtml + maxHtml + "</td>" + minHtml + "</td>";
 	}
 
-	setTimeout(function () {
-		getWeatherForecast();
-	}, 1 * 10 * 1000);
+	setTimeout(getWeatherForecast, 10 * 1000);
 }
 
 
@@ -176,8 +172,6 @@ function getCurrentWeather() {
 		}
 	});
 
-	setTimeout(function () {
-		getCurrentWeather();
-	}, 15 * 60 * 1000);
+	setTimeout(getCurrentWeather, 10 * 60000);
 }
 */

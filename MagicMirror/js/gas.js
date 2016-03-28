@@ -21,7 +21,5 @@
 		$(".price").html(currentPrice + "<span class='milli'> 9 </span> €");
 	};
 
-	setTimeout(function () {
-		getGasPrice();
-	}, 15 * 60 * 1000);
+	setTimeout(getGasPrice, 15 * 60000);
 }

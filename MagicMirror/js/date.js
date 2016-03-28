@@ -1,5 +1,4 @@
-﻿function updateTime() {
-	//var now = moment("2016-09-11 13:37:55");
+﻿function updateDate() {
 	var now = moment();
 	var longDate = now.format("LLLL").split(" ", 4);
 	var date = longDate[0] + "<br/>" + longDate[1] + " " + longDate[2];
@@ -11,16 +10,7 @@
 			date += " " + longDate[3];
 		}
 	}
-
-	var clock = now.format("LT");
-	if (showClockWithSeconds) {
-		clock += "<span class='seconds'>" + now.format("ss") + "</span>";
-	}
-
 	$(".date").html(date);
-	$(".clock").html(clock);
 
-	setTimeout(function () {
-		updateTime();
-	}, 0.1 * 1000);
+	setTimeout(updateDate, 1 * 1000);
 }

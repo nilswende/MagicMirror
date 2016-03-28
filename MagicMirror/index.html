@@ -18,6 +18,34 @@
         <table class="timeTable">
             <tr>
                 <td class="clock"></td>
+                <td class="binaryClock">
+                    <table class="binClkTable">
+                        <tr class="binHour">
+                            <td class="bh bh32"></td>
+                            <td class="bh bh16"></td>
+                            <td class="bh bh8"></td>
+                            <td class="bh bh4"></td>
+                            <td class="bh bh2"></td>
+                            <td class="bh bh1"></td>
+                        </tr>
+                        <tr class="binMin">
+                            <td class="bm bm32"></td>
+                            <td class="bm bm16"></td>
+                            <td class="bm bm8"></td>
+                            <td class="bm bm4"></td>
+                            <td class="bm bm2"></td>
+                            <td class="bm bm1"></td>
+                        </tr>
+                        <tr class="binSec">
+                            <td class="bs bs32"></td>
+                            <td class="bs bs16"></td>
+                            <td class="bs bs8"></td>
+                            <td class="bs bs4"></td>
+                            <td class="bs bs2"></td>
+                            <td class="bs bs1"></td>
+                        </tr>
+                    </table>
+                </td>
             </tr>
             <tr>
                 <td class="date"></td>
@@ -73,7 +101,9 @@
 
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/position.js"></script>
-    <script type="text/javascript" src="js/time.js"></script>
+    <script type="text/javascript" src="js/clock.js"></script>
+    <script type="text/javascript" src="js/binaryClock.js"></script>
+    <script type="text/javascript" src="js/date.js"></script>
     <script type="text/javascript" src="js/temperature.js"></script>
     <script type="text/javascript" src="js/weather.js"></script>
     <script type="text/javascript" src="js/gas.js"></script>

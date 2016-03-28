@@ -67,13 +67,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\main.css" />
+    <Content Include="js\binaryClock.js" />
+    <Content Include="js\clock.js" />
     <Content Include="js\controller.js" />
     <Content Include="js\gas.js" />
     <Content Include="js\lib\jquery-2.2.2.min.js" />
     <Content Include="js\lib\moment-with-locales.min.js" />
     <Content Include="js\position.js" />
     <Content Include="js\temperature.js" />
-    <Content Include="js\time.js" />
+    <Content Include="js\date.js" />
     <Content Include="js\weather.js" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">

@@ -9,7 +9,5 @@
 		}
 	});
 
-	setTimeout(function () {
-		getCurrentWeather();
-	}, 5 * 1000);
+	setTimeout(writeIndoorTemp, 3 * 1000);
 }

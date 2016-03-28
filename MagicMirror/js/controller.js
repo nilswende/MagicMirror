@@ -5,9 +5,21 @@ $(document).ready(function () {
 
 	positionDivs();
 
-	updateTime();
+	if (toggleClock) {
+		$(".binaryClock").remove();
+		updateClock();
+	}
+	else {
+		$(".clock").remove();
+		if (!showClockWithSeconds) {
+			$(".binSec").remove();
+		}
+		initBinaryClock();
+	}
+	updateDate();
 	getGasPrice();
 	//writeIndoorTemp();
 	getCurrentWeather();
 	getWeatherForecast();
-});
+
+	});
