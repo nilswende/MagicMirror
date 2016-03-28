@@ -17,7 +17,7 @@
 					$("." + div + " > table").css("margin", "auto");
 					break;
 				case "right":
-					$("." + div + " > table").css("text-align", "right");
+					$("." + div).css("float", "right");
 					break;
 			}
 		}

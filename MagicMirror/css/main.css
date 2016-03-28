@@ -68,28 +68,13 @@
 .forecastDay, .forecastIcon {
     width: 17%;
     opacity: inherit;
+    text-align: right;
 }
 
 .forecastTemp {
-    text-align: right;
     width: 33%;
     opacity: inherit;
-}
-
-.f1 {
-    opacity: 0.85;
-}
-
-.f2 {
-    opacity: 0.7;
-}
-
-.f3 {
-    opacity: 0.55;
-}
-
-.f4 {
-    opacity: 0.4;
+    text-align: right;
 }
 
 /* gas */
