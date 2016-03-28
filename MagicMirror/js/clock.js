@@ -1,5 +1,4 @@
 ﻿function updateClock() {
-	//var now = moment("2016-09-11 13:37:55");
 	var now = moment();
 	var clock = now.format("LT");
 	if (showClockWithSeconds) {
