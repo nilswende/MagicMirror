@@ -1,13 +1,29 @@
-﻿function writeIndoorTemp() {
-	$.get({
-		url: "../test.php",
+﻿var tempPollFailCounter = 0;
+
+function writeIndoorTemp() {
+	$.getJSON({
+		//url: "http://localhost/magicmirror/php/temp.php",
+		url: "http://localhost/magicmirror/test/temp.json",
 		success: function (response) {
-			$(".indoorTemp").html("In: " + response);
+			if (response.status == "yes") {
+				tempPollFailCounter = 0;
+				$(".indoorTemp").html(response.temp);
+			}
+			else {
+				handleFail();
+			}
 		},
 		error: function (response) {
-			$(".indoorTemp").html("failed");
+			handleFail();
 		}
 	});
+
+	function handleFail() {
+		++tempPollFailCounter;
+		if (tempPollFailCounter > 5) {
+			$(".indoorTemp").html("--.-");
+		}
+	}
 
 	setTimeout(writeIndoorTemp, 3 * 1000);
 }

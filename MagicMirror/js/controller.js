@@ -18,7 +18,7 @@ $(document).ready(function () {
 	}
 	updateDate();
 	getGasPrice();
-	//writeIndoorTemp();
+	writeIndoorTemp();
 	getCurrentWeather();
 	getWeatherForecast();
 

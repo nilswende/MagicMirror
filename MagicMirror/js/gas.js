@@ -3,7 +3,7 @@
 
 	$.getJSON({
 		//url: "https://creativecommons.tankerkoenig.de/json/prices.php",
-		url: "../test/gas.json",
+		url: "http://localhost/magicmirror/test/gas.json",
 		data: {
 			ids: station_ids_string,
 			apikey: tankerkoenigAPIKey
