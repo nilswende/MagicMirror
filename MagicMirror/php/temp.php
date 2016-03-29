@@ -1,7 +1,8 @@
 <?php
 	header('Content-type:application/json;charset=utf-8');
 	
-	$logfilePath = '/sys/bus/w1/devices/28-0000077c42f7/w1_slave';
+	$sensorID = '28-0000077c42f7';
+	$logfilePath = "/sys/bus/w1/devices/$sensorID/w1_slave";
     $sensorData = exec("cat $logfilePath");
     $arr = explode(' ', $sensorData);
 	$status = strtolower(arr[12]);

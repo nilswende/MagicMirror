@@ -7,7 +7,7 @@ function writeIndoorTemp() {
 		success: function (response) {
 			if (response.status == "yes") {
 				tempPollFailCounter = 0;
-				$(".indoorTemp").html(response.temp);
+				$(".indoorTempData").html(response.temp);
 			}
 			else {
 				handleFail();
@@ -19,9 +19,14 @@ function writeIndoorTemp() {
 	});
 
 	function handleFail() {
-		++tempPollFailCounter;
 		if (tempPollFailCounter > 5) {
-			$(".indoorTemp").html("--.-");
+			return;
+		}
+		else if (tempPollFailCounter < 5) {
+			++tempPollFailCounter;
+		}
+		else {
+			$(".indoorTempData").html("--.-");
 		}
 	}
 

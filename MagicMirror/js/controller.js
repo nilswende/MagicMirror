@@ -17,9 +17,15 @@
 		updateClock();
 	}
 
+	if (tempSensorAttached) {
+		writeIndoorTemp();
+	}
+	else {
+		$(".indoorTemp").remove();
+	}
+
 	updateDate();
 	getGasPrice();
-	writeIndoorTemp();
 	getCurrentWeather();
 	getWeatherForecast();
 });
