@@ -18,7 +18,7 @@
 	}
 
 	if (tempSensorAttached) {
-		writeIndoorTemp();
+		updateIndoorTemp();
 	}
 	else {
 		$(".indoorTemp").remove();

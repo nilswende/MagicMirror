@@ -1,6 +1,6 @@
 ﻿var tempPollFailCounter = 0;
 
-function writeIndoorTemp() {
+function updateIndoorTemp() {
 	$.getJSON({
 		//url: "http://localhost/magicmirror/php/temp.php",
 		url: "http://localhost/magicmirror/test/temp.php",
@@ -30,5 +30,5 @@ function writeIndoorTemp() {
 		}
 	}
 
-	setTimeout(writeIndoorTemp, 3 * 1000);
+	setTimeout(updateIndoorTemp, 3 * 1000);
 }
