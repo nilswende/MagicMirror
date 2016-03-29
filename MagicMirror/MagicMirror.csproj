@@ -87,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
-    <Content Include="js\config.js" />
+    <Content Include="config.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

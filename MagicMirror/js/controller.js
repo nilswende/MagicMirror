@@ -1,25 +1,25 @@
-﻿
-$(document).ready(function () {
+﻿$(document).ready(function () {
 	// set moment.js to desired locale
 	moment.locale(locale);
 
 	positionDivs();
 
-	if (toggleClock) {
-		$(".binaryClock").remove();
-		updateClock();
-	}
-	else {
+	// have the desired clock displayed
+	if (time.showBinaryClock) {
 		$(".clock").remove();
-		if (!showClockWithSeconds) {
+		if (!time.showClockWithSeconds) {
 			$(".binSec").remove();
 		}
 		initBinaryClock();
 	}
+	else {
+		$(".binaryClock").remove();
+		updateClock();
+	}
+
 	updateDate();
 	getGasPrice();
 	writeIndoorTemp();
 	getCurrentWeather();
 	getWeatherForecast();
-
-	});
+});

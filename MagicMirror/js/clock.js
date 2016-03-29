@@ -1,7 +1,7 @@
 ﻿function updateClock() {
 	var now = moment();
 	var clock = now.format("LT");
-	if (showClockWithSeconds) {
+	if (time.showClockWithSeconds) {
 		clock += "<span class='seconds'>" + now.format("ss") + "</span>";
 	}
 	$(".clock").html(clock);

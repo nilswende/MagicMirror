@@ -66,13 +66,13 @@
 }
 
 .forecastDay, .forecastIcon {
-    width: 17%;
+    width: 16%;
     opacity: inherit;
     text-align: right;
 }
 
 .forecastTemp {
-    width: 33%;
+    width: 34%;
     opacity: inherit;
     text-align: right;
 }

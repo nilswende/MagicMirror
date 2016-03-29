@@ -3,10 +3,10 @@
 		//url: "http://api.openweathermap.org/data/2.5/weather",
 		url: "http://localhost/magicmirror/test/weather.json",
 		data: {
-			id: cityID,
+			id: weather.cityID,
 			lang: locale,
 			units: "metric",
-			appid: openWeatherMapAPIKey
+			appid: apiKey.openWeatherMap
 		},
 		success: function (response) {
 			var weatherID = response.weather[0].id;
@@ -26,10 +26,10 @@ function getWeatherForecast() {
 		//url: "http://api.openweathermap.org/data/2.5/forecast",
 		url: "http://localhost/magicmirror/test/forecast.json",
 		data: {
-			id: cityID,
+			id: weather.cityID,
 			lang: locale,
 			units: "metric",
-			appid: openWeatherMapAPIKey
+			appid: apiKey.openWeatherMap
 		},
 		success: function (response) {
 			var forecastsPerDay = extractForecasts(response.list);
@@ -49,8 +49,8 @@ function getWeatherForecast() {
 			if (days[date] === undefined) {
 				days[date] = {
 					"icons": {},
-					"min": singleForecast.main.temp_min,
-					"max": singleForecast.main.temp_max,
+					"min": main.temp_min,
+					"max": main.temp_max,
 					"counter": dayCounter
 				};
 				days[date].icons[id] = 1;
@@ -101,11 +101,11 @@ function getWeatherForecast() {
 			var key = getKeyByCount(days, i);
 			var forecastHtml = getForecastHtml(days, key);
 
-			$(this).delay(i * fadeDuration);
-			$(this).fadeTo(fadeDuration, 0, "linear", function () {
+			$(this).delay(i * weather.fadeDuration);
+			$(this).fadeTo(weather.fadeDuration, 0, "linear", function () {
 				$(this).html(forecastHtml);
 			});
-			$(this).fadeTo(fadeDuration, opacity, "linear");
+			$(this).fadeTo(weather.fadeDuration, opacity, "linear");
 			opacity -= 0.1;
 		});
 	}
@@ -126,12 +126,13 @@ function getWeatherForecast() {
 		var iconHtml = "<td class='forecastIcon'><i class='wi wi-owm-" + day.icons + "'></i></td>";
 		var maxHtml = "<td class='forecastTemp'>" + day.max.toFixed(1);
 		var minHtml = "<td class='forecastTemp'>" + day.min.toFixed(1);
-		if (showCelcius) {
+		if (weather.showCelcius) {
 			maxHtml += " °C";
 			minHtml += " °C";
 		}
 		return dayHtml + iconHtml + maxHtml + "</td>" + minHtml + "</td>";
 	}
 
+	//setTimeout(getWeatherForecast, 20 * 60000);
 	setTimeout(getWeatherForecast, 10 * 1000);
 }

@@ -2,8 +2,8 @@
 	var now = moment();
 	var longDate = now.format("LLLL").split(" ", 4);
 	var date = longDate[0] + "<br/>" + longDate[1] + " " + longDate[2];
-	if (showDateWithYear) {
-		if (alwaysBreakYear) {
+	if (time.showDateWithYear) {
+		if (time.alwaysBreakYear) {
 			date += "<br/>" + longDate[3];
 		}
 		else {

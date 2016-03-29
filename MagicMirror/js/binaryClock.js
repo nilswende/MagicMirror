@@ -2,7 +2,7 @@
 	var now = moment().toObject();
 
 	var bin;
-	if (showClockWithSeconds) {
+	if (time.showClockWithSeconds) {
 		bin = leftpad(now.seconds.toString(2));
 		setBgColors(".binSec", bin);
 	}
@@ -34,7 +34,7 @@ function updateBinaryClock() {
 	var now = moment().toObject();
 
 	var bin;
-	if (showClockWithSeconds) {
+	if (time.showClockWithSeconds) {
 		bin = leftpad(now.seconds.toString(2));
 		setBgColors(".binSec", bin);
 	}

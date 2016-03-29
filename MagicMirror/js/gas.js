@@ -1,12 +1,12 @@
 ﻿function getGasPrice() {
-	var station_ids_string = JSON.stringify([stationID]);
+	var station_ids_string = JSON.stringify([gas.stationID]);
 
 	$.getJSON({
 		//url: "https://creativecommons.tankerkoenig.de/json/prices.php",
 		url: "http://localhost/magicmirror/test/gas.json",
 		data: {
 			ids: station_ids_string,
-			apikey: tankerkoenigAPIKey
+			apikey: apiKey.tankerkoenig
 		},
 		success: function (response) {
 			if (response.ok) {
@@ -22,7 +22,7 @@
 	});
 
 	function showNewGasPrice(prices) {
-		var currentPrice = prices[stationID][gasType];
+		var currentPrice = prices[gas.stationID][gas.gasType];
 		currentPrice = currentPrice.toString().slice(0, -1);
 		$(".euro").html(currentPrice);
 	};
