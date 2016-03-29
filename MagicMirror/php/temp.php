@@ -1,7 +1,9 @@
 <?php
 	header('Content-type:application/json;charset=utf-8');
-    $sensorData = exec("cat /sys/bus/w1/devices/28-0000077bb680/w1_slave");
-    $arr = explode(" ", $sensorData);
+	
+	$logfilePath = '/sys/bus/w1/devices/28-0000077c42f7/w1_slave';
+    $sensorData = exec("cat $logfilePath");
+    $arr = explode(' ', $sensorData);
 	$status = strtolower(arr[12]);
     $temp = substr($arr[22], 2);
     $temp = $temp / 1000;
