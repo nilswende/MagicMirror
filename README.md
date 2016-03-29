@@ -1,4 +1,5 @@
 # MagicMirror
+To be run on a RasPi with a webserver (if you want to have an indoor temperature displayed).
 
 ## Can show:
 - Current date and time, optionally with a binary clock
