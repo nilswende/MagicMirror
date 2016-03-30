@@ -1,9 +1,11 @@
-﻿body, html {
+﻿html {
     background-color: black;
     color: white;
     font-family: avenirNext-Regular, sans-serif;
 	font-size: 25px;
     font-kerning: normal;
+	height: 1680px;
+	width: 1050px;
 }
 
 .left {
