@@ -10,14 +10,14 @@
 		if (!time.showClockWithSeconds) {
 			$(".binSec").remove();
 		}
-		initBinaryClock();
+		updateBinaryClock();
 	}
 	else {
 		$(".binaryClock").remove();
 		updateClock();
 	}
 
-	if (tempSensorAttached) {
+	if (temp.sensorAttached) {
 		updateIndoorTemp();
 	}
 	else {
@@ -25,7 +25,7 @@
 	}
 
 	updateDate();
-	getGasPrice();
+	updateGasPrice();
 	getCurrentWeather();
 	getWeatherForecast();
 });

@@ -1,4 +1,6 @@
-﻿function initBinaryClock() {
+﻿time.firstRun = true;
+
+function updateBinaryClock() {
 	var now = moment().toObject();
 
 	var bin;
@@ -6,10 +8,17 @@
 		bin = toSixBit(now.seconds.toString(2));
 		setBgColors(".binSec", bin);
 	}
-	bin = toSixBit(now.minutes.toString(2));
-	setBgColors(".binMin", bin);
-	bin = toSixBit(now.hours.toString(2));
-	setBgColors(".binHour", bin);
+	if (now.seconds == 0 || time.firstRun) {
+		bin = toSixBit(now.minutes.toString(2));
+		setBgColors(".binMin", bin);
+	}
+	if (now.minutes == 0 || time.firstRun) {
+		bin = toSixBit(now.hours.toString(2));
+		setBgColors(".binHour", bin);
+	}
+	if (time.firstRun) {
+		time.firstRun = false;
+	}
 
 	setTimeout(updateBinaryClock, 0.1 * 1000);
 }
@@ -28,24 +37,4 @@ function setBgColors(row, bin) {
 			$(this).css("background-color", "black");
 		}
 	});
-}
-
-function updateBinaryClock() {
-	var now = moment().toObject();
-
-	var bin;
-	if (time.showClockWithSeconds) {
-		bin = toSixBit(now.seconds.toString(2));
-		setBgColors(".binSec", bin);
-	}
-	if (now.seconds == 0) {
-		bin = toSixBit(now.minutes.toString(2));
-		setBgColors(".binMin", bin);
-	}
-	if (now.minutes == 0) {
-		bin = toSixBit(now.hours.toString(2));
-		setBgColors(".binHour", bin);
-	}
-
-	setTimeout(updateBinaryClock, 0.1 * 1000);
 }
