@@ -1,9 +1,10 @@
 ﻿gas.failCounter = 0;
+gas.errCounter = 0;
 
 function updateGasPrice() {
 	$.getJSON({
 		//url: "https://creativecommons.tankerkoenig.de/json/prices.php",
-		url: "http://localhost/magicmirror/test/gas.json",
+		url: "http://localhost/MagicMirror/test/gas.json",
 		data: {
 			ids: JSON.stringify([gas.stationID]),
 			apikey: apiKey.tankerkoenig
@@ -20,7 +21,7 @@ function updateGasPrice() {
 			}
 		},
 		error: function (response) {
-			handleFail();
+			handleError();
 		}
 	});
 
@@ -42,5 +43,17 @@ function handleFail() {
 	}
 	else { // ==5
 		$(".euro").html("-.--");
+	}
+}
+
+function handleError() {
+	if (gas.errCounter > 5) {
+		return;
+	}
+	else if (gas.errCounter < 5) {
+		++gas.errCounter;
+	}
+	else { // ==5
+		$(".euro").html("err");
 	}
 }

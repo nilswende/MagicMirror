@@ -1,9 +1,10 @@
 ﻿temp.failCounter = 0;
+temp.errCounter = 0;
 
 function updateIndoorTemp() {
 	$.getJSON({
-		//url: "http://localhost/magicmirror/php/temp.php",
-		url: "http://localhost/magicmirror/test/temp.php",
+		//url: "http://localhost/MagicMirror/php/temp.php",
+		url: "http://localhost/MagicMirror/test/temp.php",
 		success: function (response) {
 			if (response.status == "yes") {
 				if (temp.failCounter != 0) {
@@ -16,7 +17,7 @@ function updateIndoorTemp() {
 			}
 		},
 		error: function (response) {
-			handleFail();
+			handleError();
 		}
 	});
 
@@ -29,6 +30,18 @@ function updateIndoorTemp() {
 		}
 		else { // ==5
 			$(".indoorTempData").html("--.-");
+		}
+	}
+
+	function handleError() {
+		if (temp.errCounter > 5) {
+			return;
+		}
+		else if (temp.errCounter < 5) {
+			++temp.errCounter;
+		}
+		else { // ==5
+			$(".indoorTempData").html("err");
 		}
 	}
 

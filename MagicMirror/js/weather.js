@@ -1,7 +1,7 @@
 ﻿function getCurrentWeather() {
 	$.getJSON({
 		//url: "http://api.openweathermap.org/data/2.5/weather",
-		url: "http://localhost/magicmirror/test/weather.json",
+		url: "http://localhost/MagicMirror/test/weather.json",
 		data: {
 			id: weather.cityID,
 			lang: locale,
@@ -24,7 +24,7 @@
 function getWeatherForecast() {
 	$.getJSON({
 		//url: "http://api.openweathermap.org/data/2.5/forecast",
-		url: "http://localhost/magicmirror/test/forecast.json",
+		url: "http://localhost/MagicMirror/test/forecast.json",
 		data: {
 			id: weather.cityID,
 			lang: locale,

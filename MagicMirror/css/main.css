@@ -6,17 +6,19 @@
     font-kerning: normal;
 }
 
+.container {
+    height: 99%;
+}
+
 .left {
     position: absolute;
     left: 0px;
-    height: 100%;
     width: 25%;
 }
 
 .middle {
     position: absolute;
     left: 25%;
-    height: 100%;
     width: 50%;
     text-align: center;
 }
@@ -24,7 +26,6 @@
 .right {
     position: absolute;
     right: 0px;
-    height: 100%;
     width: 25%;
 }
 
@@ -90,7 +91,7 @@
 .milli {
 	font-size: 12px;
     opacity: 0.75;
-    vertical-align: 6px;
+    vertical-align: 5px;
 }
 
 /* font */
