@@ -10,11 +10,15 @@ function updateGasPrice() {
 			apikey: apiKey.tankerkoenig
 		},
 		success: function (response) {
+			if (gas.errCounter != 0) {
+				gas.errCounter = 0;
+			}
 			if (response.ok) {
 				if (gas.failCounter != 0) {
 					gas.failCounter = 0;
 				}
-				showNewGasPrice(response.prices);
+				var currentPrice = response.prices[gas.stationID][gas.gasType];
+				showNewGasPrice(currentPrice);
 			}
 			else {
 				handleFail();
@@ -25,11 +29,11 @@ function updateGasPrice() {
 		}
 	});
 
-	setTimeout(updateGasPrice, 15 * 60000);
+	//setTimeout(updateGasPrice, 15 * 60000);
+	setTimeout(updateGasPrice, 1000);
 }
-	
-function showNewGasPrice(prices) {
-		var currentPrice = prices[gas.stationID][gas.gasType];
+
+function showNewGasPrice(currentPrice) {
 		currentPrice = currentPrice.toString().slice(0, -1);
 		$(".euro").html(currentPrice);
 	};

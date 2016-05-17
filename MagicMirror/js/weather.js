@@ -126,7 +126,7 @@ function getWeatherForecast() {
 		var iconHtml = "<td class='forecastIcon'><i class='wi wi-owm-" + day.icons + "'></i></td>";
 		var maxHtml = "<td class='forecastTemp'>" + day.max.toFixed(1);
 		var minHtml = "<td class='forecastTemp'>" + day.min.toFixed(1);
-		if (weather.showCelcius) {
+		if (weather.showCelciusInForecast) {
 			maxHtml += " °C";
 			minHtml += " °C";
 		}
