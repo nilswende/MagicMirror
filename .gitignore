@@ -269,3 +269,4 @@ paket-files/
 .idea/
 *.sln.iml
 MagicMirror/font/AvenirNextLTPro-Regular.otf
+MagicMirror/js/keys.js
