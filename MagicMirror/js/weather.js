@@ -40,11 +40,11 @@ function getWeatherForecast() {
 	function extractForecasts(list) {
 		var days = {};
 		var dayCounter = 0;
-		for (var key in list) {
-			var singleForecast = list[key];
-			var main = singleForecast.main;
-			var id = singleForecast.weather[0].id;
-			var date = singleForecast.dt_txt.substring(0, 10);
+		for (let key in list) {
+			let singleForecast = list[key];
+			let main = singleForecast.main;
+			let id = singleForecast.weather[0].id;
+			let date = singleForecast.dt_txt.substring(0, 10);
 
 			if (days[date] === undefined) {
 				days[date] = {
@@ -73,7 +73,7 @@ function getWeatherForecast() {
 			}
 		}
 		//days now contains an object mapping the icon id to its count, mintemp, maxtemp per day
-		for (var key in days) {
+		for (let key in days) {
 			days[key].icons = getMostCommonIconPerDay(days[key]);
 		}
 		return days;
@@ -88,7 +88,7 @@ function getWeatherForecast() {
 
 	function sortObjectDescToArray(obj) {
 		var sortable = [];
-		for (var key in obj) {
+		for (let key in obj) {
 			sortable.push([key, obj[key]]);
 		}
 		sortable.sort(function (a, b) { return b[1] - a[1] });
@@ -111,7 +111,7 @@ function getWeatherForecast() {
 	}
 
 	function getKeyByCount(days, count) {
-		for (key in days) {
+		for (let key in days) {
 			if (days[key].counter === count) {
 				return key;
 			}

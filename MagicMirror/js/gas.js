@@ -17,7 +17,7 @@ function updateGasPrice() {
 				if (gas.failCounter != 0) {
 					gas.failCounter = 0;
 				}
-				var currentPrice = response.prices[gas.stationID][gas.gasType];
+				let currentPrice = response.prices[gas.stationID][gas.gasType];
 				showNewGasPrice(currentPrice);
 			}
 			else {
