@@ -1,9 +1,8 @@
 ﻿html {
     background-color: black;
     color: white;
-    font-family: avenirNext-Regular, sans-serif;
+    font-family: avenirNext, sans-serif;
 	font-size: 25px;
-    font-kerning: normal;
 }
 
 .container {
@@ -13,57 +12,71 @@
 .left {
     position: absolute;
     left: 0px;
-    width: 25%;
+    width: 30%;
 }
 
 .middle {
     position: absolute;
     left: 25%;
-    width: 50%;
+    width: 40%;
     text-align: center;
 }
 
 .right {
     position: absolute;
     right: 0px;
-    width: 25%;
+    width: 30%;
 }
 
 /* time */
 .time {
-	font-size: 30px;
+	font-size: 45px;
 }
 
 .clock {
-	font-size: 60px;
+	font-size: 70px;
 }
 
 .seconds {
-    opacity: 0.5;
-    vertical-align: 31px;
-	font-size: 15px;
+    opacity: 0.6;
+    vertical-align: 30px;
+	font-size: 28px;
+}
+
+.binClkTable {
+    width: 100%;
 }
 
 .bh, .bm, .bs {
     border: 1px solid #333333;
     border-radius: 3px;
-    height: 22px;
-    width: 22px;
+    height: 45px;
+    width: 45px;
+}
+
+.binEasy {
+    opacity: 0.5;
+    text-align: center;
+	font-size: 24px;
 }
 
 /* weather */
 .indoorTempRow {
     text-align: left;
-	font-size: 20px;
+	font-size: 25px;
 }
 
 .currentWeatherIcon, .currentWeatherTemp {
     text-align: center;
-    font-size: 45px;
+    font-size: 50px;
 }
 
 .currentWeatherIcon {
     width: 30%;
+}
+
+.forecast {
+    font-size: 30px;
 }
 
 .forecastDay, .forecastIcon {
@@ -80,22 +93,22 @@
 
 /* gas */
 .gasTable {
-	font-size: 20px;
+	font-size: 30px;
 }
 
 #svg {
     height: 60px;
-    vertical-align: -3px;
+    vertical-align: -7px;
 }
 
 .milli {
-	font-size: 12px;
-    opacity: 0.75;
-    vertical-align: 5px;
+	font-size: 15px;
+    opacity: 0.6;
+    vertical-align: 10px;
 }
 
 /* font */
 @font-face {
-    font-family: avenirNext-Regular;
+    font-family: avenirNext;
     src: url(../font/AvenirNextLTPro-Regular.otf);
 }

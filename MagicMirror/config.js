@@ -25,6 +25,7 @@ var temp = {
 var time = {
 	"alwaysBreakYear": false,
 	"showBinaryClock": false,
+	"enableBinaryClockEasyMode": false,
 	"showClockWithSeconds": true,
 	"showDateWithYear": true
 };

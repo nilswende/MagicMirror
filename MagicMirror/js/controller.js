@@ -10,6 +10,9 @@
 		if (!time.showClockWithSeconds) {
 			$(".binSec").remove();
 		}
+		if (!time.enableBinaryClockEasyMode) {
+			$(".binEasy").remove();
+		}
 		updateBinaryClock();
 	}
 	else {
