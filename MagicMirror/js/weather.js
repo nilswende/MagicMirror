@@ -11,7 +11,7 @@
 		success: function (response) {
 			var weatherID = response.weather[0].id;
 			var iconHtml = "<i class='wi wi-owm-" + weatherID + "'></i>";
-			var temp = response.main.temp.toFixed(1) + " °C";
+			var temp = response.main.temp.toFixed(1) + "&nbsp;°C";
 
 			$(".currentWeatherIcon").html(iconHtml);
 			$(".currentWeatherTemp").html(temp);
@@ -127,8 +127,8 @@ function getWeatherForecast() {
 		var maxHtml = "<td class='forecastTemp'>" + day.max.toFixed(1);
 		var minHtml = "<td class='forecastTemp'>" + day.min.toFixed(1);
 		if (weather.showCelciusInForecast) {
-			maxHtml += " °C";
-			minHtml += " °C";
+			maxHtml += "&nbsp;°C";
+			minHtml += "&nbsp;°C";
 		}
 		return dayHtml + iconHtml + maxHtml + "</td>" + minHtml + "</td>";
 	}
