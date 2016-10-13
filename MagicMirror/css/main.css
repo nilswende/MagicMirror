@@ -2,7 +2,7 @@
     background-color: black;
     color: white;
     font-family: avenirNext, sans-serif;
-	font-size: 25px;
+	//font-size: 16px;
 }
 
 .container {
@@ -30,17 +30,17 @@
 
 /* time */
 .time {
-	font-size: 45px;
+	font-size: 2.8125rem;
 }
 
 .clock {
-	font-size: 70px;
+	font-size: 4.375rem;
 }
 
 .seconds {
     opacity: 0.6;
     vertical-align: 30px;
-	font-size: 28px;
+	font-size: 1.75rem;
 }
 
 .binClkTable {
@@ -57,18 +57,18 @@
 .binEasy {
     opacity: 0.5;
     text-align: center;
-	font-size: 24px;
+	font-size: 1.5rem;
 }
 
 /* weather */
 .indoorTempRow {
     text-align: left;
-	font-size: 25px;
+	font-size: 1.5625rem;
 }
 
 .currentWeatherIcon, .currentWeatherTemp {
     text-align: center;
-    font-size: 50px;
+    font-size: 3.125rem;
 }
 
 .currentWeatherIcon {
@@ -76,7 +76,7 @@
 }
 
 .forecast {
-    font-size: 30px;
+    font-size: 1.875rem;
 }
 
 .forecastDay, .forecastIcon {
@@ -93,7 +93,7 @@
 
 /* gas */
 .gasTable {
-	font-size: 30px;
+	font-size: 1.875rem;
 }
 
 #svg {
@@ -102,7 +102,7 @@
 }
 
 .milli {
-	font-size: 15px;
+	font-size: 0.9375rem;
     opacity: 0.6;
     vertical-align: 10px;
 }
