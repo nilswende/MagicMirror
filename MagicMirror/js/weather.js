@@ -1,4 +1,9 @@
 ﻿function getCurrentWeather() {
+	var timer = new interval(10 * 60000, aux_getCurrentWeather);
+	timer.run();
+}
+
+function aux_getCurrentWeather() {
 	$.getJSON({
 		//url: "http://api.openweathermap.org/data/2.5/weather",
 		url: "http://localhost/MagicMirror/test/weather.json",
@@ -17,11 +22,15 @@
 			$(".currentWeatherTemp").html(temp);
 		}
 	});
-
-	setTimeout(getCurrentWeather, 10 * 60000);
 }
 
 function getWeatherForecast() {
+	//var timer = new interval(20 * 60000, aux_getWeatherForecast);
+	var timer = new interval(10 * 1000, aux_getWeatherForecast);
+	timer.run();
+}
+
+function aux_getWeatherForecast() {
 	$.getJSON({
 		//url: "http://api.openweathermap.org/data/2.5/forecast",
 		url: "http://localhost/MagicMirror/test/forecast.json",
@@ -132,7 +141,4 @@ function getWeatherForecast() {
 		}
 		return dayHtml + iconHtml + maxHtml + "</td>" + minHtml + "</td>";
 	}
-
-	//setTimeout(getWeatherForecast, 20 * 60000);
-	setTimeout(getWeatherForecast, 10 * 1000);
 }

@@ -2,6 +2,12 @@
 gas.errCounter = 0;
 
 function updateGasPrice() {
+	//var timer = new interval(15 * 60000, aux_updateGasPrice);
+	var timer = new interval(1000, aux_updateGasPrice);
+	timer.run();
+}
+
+function aux_updateGasPrice() {
 	$.getJSON({
 		//url: "https://creativecommons.tankerkoenig.de/json/prices.php",
 		url: "http://localhost/MagicMirror/test/gas.json",
@@ -28,9 +34,6 @@ function updateGasPrice() {
 			handleError();
 		}
 	});
-
-	//setTimeout(updateGasPrice, 15 * 60000);
-	setTimeout(updateGasPrice, 1000);
 }
 
 function showNewGasPrice(currentPrice) {
@@ -45,7 +48,7 @@ function handleFail() {
 	else if (gas.failCounter < 5) {
 		++gas.failCounter;
 	}
-	else { // ==5
+	else { // ===5
 		$(".euro").html("-.--");
 	}
 }
@@ -57,7 +60,7 @@ function handleError() {
 	else if (gas.errCounter < 5) {
 		++gas.errCounter;
 	}
-	else { // ==5
+	else { // ===5
 		$(".euro").html("err");
 	}
 }
