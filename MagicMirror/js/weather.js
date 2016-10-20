@@ -54,7 +54,9 @@ function aux_getWeatherForecast() {
 			let main = singleForecast.main;
 			let id = singleForecast.weather[0].id;
 			let date = singleForecast.dt_txt.substring(0, 10);
-
+			let hour = singleForecast.dt_txt.substring(12, 13);
+			let isDay = (hour === "00" || hour === "03") ? false : true; // skip weather icons at night
+			
 			if (days[date] === undefined) {
 				days[date] = {
 					"icons": {},
@@ -62,15 +64,20 @@ function aux_getWeatherForecast() {
 					"max": main.temp_max,
 					"counter": dayCounter
 				};
-				days[date].icons[id] = 1;
+				if (isDay) {
+					days[date].icons[id] = 1;
+				}
+				
 				++dayCounter;
 			}
 			else { //current date already in days
-				if (days[date].icons[id] === undefined) {
-					days[date].icons[id] = 1;
-				}
-				else { //id already in icons
-					++days[date].icons[id];
+				if (isDay) {
+					if (days[date].icons[id] === undefined) {
+						days[date].icons[id] = 1;
+					}
+					else { //id already in icons
+						++days[date].icons[id];
+					}
 				}
 
 				if (main.temp_min < days[date].min) {
