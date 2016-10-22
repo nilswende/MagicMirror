@@ -1,5 +1,6 @@
 ﻿function getCurrentWeather() {
-	var timer = new interval(10 * 60000, aux_getCurrentWeather);
+	var timer = new interval(weather.updateIntervalInMinutes * 60000, 
+							aux_getCurrentWeather);
 	timer.run();
 }
 
@@ -25,8 +26,8 @@ function aux_getCurrentWeather() {
 }
 
 function getWeatherForecast() {
-	//var timer = new interval(20 * 60000, aux_getWeatherForecast);
-	var timer = new interval(10 * 1000, aux_getWeatherForecast);
+	var timer = new interval(weather.forecastUpdateIntervalInMinutes * 60000, 
+							aux_getWeatherForecast);
 	timer.run();
 }
 

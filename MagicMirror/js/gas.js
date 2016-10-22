@@ -2,12 +2,18 @@
 gas.errCounter = 0;
 
 function updateGasPrice() {
-	//var timer = new interval(15 * 60000, aux_updateGasPrice);
-	var timer = new interval(1000, aux_updateGasPrice);
+	var timer = new interval(gas.updateIntervalInMinutes * 60000, function() { 
+		aux_updateGasPrice(timer);
+	});
 	timer.run();
 }
 
-function aux_updateGasPrice() {
+function aux_updateGasPrice(timer) {
+	let isOpen = isStationOpen(timer);
+	if (!isOpen && $.isNumeric($(".euro").html())) {
+		return;
+	}
+	
 	$.getJSON({
 		//url: "https://creativecommons.tankerkoenig.de/json/prices.php",
 		url: "http://localhost/MagicMirror/test/gas.json",
@@ -16,11 +22,11 @@ function aux_updateGasPrice() {
 			apikey: apiKey.tankerkoenig
 		},
 		success: function (response) {
-			if (gas.errCounter != 0) {
+			if (gas.errCounter !== 0) {
 				gas.errCounter = 0;
 			}
 			if (response.ok) {
-				if (gas.failCounter != 0) {
+				if (gas.failCounter !== 0) {
 					gas.failCounter = 0;
 				}
 				let currentPrice = response.prices[gas.stationID][gas.gasType];
@@ -34,33 +40,40 @@ function aux_updateGasPrice() {
 			handleError();
 		}
 	});
-}
+	
+	
+	function isStationOpen(timer) {
+		var now = moment().format("Hmm");
+		if (now < gas.openingTime) {
+			return false;
+		}
+		if (now > gas.closingTime + gas.updateIntervalInMinutes) {
+			timer.stop();
+			return false;
+		}
+		return true;
+	}
 
-function showNewGasPrice(currentPrice) {
+	function showNewGasPrice(currentPrice) {
 		currentPrice = currentPrice.toString().slice(0, -1);
 		$(".euro").html(currentPrice);
-	};
+	}
 
-function handleFail() {
-	if (gas.failCounter > 5) {
-		return;
+	function handleFail() { //TODO retry after a minute
+		if (gas.failCounter < 5) {
+			++gas.failCounter;
+		}
+		if ($(".euro").html() !== "-.--") {
+			$(".euro").html("-.--");
+		}
 	}
-	else if (gas.failCounter < 5) {
-		++gas.failCounter;
-	}
-	else { // ===5
-		$(".euro").html("-.--");
-	}
-}
 
-function handleError() {
-	if (gas.errCounter > 5) {
-		return;
-	}
-	else if (gas.errCounter < 5) {
-		++gas.errCounter;
-	}
-	else { // ===5
-		$(".euro").html("err");
+	function handleError() {
+		if (gas.errCounter < 5) {
+			++gas.errCounter;
+		}
+		if ($(".euro").html() !== "err") {
+			$(".euro").html("err");
+		}
 	}
 }
