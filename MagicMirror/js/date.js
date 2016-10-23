@@ -8,12 +8,7 @@ function aux_updateDate() {
 	var longDate = now.format("LLLL").split(" ", 4);
 	var date = longDate[0] + "<br/>" + longDate[1] + " " + longDate[2];
 	if (time.showDateWithYear) {
-		if (time.alwaysBreakYear) {
-			date += "<br/>" + longDate[3];
-		}
-		else {
-			date += " " + longDate[3];
-		}
+		date += (time.alwaysBreakYear ? "<br/>" : " ") + longDate[3];
 	}
 	$(".date").html(date);
 }

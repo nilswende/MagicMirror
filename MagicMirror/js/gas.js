@@ -10,36 +10,34 @@ function updateGasPrice() {
 
 function aux_updateGasPrice(timer) {
 	let isOpen = isStationOpen(timer);
-	if (!isOpen && $.isNumeric($(".euro").html())) {
-		return;
-	}
-	
-	$.getJSON({
-		//url: "https://creativecommons.tankerkoenig.de/json/prices.php",
-		url: "http://localhost/MagicMirror/test/gas.json",
-		data: {
-			ids: JSON.stringify([gas.stationID]),
-			apikey: apiKey.tankerkoenig
-		},
-		success: function (response) {
-			if (gas.errCounter !== 0) {
-				gas.errCounter = 0;
-			}
-			if (response.ok) {
-				if (gas.failCounter !== 0) {
-					gas.failCounter = 0;
+	if (isOpen || !$.isNumeric($(".euro").html())) {
+		$.getJSON({
+			//url: "https://creativecommons.tankerkoenig.de/json/prices.php",
+			url: "http://localhost/MagicMirror/test/gas.json",
+			data: {
+				ids: JSON.stringify([gas.stationID]),
+				apikey: apiKey.tankerkoenig
+			},
+			success: function (response) {
+				if (gas.errCounter !== 0) {
+					gas.errCounter = 0;
 				}
-				let currentPrice = response.prices[gas.stationID][gas.gasType];
-				showNewGasPrice(currentPrice);
+				if (response.ok) {
+					if (gas.failCounter !== 0) {
+						gas.failCounter = 0;
+					}
+					let currentPrice = response.prices[gas.stationID][gas.gasType];
+					showNewGasPrice(currentPrice);
+				}
+				else {
+					handleFail();
+				}
+			},
+			error: function (response) {
+				handleError();
 			}
-			else {
-				handleFail();
-			}
-		},
-		error: function (response) {
-			handleError();
-		}
-	});
+		});
+	}
 	
 	
 	function isStationOpen(timer) {
@@ -60,19 +58,19 @@ function aux_updateGasPrice(timer) {
 	}
 
 	function handleFail() { //TODO retry after a minute
-		if (gas.failCounter < 5) {
+		if (gas.failCounter < 4) {
 			++gas.failCounter;
 		}
-		if ($(".euro").html() !== "-.--") {
+		else if ($(".euro").html() !== "-.--") {
 			$(".euro").html("-.--");
 		}
 	}
 
 	function handleError() {
-		if (gas.errCounter < 5) {
+		if (gas.errCounter < 4) {
 			++gas.errCounter;
 		}
-		if ($(".euro").html() !== "err") {
+		else if ($(".euro").html() !== "err") {
 			$(".euro").html("err");
 		}
 	}

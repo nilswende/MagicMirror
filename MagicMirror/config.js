@@ -6,8 +6,8 @@ var gas = {
 	"openingTime": 800,
 	"closingTime": 2000,
 	
-	//"updateIntervalInMinutes": 0.0167,
-	"updateIntervalInMinutes": 15
+	"updateIntervalInMinutes": 0.0167
+	//"updateIntervalInMinutes": 15
 };
 
 //order inside each array determines top-down order on screen
@@ -42,7 +42,7 @@ var weather = {
 	"fadeDuration": 0.7 * 1000, //fade duration for forecast updates
 	"showCelciusInForecast": false,
 	
-	"updateIntervalInMinutes": 10
-	//"forecastUpdateIntervalInMinutes": 0.167,
-	"forecastUpdateIntervalInMinutes": 20
+	"updateIntervalInMinutes": 10,
+	"forecastUpdateIntervalInMinutes": 0.167
+	//"forecastUpdateIntervalInMinutes": 20
 };
