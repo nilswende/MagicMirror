@@ -20,18 +20,20 @@
     <script type="text/javascript" src="./js/binaryClock.js"></script>
     <script type="text/javascript" src="./js/clock.js"></script>
     <script type="text/javascript" src="./js/date.js"></script>
+    <script type="text/javascript" src="./js/calendar.js"></script>
     <script type="text/javascript" src="./js/gas.js"></script>
     <script type="text/javascript" src="./js/position.js"></script>
     <script type="text/javascript" src="./js/temperature.js"></script>
     <script type="text/javascript" src="./js/weather.js"></script>
 
     <script type="text/javascript" src="./js/controller.js"></script>
-    <script type="text/javascript" src="./js/lib/live.js"></script>
+    <script type="text/javascript" src="./js/lib/live.js"></script> <!-- disable it for prod -->
 </head>
 <body>
     <div class="container left"></div>
     <div class="container middle"></div>
     <div class="container right"></div>
+
     <div class="content time">
         <table class="timeTable">
             <tr>
@@ -78,6 +80,7 @@
             </tr>
         </table>
     </div>
+
     <div class="content weather">
         <table class="weatherTable">
             <tr class="indoorTemp">
@@ -96,6 +99,7 @@
             <tr class="forecast f4"></tr>
         </table>
     </div>
+
     <div class="content gas">
         <table class="gasTable">
             <tr>
@@ -116,14 +120,61 @@
 
     <div class="content calendar">
         <table class="calendarTable">
-            <tr>
-                <td class="subject"></td>
-            </tr>
-            <tr>
-                <td class="calTime"></td>
-            </tr>
+			<tr class="calRow">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="calRow">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="calRow">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="calRow">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="calRow">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="calRow">
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
         </table>
     </div>
-    <div class="content eta"></div>
 </body>
 </html>

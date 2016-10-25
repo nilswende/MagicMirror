@@ -28,6 +28,7 @@
 	}
 
 	updateDate();
+	updateCalendar();
 	updateGasPrice();
 	getCurrentWeather();
 	getWeatherForecast();

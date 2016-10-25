@@ -13,7 +13,8 @@ var gas = {
 //order inside each array determines top-down order on screen
 var position = {
 	"left": [
-		"time"
+		"time",
+		"calendar"
 	],
 	"middle": [
 		"gas"
