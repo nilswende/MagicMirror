@@ -3,33 +3,41 @@
 	timer.run();
 }
 
-//TODO join moment obj with date.js
-//     find better solution for filling up the numbers
 function aux_updateCalendar() {
-	var now = moment();
-	var today = now.date();
-	var firstDayOfMonth = now.startOf('month').weekday();
-	var lastDayOfMonth = now.endOf('month').date();
-	var firstDayLastWeekLastMonth = now.subtract(1, 'months').endOf('month').startOf('week').date();
-	//console.log(firstDayLastWeekLastMonth);
+	fillWeeks();
+	fillDates();
 	
-	var day = 1;
-	var day2 = 1;
-	var end = lastDayOfMonth + firstDayOfMonth;
-	$(".calRow > td").each(function (i) {
-		if (i < firstDayOfMonth) {
-			$(this).html(firstDayLastWeekLastMonth++);
-			$(this).css("opacity", 0.5);
+	
+	function fillWeeks() {
+		var date = moment().subtract(1, 'months').endOf('month');
+		$(".calWeek").each(function (i) {
+			$(this).html(date.week() + ".");
+			date.add(1, 'week');
+		});
+	}
+	
+	function fillDates() {
+		var today = moment().date() - 1;
+		var firstDayOfMonth = moment().startOf('month').weekday();
+		var lastDayOfMonth = moment().endOf('month').date();
+		var date = moment().subtract(1, 'months').endOf('month').startOf('week').date();
+		
+		if (firstDayOfMonth === 0) {
+			firstDayOfMonth = 7;
 		}
-		else if (i >= end) {
-			$(this).html(day2++);
-			$(this).css("opacity", 0.5);
-		}
-		else {
-			$(this).html(day++);
-			if (today === i - firstDayOfMonth + 1) {
+		$(".calDate").each(function (i) {
+			var distance = i - firstDayOfMonth;
+			if (distance === 0 || distance === lastDayOfMonth) {
+				date = 1;
+			}
+			$(this).html(date++);
+			
+			if (distance < 0 || distance >= lastDayOfMonth) {
 				$(this).css("opacity", 0.5);
 			}
-		}
-	});
+			else if (distance === today) {
+				$(this).css("border", "2px solid #555555");
+			}
+		});
+	}
 }

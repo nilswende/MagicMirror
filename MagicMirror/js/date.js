@@ -10,5 +10,5 @@ function aux_updateDate() {
 	if (time.showDateWithYear) {
 		date += (time.alwaysBreakYear ? "<br/>" : " ") + longDate[3];
 	}
-	$(".date").html(date);
+	$("#date").html(date);
 }

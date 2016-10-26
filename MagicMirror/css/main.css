@@ -29,7 +29,7 @@
 }
 
 .container > div {
-	padding: 20px 0px;
+	padding: 0px 0px 40px 0px;
 }
 
 /* time */
@@ -65,10 +65,18 @@
 }
 
 /* calendar */
-.calRow > td {
-    text-align: center;
+.calRow {
 	font-size: 1.5rem;
-	padding: 0px 12px;
+}
+.calWeek {
+    text-align: right;
+	padding: 0px 10px;
+}
+
+.calDate {
+    text-align: center;
+	padding: 0px 10px;
+    border-radius: 4px;
 }
 
 /* weather */
