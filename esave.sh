@@ -5,10 +5,10 @@
 smartphoneIP="192.168.1.203"
 
 startTime="630" #without leading zero
-endTime="2300"
+endTime="2258"
 
 #loopIntervalInSeconds=0
-offlineIntervalInMinutes=22
+offlineIntervalInMinutes=30
 
 isOn="NO"
 isDay="NO"
@@ -73,12 +73,13 @@ while :; do
 		fi
 	else
 #		echo "Es ist Nacht."
-		if [ "$isDay" = "YES" ]; then
-			isDay=$"NO"
-			if [ "$isOn" = "YES" ]; then
-				stopSocket
-			fi
-		fi
+		shutdown -h now
+#		if [ "$isDay" = "YES" ]; then
+#			isDay=$"NO"
+#			if [ "$isOn" = "YES" ]; then
+#				stopSocket
+#			fi
+#		fi
 	fi
 	#sleep $loopIntervalInSeconds
 done
