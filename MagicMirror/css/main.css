@@ -17,7 +17,7 @@
 
 .middle {
     position: absolute;
-    left: 25%;
+    left: 30%;
     width: 40%;
     text-align: center;
 }
@@ -29,7 +29,7 @@
 }
 
 .container > div {
-	padding: 0px 0px 40px 0px;
+	padding: 0px 0px 40px 0px; /* top, right, bot, left */
 }
 
 /* time */
