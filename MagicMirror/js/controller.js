@@ -5,12 +5,12 @@
 	positionDivs();
 
 	// have the desired clock displayed
-	if (time.showBinaryClock) {
+	if (clock.showBinaryClock) {
 		$(".clock").remove();
-		if (!time.showClockWithSeconds) {
+		if (!clock.showClockWithSeconds) {
 			$(".binSec").remove();
 		}
-		if (!time.enableBinaryClockEasyMode) {
+		if (!clock.enableBinaryClockEasyMode) {
 			$(".binEasy").remove();
 		}
 		updateBinaryClock();

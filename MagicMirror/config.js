@@ -28,12 +28,15 @@ var temp = {
 	"sensorAttached": true //don't forget to enter its ID in /php/temp.php
 };
 
-var time = {
-	"alwaysBreakYear": false,
+var clock = {
 	"showBinaryClock": false,
 	"enableBinaryClockEasyMode": false,
-	"showClockWithSeconds": true,
-	"showDateWithYear": true
+	"showClockWithSeconds": true
+};
+
+var date = {
+	"alwaysBreakYear": false,
+	"showYear": true
 };
 
 var weather = {

@@ -5,9 +5,9 @@
 
 function aux_updateClock() {
 	var now = moment();
-	var clock = now.format("LT");
-	if (time.showClockWithSeconds) {
-		clock += "<span class='seconds'>" + now.format("ss") + "</span>";
+	var currentTime = now.format("LT");
+	if (clock.showClockWithSeconds) {
+		currentTime += "<span class='seconds'>" + now.format("ss") + "</span>";
 	}
-	$(".clock").html(clock);
+	$(".clock").html(currentTime);
 }

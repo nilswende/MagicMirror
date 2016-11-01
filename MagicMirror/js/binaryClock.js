@@ -9,7 +9,7 @@ function aux_updateBinaryClock(isFirstRun) {
 	var now = moment().toObject(),
 		bin;
 
-	if (time.showClockWithSeconds) {
+	if (clock.showClockWithSeconds) {
 		bin = toSixBit(now.seconds.toString(2));
 		setBgColors(".binSec", bin);
 	}
