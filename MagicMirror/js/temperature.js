@@ -18,7 +18,7 @@ function aux_updateIndoorTemp() {
 				if (temp.failCounter !== 0) {
 					temp.failCounter = 0;
 				}
-				$(".indoorTempData").html(response.temp);
+				$("#indoorTempData").html(response.temp);
 			}
 			else {
 				handleFail();
@@ -37,7 +37,7 @@ function aux_updateIndoorTemp() {
 			++temp.failCounter;
 		}
 		else { // ===5
-			$(".indoorTempData").html("--.-");
+			$("#indoorTempData").html("--.-");
 		}
 	}
 
@@ -49,7 +49,7 @@ function aux_updateIndoorTemp() {
 			++temp.errCounter;
 		}
 		else { // ===5
-			$(".indoorTempData").html("err");
+			$("#indoorTempData").html("err");
 		}
 	}
 }

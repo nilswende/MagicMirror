@@ -2,34 +2,45 @@
 	// set moment.js to desired locale
 	moment.locale(locale);
 
-	positionDivs();
+	var chosenDivs = positionDivs();
 
-	// have the desired clock displayed
-	if (clock.showBinaryClock) {
-		$(".clock").remove();
-		if (!clock.showClockWithSeconds) {
-			$(".binSec").remove();
+	if (chosenDivs.indexOf("time") != -1) {
+		// have the desired clock displayed
+		if (clock.showBinaryClock) {
+			$("#clock").remove();
+			if (!clock.showClockWithSeconds) {
+				$("#binSec").remove();
+			}
+			if (!clock.enableBinaryClockEasyMode) {
+				$("#binEasy").remove();
+			}
+			updateBinaryClock();
 		}
-		if (!clock.enableBinaryClockEasyMode) {
-			$(".binEasy").remove();
+		else {
+			$("#binaryClock").remove();
+			updateClock();
 		}
-		updateBinaryClock();
-	}
-	else {
-		$(".binaryClock").remove();
-		updateClock();
+		updateDate();
 	}
 
-	if (temp.sensorAttached) {
-		updateIndoorTemp();
-	}
-	else {
-		$(".indoorTemp").remove();
+	if (chosenDivs.indexOf("weather") != -1) {
+		if (temp.sensorAttached) {
+			updateIndoorTemp();
+		}
+		else {
+			$("#indoorTemp").remove();
+		}
+		updateCurrentWeather();
+		updateWeatherForecast();
 	}
 
-	updateDate();
-	updateCalendar();
-	updateGasPrice();
-	getCurrentWeather();
-	getWeatherForecast();
+	if (chosenDivs.indexOf("calendar") != -1) {
+		updateCalendar();
+	}
+
+	if (chosenDivs.indexOf("gas") != -1) {
+		updateGasPrice();
+	}
+
+	pullDivsToBottom();
 });

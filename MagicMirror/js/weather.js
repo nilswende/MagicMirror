@@ -1,10 +1,10 @@
-﻿function getCurrentWeather() {
+﻿function updateCurrentWeather() {
 	var timer = new interval(weather.updateIntervalInMinutes * 60000, 
-							aux_getCurrentWeather);
+							aux_updateCurrentWeather);
 	timer.run();
 }
 
-function aux_getCurrentWeather() {
+function aux_updateCurrentWeather() {
 	$.getJSON({
 		//url: "http://api.openweathermap.org/data/2.5/weather",
 		url: "http://localhost/MagicMirror/test/weather.json",
@@ -19,19 +19,19 @@ function aux_getCurrentWeather() {
 			var iconHtml = "<i class='wi wi-owm-" + weatherID + "'></i>";
 			var temp = response.main.temp.toFixed(1) + "&nbsp;°C";
 
-			$(".currentWeatherIcon").html(iconHtml);
-			$(".currentWeatherTemp").html(temp);
+			$("#currentWeatherIcon").html(iconHtml);
+			$("#currentWeatherTemp").html(temp);
 		}
 	});
 }
 
-function getWeatherForecast() {
+function updateWeatherForecast() {
 	var timer = new interval(weather.forecastUpdateIntervalInMinutes * 60000, 
-							aux_getWeatherForecast);
+							aux_updateWeatherForecast);
 	timer.run();
 }
 
-function aux_getWeatherForecast() {
+function aux_updateWeatherForecast() {
 	$.getJSON({
 		//url: "http://api.openweathermap.org/data/2.5/forecast",
 		url: "http://localhost/MagicMirror/test/forecast.json",

@@ -7,7 +7,7 @@ function aux_updateClock() {
 	var now = moment();
 	var currentTime = now.format("LT");
 	if (clock.showClockWithSeconds) {
-		currentTime += "<span class='seconds'>" + now.format("ss") + "</span>";
+		currentTime += "<span id='seconds'>" + now.format("ss") + "</span>";
 	}
-	$(".clock").html(currentTime);
+	$("#clock").html(currentTime);
 }

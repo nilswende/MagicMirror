@@ -35,12 +35,12 @@
     <div class="container right"></div>
 
     <div class="content time">
-        <table class="timeTable">
+        <table id="timeTable">
             <tr>
-                <td class="clock"></td>
-                <td class="binaryClock">
-                    <table class="binClkTable">
-                        <tr class="binHour">
+                <td id="clock"></td>
+                <td id="binaryClock">
+                    <table id="binClkTable">
+                        <tr id="binHour">
                             <td class="bh bh32"></td>
                             <td class="bh bh16"></td>
                             <td class="bh bh8"></td>
@@ -48,7 +48,7 @@
                             <td class="bh bh2"></td>
                             <td class="bh bh1"></td>
                         </tr>
-                        <tr class="binMin">
+                        <tr id="binMin">
                             <td class="bm bm32"></td>
                             <td class="bm bm16"></td>
                             <td class="bm bm8"></td>
@@ -56,7 +56,7 @@
                             <td class="bm bm2"></td>
                             <td class="bm bm1"></td>
                         </tr>
-                        <tr class="binSec">
+                        <tr id="binSec">
                             <td class="bs bs32"></td>
                             <td class="bs bs16"></td>
                             <td class="bs bs8"></td>
@@ -64,7 +64,7 @@
                             <td class="bs bs2"></td>
                             <td class="bs bs1"></td>
                         </tr>
-                        <tr class="binEasy">
+                        <tr id="binEasy">
                             <td>32</td>
                             <td>16</td>
                             <td>8</td>
@@ -82,15 +82,15 @@
     </div>
 
     <div class="content weather">
-        <table class="weatherTable">
-            <tr class="indoorTemp">
-                <td class="indoorTempRow" colspan="4">
-                    In: <span class="indoorTempData"></span>&nbsp;°C
+        <table id="weatherTable">
+            <tr id="indoorTemp">
+                <td id="indoorTempRow" colspan="4">
+                    In: <span id="indoorTempData"></span>&nbsp;°C
                 </td>
             </tr>
-            <tr class="currentWeather">
-                <td class="currentWeatherIcon" colspan="2"></td>
-                <td class="currentWeatherTemp" colspan="2"></td>
+            <tr id="currentWeather">
+                <td id="currentWeatherIcon" colspan="2"></td>
+                <td id="currentWeatherTemp" colspan="2"></td>
             </tr>
             <tr class="forecast f0"></tr>
             <tr class="forecast f1"></tr>
@@ -101,25 +101,25 @@
     </div>
 
     <div class="content gas">
-        <table class="gasTable">
+        <table id="gasTable">
             <tr>
                 <td>
-                    <div class="gasImg">
+                    <div>
                         <img id="svg" src="./img/diesel.svg" alt="Diesel-Zapfsäule" />
                     </div>
                 </td>
-                <td class="price">
-                    <span class="euro"></span><span class="milli">9</span>&nbsp;€
+                <td>
+                    <span id="euro"></span><span id="milli">9</span>&nbsp;€
                 </td>
             </tr>
             <tr>
-                <td class="lowestPriceTime"></td>
+                <td id="lowestPriceTime"></td>
             </tr>
         </table>
     </div>
 
     <div class="content calendar">
-        <table class="calendarTable">
+        <table id="calendarTable">
 			<tr class="calRow">
 				<td class="calWeek"></td>
 				<td class="calDate"></td>

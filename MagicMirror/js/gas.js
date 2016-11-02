@@ -54,15 +54,15 @@ function aux_updateGasPrice(timer) {
 
 	function showNewGasPrice(currentPrice) {
 		currentPrice = currentPrice.toString().slice(0, -1);
-		$(".euro").html(currentPrice);
+		$("#euro").html(currentPrice);
 	}
 
 	function handleFail() { //TODO retry after a minute
 		if (gas.failCounter < 4) {
 			++gas.failCounter;
 		}
-		else if ($(".euro").html() !== "-.--") {
-			$(".euro").html("-.--");
+		else if ($("#euro").html() !== "-.--") {
+			$("#euro").html("-.--");
 		}
 	}
 
@@ -70,8 +70,8 @@ function aux_updateGasPrice(timer) {
 		if (gas.errCounter < 4) {
 			++gas.errCounter;
 		}
-		else if ($(".euro").html() !== "err") {
-			$(".euro").html("err");
+		else if ($("#euro").html() !== "err") {
+			$("#euro").html("err");
 		}
 	}
 }

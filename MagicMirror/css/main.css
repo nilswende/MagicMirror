@@ -29,7 +29,7 @@
 }
 
 .container > div {
-	padding: 0px 0px 40px 0px; /* top, right, bot, left */
+	padding-top: 40px;
 }
 
 /* time */
@@ -37,28 +37,24 @@
 	font-size: 2.8125rem;
 }
 
-.clock {
+#clock {
 	font-size: 4.375rem;
 }
 
-.seconds {
+#seconds {
     opacity: 0.6;
     vertical-align: 30px;
 	font-size: 1.75rem;
 }
 
-.binClkTable {
-    width: 100%;
-}
-
 .bh, .bm, .bs {
     border: 1px solid #333333;
     border-radius: 3px;
-    height: 45px;
-    width: 45px;
+    height: 50px;
+    width: 50px;
 }
 
-.binEasy {
+#binEasy {
     opacity: 0.5;
     text-align: center;
 	font-size: 1.5rem;
@@ -80,17 +76,17 @@
 }
 
 /* weather */
-.indoorTempRow {
+#indoorTempRow {
     text-align: left;
 	font-size: 1.5625rem;
 }
 
-.currentWeatherIcon, .currentWeatherTemp {
+#currentWeatherIcon, #currentWeatherTemp {
     text-align: center;
     font-size: 3.125rem;
 }
 
-.currentWeatherIcon {
+#currentWeatherIcon {
     width: 30%;
 }
 
@@ -111,7 +107,7 @@
 }
 
 /* gas */
-.gasTable {
+#gasTable {
 	font-size: 1.875rem;
 }
 
@@ -120,7 +116,7 @@
     vertical-align: -7px;
 }
 
-.milli {
+#milli {
 	font-size: 0.9375rem;
     opacity: 0.6;
     vertical-align: 10px;

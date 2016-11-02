@@ -11,15 +11,15 @@ function aux_updateBinaryClock(isFirstRun) {
 
 	if (clock.showClockWithSeconds) {
 		bin = toSixBit(now.seconds.toString(2));
-		setBgColors(".binSec", bin);
+		setBgColors("#binSec", bin);
 	}
 	if (now.seconds === 0 || isFirstRun) {
 		bin = toSixBit(now.minutes.toString(2));
-		setBgColors(".binMin", bin);
+		setBgColors("#binMin", bin);
 	}
 	if (now.minutes === 0 || isFirstRun) {
 		bin = toSixBit(now.hours.toString(2));
-		setBgColors(".binHour", bin);
+		setBgColors("#binHour", bin);
 	}
 
 	//leftpad str with 0s to a length of 6
