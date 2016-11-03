@@ -41,6 +41,8 @@
 	if (chosenDivs.indexOf("gas") != -1) {
 		updateGasPrice();
 	}
-
-	pullDivsToBottom();
+	
+	if (displayDivsBottomUp) {
+		setTimeout(pullDivsToBottom, 500);
+	}
 });

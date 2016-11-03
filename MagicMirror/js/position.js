@@ -30,17 +30,20 @@
 
 function pullDivsToBottom() {
 	var heightLeft = 0, heightMiddle = 0, heightRight = 0;
+	var padding = 40;
 
 	$(".left > .content").each(function (i) {
-		heightLeft += $(this).height();
+		heightLeft += $(this).height() + padding;
 	});
 	$(".middle > .content").each(function (i) {
-		heightMiddle += $(this).height();
+		heightMiddle += $(this).height() + padding;
 	});
 	$(".right > .content").each(function (i) {
-		heightRight += $(this).height();
+		heightRight += $(this).height() + padding;
 	});
 
-	var height = Math.max(heightLeft, heightMiddle, heightRight);
-	$(".container").css("margin-top", height);
+	var maxHeight = Math.max(heightLeft, heightMiddle, heightRight);
+	var margin = $(".container").height() - maxHeight;
+	$(".container").css("margin-top", margin);
+	$(".container").height(maxHeight);
 }
