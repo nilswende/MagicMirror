@@ -34,7 +34,7 @@ var temp = {
 var clock = {
 	"showBinaryClock": false,
 	"enableBinaryClockEasyMode": false,
-	"showClockWithSeconds": true
+	"showWithSeconds": true
 };
 
 var date = {

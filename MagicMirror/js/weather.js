@@ -1,6 +1,6 @@
 ﻿function updateCurrentWeather() {
 	var timer = new interval(weather.updateIntervalInMinutes * 60000, 
-		aux_updateCurrentWeather);
+							aux_updateCurrentWeather);
 	timer.run();
 }
 

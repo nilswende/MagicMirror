@@ -9,7 +9,7 @@ function aux_updateBinaryClock(isFirstRun) {
 	var now = moment().toObject(),
 		bin;
 
-	if (clock.showClockWithSeconds) {
+	if (clock.showWithSeconds) {
 		bin = toSixBit(now.seconds.toString(2));
 		setBgColors("#binSec", bin);
 	}
@@ -29,7 +29,7 @@ function aux_updateBinaryClock(isFirstRun) {
 
 	function setBgColors(row, bin) {
 		$(row + " > td").each(function (i) {
-			if (bin.charAt(i) == "1") {
+			if (bin.charAt(i) === "1") {
 				$(this).css("background-color", "white");
 			}
 			else {
