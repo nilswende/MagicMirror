@@ -30,25 +30,19 @@ function aux_updateIndoorTemp() {
 	});
 
 	function handleFail() {
-		if (temp.failCounter > 5) {
-			return;
+		if (temp.failCounter < 4) {
+			++gas.failCounter;
 		}
-		else if (temp.failCounter < 5) {
-			++temp.failCounter;
-		}
-		else { // ===5
+		else if ($("#indoorTempData").html() !== "--.-") {
 			$("#indoorTempData").html("--.-");
 		}
 	}
 
 	function handleError() {
-		if (temp.errCounter > 5) {
-			return;
+		if (temp.errCounter < 4) {
+			++gas.errCounter;
 		}
-		else if (temp.errCounter < 5) {
-			++temp.errCounter;
-		}
-		else { // ===5
+		else if ($("#indoorTempData").html() !== "err") {
 			$("#indoorTempData").html("err");
 		}
 	}

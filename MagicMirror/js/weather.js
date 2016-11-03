@@ -117,12 +117,13 @@ function aux_updateWeatherForecast() {
 		$(".forecast").each(function (i) {
 			var key = getKeyByCount(days, i);
 			var forecastHtml = getForecastHtml(days, key);
-
-			$(this).delay(i * weather.fadeDuration);
-			$(this).fadeTo(weather.fadeDuration, 0, "linear", function () {
-				$(this).html(forecastHtml);
+			var row = $(this);
+			
+			row.delay(i * weather.fadeDuration);
+			row.fadeTo(weather.fadeDuration, 0, "linear", function () {
+				row.html(forecastHtml);
 			});
-			$(this).fadeTo(weather.fadeDuration, opacity, "linear");
+			row.fadeTo(weather.fadeDuration, opacity, "linear");
 			opacity -= 0.1;
 		});
 	}
