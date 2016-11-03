@@ -1,13 +1,16 @@
 ﻿function updateCalendar() {
-	var timer = new interval(1000, aux_updateCalendar);
-	timer.run();
+	aux_updateCalendar();
+	
+	var now = moment().valueOf();
+	var nextDay = moment().endOf('day').valueOf() + 1;
+	setTimeout(updateCalendar, nextDay - now);
 }
 
 function aux_updateCalendar() {
 	fillWeeks();
 	fillDates();
-	
-	
+
+
 	function fillWeeks() {
 		var date = moment().subtract(1, 'months').endOf('month');
 		$(".calWeek").each(function (i) {
@@ -15,7 +18,7 @@ function aux_updateCalendar() {
 			date.add(1, 'week');
 		});
 	}
-	
+
 	function fillDates() {
 		var today = moment().date() - 1;
 		var firstDayOfMonth = moment().startOf('month').weekday();
@@ -30,13 +33,18 @@ function aux_updateCalendar() {
 			if (distance === 0 || distance === lastDayOfMonth) {
 				date = 1;
 			}
-			$(this).html(date++);
+			var cell = $(this);
+			cell.html(date++);
 			
 			if (distance < 0 || distance >= lastDayOfMonth) {
-				$(this).css("opacity", 0.5);
+				cell.css("opacity", 0.5);
 			}
-			else if (distance === today) {
-				$(this).css("border", "2px solid #555555");
+			else {
+				cell.css("opacity", "");				
+				if (distance === today) {
+				cell.prev().css("border", "");
+				cell.css("border", "2px solid #555555");
+				}
 			}
 		});
 	}

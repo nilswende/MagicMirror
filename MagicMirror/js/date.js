@@ -1,6 +1,9 @@
 ﻿function updateDate() {
-	var timer = new interval(1000, aux_updateDate);
-	timer.run();
+	aux_updateDate();
+	
+	var now = moment().valueOf();
+	var nextDay = moment().endOf('day').valueOf() + 1;
+	setTimeout(updateDate, nextDay - now);
 }
 
 function aux_updateDate() {

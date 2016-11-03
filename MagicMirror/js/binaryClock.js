@@ -22,6 +22,7 @@ function aux_updateBinaryClock(isFirstRun) {
 		setBgColors("#binHour", bin);
 	}
 
+
 	//leftpad str with 0s to a length of 6
 	function toSixBit(str) {
 		return "000000".substring(str.length) + str;
@@ -33,7 +34,7 @@ function aux_updateBinaryClock(isFirstRun) {
 				$(this).css("background-color", "white");
 			}
 			else {
-				$(this).css("background-color", "black");
+				$(this).css("background-color", "");
 			}
 		});
 	}
