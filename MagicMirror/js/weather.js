@@ -153,7 +153,7 @@ function aux_updateWeatherForecast() {
 
 	function putMinusIfNegative(temp) {
 		if (temp < 0.0) {
-			return "−" + -(temp);
+			return "−" + (-temp);
 		}
 		return temp;
 	}

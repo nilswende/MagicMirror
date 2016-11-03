@@ -42,7 +42,7 @@
 		updateGasPrice();
 	}
 	
-	if (displayDivsBottomUp) {
+	if (displayDivsAtBottom) {
 		setTimeout(pullDivsToBottom, 500);
 	}
 });

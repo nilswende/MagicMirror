@@ -1,5 +1,5 @@
 ﻿var locale = "de";
-var displayDivsBottomUp = true;
+var displayDivsAtBottom = true;
 
 var gas = {
 	"gasType": "diesel", //choose from "e5", "e10", "diesel"
