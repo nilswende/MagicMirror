@@ -1,13 +1,12 @@
 ﻿function updateCurrentWeather() {
 	var timer = new interval(weather.updateIntervalInMinutes * 60000, 
-							aux_updateCurrentWeather);
+		aux_updateCurrentWeather);
 	timer.run();
 }
 
 function aux_updateCurrentWeather() {
 	$.getJSON({
-		//url: "http://api.openweathermap.org/data/2.5/weather",
-		url: "http://localhost/MagicMirror/test/weather.json",
+		url: weather.weatherUrl,
 		data: {
 			id: weather.cityID,
 			lang: locale,
@@ -33,8 +32,7 @@ function updateWeatherForecast() {
 
 function aux_updateWeatherForecast() {
 	$.getJSON({
-		//url: "http://api.openweathermap.org/data/2.5/forecast",
-		url: "http://localhost/MagicMirror/test/forecast.json",
+		url: weather.forecastUrl,
 		data: {
 			id: weather.cityID,
 			lang: locale,

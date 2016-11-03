@@ -9,11 +9,12 @@ function updateGasPrice() {
 }
 
 function aux_updateGasPrice(timer) {
+	var field = $("#euro");
 	let isOpen = isStationOpen(timer);
-	if (isOpen || !$.isNumeric($(".euro").html())) {
+	
+	if (isOpen || !$.isNumeric(field.html())) {
 		$.getJSON({
-			//url: "https://creativecommons.tankerkoenig.de/json/prices.php",
-			url: "http://localhost/MagicMirror/test/gas.json",
+			url: gas.url,
 			data: {
 				ids: JSON.stringify([gas.stationID]),
 				apikey: apiKey.tankerkoenig
@@ -54,15 +55,15 @@ function aux_updateGasPrice(timer) {
 
 	function showNewGasPrice(currentPrice) {
 		currentPrice = currentPrice.toString().slice(0, -1);
-		$("#euro").html(currentPrice);
+		field.html(currentPrice);
 	}
 
 	function handleFail() { //TODO retry after a minute
 		if (gas.failCounter < 4) {
 			++gas.failCounter;
 		}
-		else if ($("#euro").html() !== "-.--") {
-			$("#euro").html("-.--");
+		else if (field.html() !== "-.--") {
+			field.html("-.--");
 		}
 	}
 
@@ -70,8 +71,8 @@ function aux_updateGasPrice(timer) {
 		if (gas.errCounter < 4) {
 			++gas.errCounter;
 		}
-		else if ($("#euro").html() !== "err") {
-			$("#euro").html("err");
+		else if (field.html() !== "err") {
+			field.html("err");
 		}
 	}
 }

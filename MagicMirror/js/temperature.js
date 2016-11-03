@@ -7,6 +7,7 @@ function updateIndoorTemp() {
 }
 
 function aux_updateIndoorTemp() {
+	var field = $("#indoorTempData");
 	$.getJSON({
 		//url: "http://localhost/MagicMirror/php/temp.php",
 		url: "http://localhost/MagicMirror/test/temp.php",
@@ -18,7 +19,7 @@ function aux_updateIndoorTemp() {
 				if (temp.failCounter !== 0) {
 					temp.failCounter = 0;
 				}
-				$("#indoorTempData").html(response.temp);
+				field.html(response.temp);
 			}
 			else {
 				handleFail();
@@ -33,8 +34,8 @@ function aux_updateIndoorTemp() {
 		if (temp.failCounter < 4) {
 			++gas.failCounter;
 		}
-		else if ($("#indoorTempData").html() !== "--.-") {
-			$("#indoorTempData").html("--.-");
+		else if (field.html() !== "--.-") {
+			field.html("--.-");
 		}
 	}
 
@@ -42,8 +43,8 @@ function aux_updateIndoorTemp() {
 		if (temp.errCounter < 4) {
 			++gas.errCounter;
 		}
-		else if ($("#indoorTempData").html() !== "err") {
-			$("#indoorTempData").html("err");
+		else if (field.html() !== "err") {
+			field.html("err");
 		}
 	}
 }

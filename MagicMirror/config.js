@@ -2,8 +2,10 @@
 var displayDivsAtBottom = true;
 
 var gas = {
-	"gasType": "diesel", //choose from "e5", "e10", "diesel"
-	"stationID": "8e04a261-815f-43f8-a5ba-20d12c5b3273", //Globus gas station Bob.-Roxheim
+	//"url": "https://creativecommons.tankerkoenig.de/json/prices.php",
+	"url": "http://localhost/MagicMirror/test/gas.json",
+	"gasType": "diesel", /** choose from "e5", "e10", "diesel" */
+	"stationID": "8e04a261-815f-43f8-a5ba-20d12c5b3273", /** Globus gas station Bob.-Roxheim */
 	"openingTime": 800,
 	"closingTime": 2000,
 	
@@ -11,7 +13,7 @@ var gas = {
 	//"updateIntervalInMinutes": 15
 };
 
-//order inside each array determines top-down order on screen
+/** order inside each array determines top-down order on screen */
 var position = {
 	"left": [
 		"time",
@@ -26,7 +28,7 @@ var position = {
 };
 
 var temp = {
-	"sensorAttached": true //don't forget to enter its ID in /php/temp.php
+	"sensorAttached": true /** don't forget to enter its ID in /php/temp.php */
 };
 
 var clock = {
@@ -41,10 +43,12 @@ var date = {
 };
 
 var weather = {
-	//"latitude": 49.578263,
-	//"longitude": 8.361722,
-	"cityID": "6555235", //Bobenheim-Roxheim
-	"fadeDuration": 0.7 * 1000, //fade duration for forecast updates
+	//"weatherUrl": "http://api.openweathermap.org/data/2.5/weather",
+	"weatherUrl": "http://localhost/MagicMirror/test/weather.json",
+	//"forecastUrl": "http://api.openweathermap.org/data/2.5/forecast",
+	"forecastUrl": "http://localhost/MagicMirror/test/forecast.json",
+	"cityID": "6555235", /** Bobenheim-Roxheim */
+	"fadeDuration": 0.7 * 1000, /** fade duration for forecast updates */
 	"showCelciusInForecast": false,
 	
 	"updateIntervalInMinutes": 10,
