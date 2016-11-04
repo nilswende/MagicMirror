@@ -4,6 +4,7 @@ Copy it to /var/www/html/
 
 ## Can show:
 - Current date and time, optionally with a binary clock
+- Calendar
 - Current weather and a five-day forecast
 - Indoor temperature (if you have an DS18B20 temperature sensor attached)
 - Current gas price at your local gas station
