@@ -8,9 +8,9 @@ var gas = {
 	"stationID": "8e04a261-815f-43f8-a5ba-20d12c5b3273", /** Globus gas station Bob.-Roxheim */
 	"openingTime": 800,
 	"closingTime": 2000,
-	
-	"updateIntervalInMinutes": 0.0167
+
 	//"updateIntervalInMinutes": 15
+	"updateIntervalInMinutes": 0.0167
 };
 
 /** order inside each array determines top-down order on screen */
@@ -50,8 +50,8 @@ var weather = {
 	"cityID": "6555235", /** Bobenheim-Roxheim */
 	"fadeDuration": 0.7 * 1000, /** fade duration for forecast updates */
 	"showCelciusInForecast": false,
-	
+
 	"updateIntervalInMinutes": 10,
-	"forecastUpdateIntervalInMinutes": 0.167
 	//"forecastUpdateIntervalInMinutes": 20
+	"forecastUpdateIntervalInMinutes": 0.167
 };

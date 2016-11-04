@@ -47,14 +47,4 @@ function pullDivsToBottom() {
 	var margin = containers.height() - maxHeight;
 	containers.css("margin-top", margin);
 	containers.height(maxHeight);
-	/*
-	var lowerDivEdge = margin + maxHeight;
-	setTimeout(retry(lowerDivEdge), 500);
-	
-	function retry(lowerDivEdge) {
-		var viewportHeight = window.innerHeight;
-		if (viewportHeight < lowerDivEdge) {
-			pullDivsToBottom();
-		}
-	}*/
 }

@@ -4,7 +4,7 @@
 
 	var chosenDivs = positionDivs();
 
-	if (chosenDivs.indexOf("time") != -1) {
+	if (chosenDivs.indexOf("time") !== -1) {
 		// have the desired clock displayed
 		if (clock.showBinaryClock) {
 			$("#clock").remove();
@@ -23,7 +23,7 @@
 		updateDate();
 	}
 
-	if (chosenDivs.indexOf("weather") != -1) {
+	if (chosenDivs.indexOf("weather") !== -1) {
 		if (temp.sensorAttached) {
 			updateIndoorTemp();
 		}
@@ -34,15 +34,16 @@
 		updateWeatherForecast();
 	}
 
-	if (chosenDivs.indexOf("calendar") != -1) {
+	if (chosenDivs.indexOf("calendar") !== -1) {
 		updateCalendar();
 	}
 
-	if (chosenDivs.indexOf("gas") != -1) {
+	if (chosenDivs.indexOf("gas") !== -1) {
 		updateGasPrice();
 	}
-	
+
 	if (displayDivsAtBottom) {
-		setTimeout(pullDivsToBottom, 500);
+		// wait long enough for chromium to enter kiosk mode
+		setTimeout(pullDivsToBottom, 1500);
 	}
 });
