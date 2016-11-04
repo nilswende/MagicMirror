@@ -94,7 +94,7 @@ function aux_updateWeatherForecast() {
 		return days;
 	}
 
-	//if two have the same number of ocurrences, one is returned at random
+	//if two have the same number of ocurrences, the one ocurring first is returned
 	function getMostCommonIconPerDay(day) {
 		var sortedDay = sortObjectDescToArray(day.icons);
 		return sortedDay[0][0];
