@@ -45,6 +45,6 @@ function pullDivsToBottom() {
 	var containers = $(".container");
 	var maxHeight = Math.max(heightLeft, heightMiddle, heightRight);
 	var margin = containers.height() - maxHeight;
-	containers.css("margin-top", margin);
 	containers.height(maxHeight);
+	containers.css("margin-top", margin);
 }
