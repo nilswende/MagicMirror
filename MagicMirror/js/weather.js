@@ -140,8 +140,8 @@ function aux_updateWeatherForecast() {
 		var dayName = moment(key).format("dd");
 		var dayHtml = "<td class='forecastDay'>" + dayName + "</td>";
 		var iconHtml = "<td class='forecastIcon'><i class='wi wi-owm-" + day.icons + "'></i></td>";
-		var maxHtml = "<td class='forecastTemp'>" + putMinusIfNegative(day.max.toFixed(1));
-		var minHtml = "<td class='forecastTemp'>" + putMinusIfNegative(day.min.toFixed(1));
+		var maxHtml = "<td class='forecastTemp'>" + putMinusIfNegative(day.max);
+		var minHtml = "<td class='forecastTemp'>" + putMinusIfNegative(day.min);
 		if (weather.showCelciusInForecast) {
 			maxHtml += "&nbsp;°C";
 			minHtml += "&nbsp;°C";
@@ -151,8 +151,8 @@ function aux_updateWeatherForecast() {
 
 	function putMinusIfNegative(temp) {
 		if (temp < 0.0) {
-			return "−" + (-temp);
+			return "−" + (-temp).toFixed(1);
 		}
-		return temp;
+		return temp.toFixed(1);
 	}
 }
