@@ -1,12 +1,10 @@
-﻿function updateCalendar() {
-	var now = moment();
-	aux_updateCalendar(now);
-	setTimeoutWithDST(now, updateCalendar);
-}
+﻿var calendar = {};
 
-function aux_updateCalendar(now) {
+calendar.update = function () {
+	var now = moment();
 	fillWeeks();
 	fillDates();
+	setTimeoutWithDST(now, calendar.update);
 
 
 	function fillWeeks() {

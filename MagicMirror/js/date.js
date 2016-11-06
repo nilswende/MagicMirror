@@ -1,10 +1,10 @@
-﻿function updateDate() {
+﻿date.update = function () {
 	var now = moment();
-	aux_updateDate(now);
-	setTimeoutWithDST(now, updateDate);
+	date.aux_update(now);
+	setTimeoutWithDST(now, date.update);
 }
 
-function aux_updateDate(now) {
+date.aux_update = function (now) {
 	var longDate = now.format("LLLL").split(" ", 4);
 	var dateString = longDate[0] + "<br/>" + longDate[1] + " " + longDate[2];
 	if (date.showYear) {

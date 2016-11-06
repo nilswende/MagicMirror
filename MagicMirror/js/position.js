@@ -1,4 +1,4 @@
-﻿function positionDivs() {
+﻿position.positionDivs = function () {
 	var validChoice = $("body > .content");
 	var chosenDivs = [];
 
@@ -28,7 +28,7 @@
 	return chosenDivs;
 }
 
-function pullDivsToBottom() {
+position.pullDivsToBottom = function () {
 	var heightLeft = 0, heightMiddle = 0, heightRight = 0;
 	var padding = 40;
 

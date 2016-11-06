@@ -1,14 +1,14 @@
 ﻿gas.failCounter = 0;
 gas.errCounter = 0;
 
-function updateGasPrice() {
+gas.update = function () {
 	var timer = new interval(gas.updateIntervalInMinutes * 60000, function () { 
-		aux_updateGasPrice(timer);
+		gas.aux_update(timer);
 	});
 	timer.run();
 }
 
-function aux_updateGasPrice(timer) {
+gas.aux_update = function (timer) {
 	var field = $("#euro");
 	let isOpen = isStationOpen(timer);
 	

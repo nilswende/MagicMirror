@@ -1,9 +1,9 @@
-﻿function updateClock() {
-	var timer = new interval(0.1 * 1000, aux_updateClock);
+﻿clock.update = function () {
+	var timer = new interval(0.1 * 1000, clock.aux_update);
 	timer.run();
 }
 
-function aux_updateClock() {
+clock.aux_update = function () {
 	var now = moment();
 	var currentTime = now.format("LT");
 	if (clock.showWithSeconds) {

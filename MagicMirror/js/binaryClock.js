@@ -1,11 +1,11 @@
-﻿function updateBinaryClock() {
-	aux_updateBinaryClock(true);
+﻿clock.updateBinary = function () {
+	clock.aux_updateBinary(true);
 	
-	var timer = new interval(0.1 * 1000, aux_updateBinaryClock);
+	var timer = new interval(0.1 * 1000, clock.aux_updateBinary);
 	timer.run();
 }
 
-function aux_updateBinaryClock(isFirstRun) {
+clock.aux_updateBinary = function (isFirstRun) {
 	var now = moment().toObject(),
 		bin;
 

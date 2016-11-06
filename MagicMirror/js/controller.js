@@ -2,48 +2,48 @@
 	/** set moment.js to desired locale */
 	moment.locale(locale);
 
-	var chosenDivs = positionDivs();
+	var chosenDivs = position.positionDivs();
 
 	if (chosenDivs.indexOf("time") !== -1) {
 		/** have the desired clock displayed */
-		if (clock.showBinaryClock) {
+		if (clock.showBinary) {
 			$("#clock").remove();
-			if (!clock.showClockWithSeconds) {
+			if (!clock.showWithSeconds) {
 				$("#binSec").remove();
 			}
-			if (!clock.enableBinaryClockEasyMode) {
+			if (!clock.enableBinaryEasyMode) {
 				$("#binEasy").remove();
 			}
-			updateBinaryClock();
+			clock.updateBinary();
 		}
 		else {
 			$("#binaryClock").remove();
-			updateClock();
+			clock.update();
 		}
-		updateDate();
+		date.update();
 	}
 
 	if (chosenDivs.indexOf("weather") !== -1) {
 		if (temp.sensorAttached) {
-			updateIndoorTemp();
+			temp.update();
 		}
 		else {
 			$("#indoorTemp").remove();
 		}
-		updateCurrentWeather();
-		updateWeatherForecast();
+		weather.update();
+		forecast.update();
 	}
 
 	if (chosenDivs.indexOf("calendar") !== -1) {
-		updateCalendar();
+		calendar.update();
 	}
 
 	if (chosenDivs.indexOf("gas") !== -1) {
-		updateGasPrice();
+		gas.update();
 	}
 
 	if (displayDivsAtBottom) {
 		/** wait long enough for chromium to enter kiosk mode */
-		setTimeout(pullDivsToBottom, 1500);
+		setTimeout(position.pullDivsToBottom, 1500);
 	}
 });
