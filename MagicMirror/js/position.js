@@ -7,7 +7,7 @@
 
 		for (let divKey in arr) {
 			let div = arr[divKey];
-			//check if specified div is valid
+			/** check if specified div is valid */
 			if (div != "" && $("." + div).is(validChoice)) {
 				chosenDivs.push(div);
 				$("." + div).appendTo("." + side);
@@ -22,7 +22,7 @@
 			}
 		}
 	}
-	// remove all non chosen divs from DOM
+	/** remove all non chosen divs from DOM */
 	$("body > .content").remove();
 
 	return chosenDivs;

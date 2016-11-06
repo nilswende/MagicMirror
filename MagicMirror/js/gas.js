@@ -2,7 +2,7 @@
 gas.errCounter = 0;
 
 function updateGasPrice() {
-	var timer = new interval(gas.updateIntervalInMinutes * 60000, function() { 
+	var timer = new interval(gas.updateIntervalInMinutes * 60000, function () { 
 		aux_updateGasPrice(timer);
 	});
 	timer.run();

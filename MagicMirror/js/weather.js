@@ -1,5 +1,5 @@
 ﻿function updateCurrentWeather() {
-	var timer = new interval(weather.updateIntervalInMinutes * 60000, 
+	var timer = new interval(weather.updateIntervalInMinutes * 60000,
 							aux_updateCurrentWeather);
 	timer.run();
 }
@@ -25,7 +25,7 @@ function aux_updateCurrentWeather() {
 }
 
 function updateWeatherForecast() {
-	var timer = new interval(weather.forecastUpdateIntervalInMinutes * 60000, 
+	var timer = new interval(weather.forecastUpdateIntervalInMinutes * 60000,
 							aux_updateWeatherForecast);
 	timer.run();
 }
@@ -54,8 +54,8 @@ function aux_updateWeatherForecast() {
 			let id = singleForecast.weather[0].id;
 			let date = singleForecast.dt_txt.substring(0, 10);
 			let hour = singleForecast.dt_txt.substring(12, 13);
-			let isDay = (hour === "00" || hour === "03") ? false : true; // skip weather icons at night
-			
+			let isDay = (hour === "00" || hour === "03") ? false : true; /** skip weather icons at night */
+
 			if (days[date] === undefined) {
 				days[date] = {
 					"icons": {},
@@ -66,15 +66,15 @@ function aux_updateWeatherForecast() {
 				if (isDay) {
 					days[date].icons[id] = 1;
 				}
-				
+
 				++dayCounter;
 			}
-			else { //current date already in days
+			else { /** current date already in days */
 				if (isDay) {
 					if (days[date].icons[id] === undefined) {
 						days[date].icons[id] = 1;
 					}
-					else { //id already in icons
+					else { /** id already in icons */
 						++days[date].icons[id];
 					}
 				}
@@ -87,14 +87,14 @@ function aux_updateWeatherForecast() {
 				}
 			}
 		}
-		//days now contains an object mapping the icon id to its count, mintemp, maxtemp per day
+		/** days now contains an object mapping the icon id to its count, mintemp, maxtemp per day */
 		for (let key in days) {
 			days[key].icons = getMostCommonIconPerDay(days[key]);
 		}
 		return days;
 	}
 
-	//if two have the same number of ocurrences, the one ocurring first is returned
+	/** if two have the same number of ocurrences, the one ocurring first is returned */
 	function getMostCommonIconPerDay(day) {
 		var sortedDay = sortObjectDescToArray(day.icons);
 		return sortedDay[0][0];
@@ -116,7 +116,7 @@ function aux_updateWeatherForecast() {
 			var key = getKeyByCount(days, i);
 			var forecastHtml = getForecastHtml(days, key);
 			var row = $(this);
-			
+
 			row.delay(i * weather.fadeDuration);
 			row.fadeTo(weather.fadeDuration, 0, "linear", function () {
 				row.html(forecastHtml);

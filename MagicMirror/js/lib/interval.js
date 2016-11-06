@@ -1,4 +1,4 @@
- /*
+ /**
   https://gist.github.com/manast/1185904
   
   Example of use:

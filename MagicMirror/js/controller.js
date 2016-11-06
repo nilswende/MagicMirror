@@ -1,11 +1,11 @@
 ﻿$(document).ready(function () {
-	// set moment.js to desired locale
+	/** set moment.js to desired locale */
 	moment.locale(locale);
 
 	var chosenDivs = positionDivs();
 
 	if (chosenDivs.indexOf("time") !== -1) {
-		// have the desired clock displayed
+		/** have the desired clock displayed */
 		if (clock.showBinaryClock) {
 			$("#clock").remove();
 			if (!clock.showClockWithSeconds) {
@@ -43,7 +43,7 @@
 	}
 
 	if (displayDivsAtBottom) {
-		// wait long enough for chromium to enter kiosk mode
+		/** wait long enough for chromium to enter kiosk mode */
 		setTimeout(pullDivsToBottom, 1500);
 	}
 });

@@ -1,30 +1,28 @@
 ﻿function updateCalendar() {
-	aux_updateCalendar();
-	
-	var now = moment().valueOf();
-	var nextDay = moment().endOf('day').valueOf() + 1;
-	setTimeout(updateCalendar, nextDay - now);
+	var now = moment();
+	aux_updateCalendar(now);
+	setTimeoutWithDST(now, updateCalendar);
 }
 
-function aux_updateCalendar() {
-	fillWeeks();
-	fillDates();
+function aux_updateCalendar(now) {
+	fillWeeks(now);
+	fillDates(now);
 
 
-	function fillWeeks() {
-		var date = moment().subtract(1, 'months').endOf('month');
+	function fillWeeks(now) {
+		var date = now.clone().subtract(1, 'months').endOf('month');
 		$(".calWeek").each(function (i) {
 			$(this).html(date.week() + ".");
 			date.add(1, 'week');
 		});
 	}
 
-	function fillDates() {
-		var today = moment().date() - 1;
-		var firstDayOfMonth = moment().startOf('month').weekday();
-		var lastDayOfMonth = moment().endOf('month').date();
-		var date = moment().subtract(1, 'months').endOf('month').startOf('week').date();
-		
+	function fillDates(now) {
+		var today = now.clone().date() - 1;
+		var firstDayOfMonth = now.clone().startOf('month').weekday();
+		var lastDayOfMonth = now.clone().endOf('month').date();
+		var date = now.clone().subtract(1, 'months').endOf('month').startOf('week').date();
+
 		if (firstDayOfMonth === 0) {
 			firstDayOfMonth = 7;
 		}

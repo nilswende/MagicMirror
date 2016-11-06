@@ -23,7 +23,7 @@ function aux_updateBinaryClock(isFirstRun) {
 	}
 
 
-	//leftpad str with 0s to a length of 6
+	/** leftpad str with 0s to a length of 6 */
 	function toSixBit(str) {
 		return "000000".substring(str.length) + str;
 	}
