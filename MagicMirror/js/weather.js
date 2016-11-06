@@ -54,7 +54,6 @@ forecast.aux_update = function () {
 
 	function extractForecasts(list) {
 		var days = {};
-		var dayCounter = 0;
 		for (let i in list) {
 			let singleForecast = list[i];
 			let main = singleForecast.main;
@@ -67,14 +66,11 @@ forecast.aux_update = function () {
 				days[date] = {
 					"icons": {},
 					"min": main.temp_min,
-					"max": main.temp_max,
-					"counter": dayCounter
+					"max": main.temp_max
 				};
 				if (isDay) {
 					days[date].icons[id] = 1;
 				}
-
-				++dayCounter;
 			}
 			else { /** current date already in days */
 				if (isDay) {
@@ -119,8 +115,9 @@ forecast.aux_update = function () {
 
 	function writeForecastsToHtml(days) {
 		var opacity = 1.0;
+		var sortedKeys = Object.keys(days).sort();
 		$(".forecast").each(function (i) {
-			var key = getKeyByCount(days, i);
+			var key = sortedKeys[i];
 			var forecastHtml = getForecastHtml(days, key);
 			var row = $(this);
 
@@ -131,15 +128,6 @@ forecast.aux_update = function () {
 			row.fadeTo(forecast.fadeDuration, opacity, "linear");
 			opacity -= 0.1;
 		});
-	}
-
-	function getKeyByCount(days, count) {
-		for (let key in days) {
-			if (days[key].counter === count) {
-				return key;
-			}
-		}
-		return undefined;
 	}
 
 	function getForecastHtml(days, key) {
