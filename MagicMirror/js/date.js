@@ -16,15 +16,6 @@ function aux_updateDate(now) {
 
 function setTimeoutWithDST(now, fn) {
 	var nextDay = now.clone().add(1, 'days').startOf('day');
-	var nowIsDST = now.isDST();
-	var nextIsDST = nextDay.isDST();
-	if (!nowIsDST && nextIsDST) { /** spring forward */
-		setTimeout(fn, nextDay.valueOf() - now.valueOf() - 3600000);
-	}
-	else if (nowIsDST && !nextIsDST) { /** fall back */
-		setTimeout(fn, nextDay.valueOf() - now.valueOf() + 3600000);
-	}
-	else {
-		setTimeout(fn, nextDay.valueOf() - now.valueOf());
-	}
+	var timeout = nextDay.diff(now);
+	setTimeout(fn, timeout);
 }

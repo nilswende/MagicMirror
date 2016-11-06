@@ -5,11 +5,11 @@
 }
 
 function aux_updateCalendar(now) {
-	fillWeeks(now);
-	fillDates(now);
+	fillWeeks();
+	fillDates();
 
 
-	function fillWeeks(now) {
+	function fillWeeks() {
 		var date = now.clone().subtract(1, 'months').endOf('month');
 		$(".calWeek").each(function (i) {
 			$(this).html(date.week() + ".");
@@ -17,7 +17,7 @@ function aux_updateCalendar(now) {
 		});
 	}
 
-	function fillDates(now) {
+	function fillDates() {
 		var today = now.clone().date() - 1;
 		var firstDayOfMonth = now.clone().startOf('month').weekday();
 		var lastDayOfMonth = now.clone().endOf('month').date();
