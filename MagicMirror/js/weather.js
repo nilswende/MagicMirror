@@ -23,10 +23,3 @@ weather.aux_update = function () {
 		}
 	});
 }
-
-function putMinusIfNegative(temp) {
-	if (temp < 0.0) {
-		return "−" + (-temp).toFixed(1);
-	}
-	return temp.toFixed(1);
-}
