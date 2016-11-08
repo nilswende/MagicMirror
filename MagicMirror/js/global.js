@@ -1,4 +1,5 @@
 ﻿function putMinusIfNegative(temp) {
+	temp = Math.round(temp * 1e1) / 1e1;
 	if (temp < 0.0) {
 		return "&minus;" + (-temp).toFixed(1);
 	}
