@@ -32,8 +32,8 @@ forecast.aux_update = function () {
 			if (days[date] === undefined) {
 				days[date] = {
 					"icons": {},
-					"min": main.temp_min,
-					"max": main.temp_max
+					"min": main.temp,
+					"max": main.temp
 				};
 				if (isDay) {
 					days[date].icons[id] = 1;
@@ -49,11 +49,11 @@ forecast.aux_update = function () {
 					}
 				}
 
-				if (main.temp_min < days[date].min) {
-					days[date].min = main.temp_min;
+				if (main.temp > days[date].max) {
+					days[date].max = main.temp;
 				}
-				if (main.temp_max > days[date].max) {
-					days[date].max = main.temp_max;
+				else if (main.temp < days[date].min) {
+					days[date].min = main.temp;
 				}
 			}
 		}
@@ -84,7 +84,7 @@ forecast.aux_update = function () {
 		var opacity = 1.0;
 		var sortedKeys = Object.keys(days).sort();
 		$(".forecast").each(function (i) {
-			var key = sortedKeys[i];
+			let key = sortedKeys[i];
 			var forecastHtml = getForecastHtml(days, key);
 			var row = $(this);
 
@@ -99,7 +99,7 @@ forecast.aux_update = function () {
 
 	function getForecastHtml(days, key) {
 		var day = days[key];
-		var dayName = moment(key).format("dd");
+		let dayName = moment(key).format("dd");
 		var dayHtml = "<td class='forecastDay'>" + dayName + "</td>";
 		var iconHtml = "<td class='forecastIcon'><i class='wi wi-owm-" + day.icons + "'></i></td>";
 		var maxHtml = "<td class='forecastTemp'>" + putMinusIfNegative(day.max);

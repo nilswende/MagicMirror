@@ -7,8 +7,7 @@
 
 		for (let divKey in arr) {
 			let div = arr[divKey];
-			/** check if specified div is valid */
-			if (div != "" && $("." + div).is(validChoice)) {
+			if (isValid(div)) {
 				chosenDivs.push(div);
 				$("." + div).appendTo("." + side);
 				switch (side) {
@@ -26,6 +25,10 @@
 	$("body > .content").remove();
 
 	return chosenDivs;
+
+	function isValid(div) {
+		return div != "" && $("." + div).is(validChoice);
+	}
 }
 
 position.pullDivsToBottom = function () {
@@ -43,8 +46,8 @@ position.pullDivsToBottom = function () {
 	});
 
 	var containers = $(".container");
-	var maxHeight = Math.max(heightLeft, heightMiddle, heightRight);
-	var margin = containers.height() - maxHeight;
-	containers.height(maxHeight);
+	var actualHeight = Math.max(heightLeft, heightMiddle, heightRight);
+	var margin = containers.height() - actualHeight;
+	containers.height(actualHeight);
 	containers.css("margin-top", margin);
 }
