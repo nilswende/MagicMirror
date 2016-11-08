@@ -18,8 +18,29 @@ weather.aux_update = function () {
 			var iconHtml = "<i class='wi wi-owm-" + weatherID + "'></i>";
 			var temp = putMinusIfNegative(response.main.temp) + "&nbsp;°C";
 
-			$("#currentWeatherIcon").html(iconHtml);
-			$("#currentWeatherTemp").html(temp);
+			if (weather.iconBefore === undefined) {
+				$("#currentWeatherIcon").html(iconHtml);
+				$("#currentWeatherTemp").html(temp);
+				weather.iconBefore = weatherID;
+			}
+			else {
+				if (weatherID !== weather.iconBefore) {
+					animateRow();
+					weather.iconBefore = weatherID;
+				}
+				else {
+					$("#currentWeatherTemp").html(temp);
+				}
+			}
+
+			function animateRow () {
+				var row = $("#currentWeather");
+				row.fadeTo(800, 0, "linear", function () {
+					$("#currentWeatherIcon").html(iconHtml);
+					$("#currentWeatherTemp").html(temp);
+				});
+				row.fadeTo(800, 1, "linear");
+			}
 		}
 	});
 }

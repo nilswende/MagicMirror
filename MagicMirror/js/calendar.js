@@ -31,12 +31,12 @@ calendar.update = function () {
 			}
 			var cell = $(this);
 			cell.html(date++);
-			
+
 			if (distance < 0 || distance >= lastDayOfMonth) {
 				cell.css("opacity", 0.5);
 			}
 			else {
-				cell.css("opacity", "");				
+				cell.css("opacity", "");
 				if (distance === today) {
 				cell.prev().css("border", "");
 				cell.css("border", "2px solid #555555");
