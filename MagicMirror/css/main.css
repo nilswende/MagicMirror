@@ -32,7 +32,7 @@
 	padding-top: 40px;
 }
 
-.middle > div {
+.middle > div > table {
 	margin: auto;
 }
 
