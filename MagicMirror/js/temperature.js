@@ -18,7 +18,7 @@ temp.aux_update = function () {
 				if (temp.failCounter !== 0) {
 					temp.failCounter = 0;
 				}
-				field.html(response.temp);
+				field.html(response.temp.toFixed(1));
 			}
 			else {
 				handleFail();
@@ -31,7 +31,7 @@ temp.aux_update = function () {
 
 	function handleFail() {
 		if (temp.failCounter < 4) {
-			++gas.failCounter;
+			++temp.failCounter;
 		}
 		else if (field.html() !== "--.-") {
 			field.html("--.-");
@@ -40,7 +40,7 @@ temp.aux_update = function () {
 
 	function handleError() {
 		if (temp.errCounter < 4) {
-			++gas.errCounter;
+			++temp.errCounter;
 		}
 		else if (field.html() !== "err") {
 			field.html("err");
