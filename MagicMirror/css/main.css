@@ -12,24 +12,32 @@
 .left {
     position: absolute;
     left: 0px;
-    width: 30%;
+    width: 33%;
 }
 
 .middle {
     position: absolute;
     left: 30%;
-    width: 40%;
+    width: 34%;
     text-align: center;
 }
 
 .right {
     position: absolute;
     right: 0px;
-    width: 30%;
+    width: 33%;
 }
 
 .container > div {
 	padding-top: 40px;
+}
+
+.middle > div {
+	margin: auto;
+}
+
+.right > div {
+	float: right;
 }
 
 /* time */

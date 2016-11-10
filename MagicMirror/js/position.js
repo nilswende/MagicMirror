@@ -2,22 +2,14 @@
 	var validChoice = $("body > .content");
 	var chosenDivs = [];
 
-	for (let side in position) {
-		let arr = position[side];
+	for (var side in position) {
+		var arr = position[side];
 
 		for (let divKey in arr) {
-			let div = arr[divKey];
+			var div = arr[divKey];
 			if (isValid(div)) {
 				chosenDivs.push(div);
 				$("." + div).appendTo("." + side);
-				switch (side) {
-					case "middle":
-						$("." + div + " > table").css("margin", "auto");
-						break;
-					case "right":
-						$("." + div).css("float", "right");
-						break;
-				}
 			}
 		}
 	}
