@@ -2,7 +2,7 @@
 gas.errCounter = 0;
 
 gas.update = function () {
-	var timer = new interval(gas.updateIntervalInMinutes * 60000, function () { 
+	var timer = new interval(gas.updateIntervalInMinutes * 60000, function () {
 		gas.aux_update(timer);
 	});
 	timer.run();
@@ -11,7 +11,7 @@ gas.update = function () {
 gas.aux_update = function (timer) {
 	var field = $("#euro");
 	let isOpen = isStationOpen(timer);
-	
+
 	if (isOpen || !$.isNumeric(field.html())) {
 		$.getJSON({
 			url: gas.url,
@@ -39,11 +39,11 @@ gas.aux_update = function (timer) {
 			}
 		});
 	}
-	
-	
+
+
 	function isStationOpen(timer) {
 		var now = moment().format("Hmm");
-		if (now < gas.openingTime) {
+		if (now < gas.openingTime - gas.updateIntervalInMinutes) {
 			return false;
 		}
 		if (now > gas.closingTime + gas.updateIntervalInMinutes) {
@@ -54,8 +54,12 @@ gas.aux_update = function (timer) {
 	}
 
 	function showNewGasPrice(currentPrice) {
-		currentPrice = currentPrice.toString().slice(0, -1);
-		field.html(currentPrice);
+		currentPrice = (currentPrice - 0.009).toFixed(2);
+		if (field.html() !== currentPrice) {
+			animateRow($("#gasTextRow"), 800, function () {
+				field.html(currentPrice);
+			});
+		}
 	}
 
 	function handleFail() { //TODO retry after a minute

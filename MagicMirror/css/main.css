@@ -32,7 +32,7 @@
 	padding-top: 40px;
 }
 
-.middle > div > table {
+.middle > div > * {
 	margin: auto;
 }
 
@@ -122,6 +122,10 @@
 #svg {
     height: 60px;
     vertical-align: -7px;
+}
+
+#gasTextRow {
+	opacity: 0;
 }
 
 #milli {

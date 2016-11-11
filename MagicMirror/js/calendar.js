@@ -38,8 +38,8 @@ calendar.update = function () {
 			else {
 				cell.css("opacity", "");
 				if (distance === today) {
-				cell.prev().css("border", "");
-				cell.css("border", "2px solid #555555");
+					cell.prev().css("border", "");
+					cell.css("border", "2px solid #555555");
 				}
 			}
 		});

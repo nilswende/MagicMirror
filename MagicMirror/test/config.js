@@ -45,7 +45,7 @@ var weather = {
 	"url": "http://localhost/MagicMirror/test/weather.json",
 	"cityID": "6555235", /** Bobenheim-Roxheim */
 	
-	"updateIntervalInMinutes": 10
+	"updateIntervalInMinutes": 0.16
 };
 
 var forecast = {

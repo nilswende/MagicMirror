@@ -89,10 +89,9 @@ forecast.aux_update = function () {
 			var row = $(this);
 
 			row.delay(i * forecast.fadeDuration);
-			row.fadeTo(forecast.fadeDuration, 0, "linear", function () {
+			animateRow(row, forecast.fadeDuration, opacity, function () {
 				row.html(forecastHtml);
 			});
-			row.fadeTo(forecast.fadeDuration, opacity, "linear");
 			opacity -= 0.1;
 		});
 	}

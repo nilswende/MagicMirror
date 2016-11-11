@@ -25,7 +25,10 @@ weather.aux_update = function () {
 			}
 			else {
 				if (weatherID !== weather.iconBefore) {
-					animateRow();
+					animateRow($("#currentWeather"), 800, function () {
+						$("#currentWeatherIcon").html(iconHtml);
+						$("#currentWeatherTemp").html(temp);
+					});
 					weather.iconBefore = weatherID;
 				}
 				else {
@@ -33,14 +36,7 @@ weather.aux_update = function () {
 				}
 			}
 
-			function animateRow () {
-				var row = $("#currentWeather");
-				row.fadeTo(800, 0, "linear", function () {
-					$("#currentWeatherIcon").html(iconHtml);
-					$("#currentWeatherTemp").html(temp);
-				});
-				row.fadeTo(800, 1, "linear");
-			}
+
 		}
 	});
 }
