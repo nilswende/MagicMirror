@@ -56,7 +56,7 @@ gas.aux_update = function (timer) {
 	function showNewGasPrice(currentPrice) {
 		currentPrice = (currentPrice - 0.009).toFixed(2);
 		if (field.html() !== currentPrice) {
-			animateRow($("#gasTextRow"), 800, function () {
+			animateRow($("#gasTextRow"), 800, 1, function () {
 				field.html(currentPrice);
 			});
 		}

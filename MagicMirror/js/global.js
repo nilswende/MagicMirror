@@ -12,10 +12,6 @@ function setTimeoutWithDST (now, fn) {
 	setTimeout(fn, timeout);
 }
 
-function animateRow (row, duration, fn) {
-	animateRow(row, duration, 1, fn);
-}
-
 function animateRow (row, duration, opacity, fn) {
 	row.fadeTo(duration, 0, "linear", fn);
 	row.fadeTo(duration, opacity, "linear");
