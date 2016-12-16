@@ -44,6 +44,6 @@
 
 	if (displayDivsAtBottom) {
 		/** wait long enough for chromium to enter kiosk mode */
-		setTimeout(position.pullDivsToBottom, 1500);
+		setTimeout(position.pullDivsToBottom, 1700);
 	}
 });
