@@ -73,13 +73,13 @@ while :; do
 		fi
 	else
 #		echo "Es ist Nacht."
-		shutdown -h now
-#		if [ "$isDay" = "YES" ]; then
-#			isDay=$"NO"
-#			if [ "$isOn" = "YES" ]; then
-#				stopSocket
-#			fi
-#		fi
+#		shutdown -h now
+		if [ "$isDay" = "YES" ]; then
+			isDay=$"NO"
+			if [ "$isOn" = "YES" ]; then
+				stopSocket
+			fi
+		fi
 	fi
 	#sleep $loopIntervalInSeconds
 done

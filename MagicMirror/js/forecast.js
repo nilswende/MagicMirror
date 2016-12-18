@@ -27,7 +27,7 @@ forecast.aux_update = function () {
 			var id = singleForecast.weather[0].id;
 			var date = singleForecast.dt_txt.substring(0, 10);
 			let hour = singleForecast.dt_txt.substring(12, 13);
-			var isDay = (hour === "00" || hour === "03") ? false : true; /** skip weather icons at night */
+			var isDay = (hour !== "00" && hour !== "03"); /** skip weather icons at night */
 
 			if (days[date] === undefined) {
 				days[date] = {
