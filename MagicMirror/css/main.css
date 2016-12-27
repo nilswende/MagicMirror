@@ -83,6 +83,15 @@
     border-radius: 4px;
 }
 
+.calOutsideCurrentMonth {
+    opacity: 0.5;
+}
+
+.calToday {
+	background-color: #808080;
+	color: black;
+}
+
 /* weather */
 #indoorTempRow {
     text-align: left;

@@ -21,7 +21,7 @@
 	function isValid(div) {
 		return div != "" && $("." + div).is(validChoice);
 	}
-}
+};
 
 position.pullDivsToBottom = function () {
 	var heightLeft = 0, heightMiddle = 0, heightRight = 0;
@@ -42,4 +42,4 @@ position.pullDivsToBottom = function () {
 	var margin = containers.height() - actualHeight;
 	containers.height(actualHeight);
 	containers.css("margin-top", margin);
-}
+};

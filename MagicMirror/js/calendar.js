@@ -33,13 +33,13 @@ calendar.update = function () {
 			cell.html(date++);
 
 			if (distance < 0 || distance >= lastDayOfMonth) {
-				cell.css("opacity", 0.5);
+				cell.addClass("calOutsideCurrentMonth");
 			}
 			else {
-				cell.css("opacity", "");
+				cell.removeClass("calOutsideCurrentMonth");
 				if (distance === today) {
-					cell.prev().css("border", "");
-					cell.css("border", "2px solid #555555");
+					cell.prev().removeClass("calToday");
+					cell.addClass("calToday");
 				}
 			}
 		});
