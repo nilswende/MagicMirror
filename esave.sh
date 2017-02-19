@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#computerIP="192.168.1.201"
+computerIP="192.168.1.201"
 #notebookIP="192.168.1.202"
 smartphoneIP="192.168.1.203"
 
@@ -15,9 +15,17 @@ isDay="NO"
 lastOnline="$(date '+%s')"
 
 pingDevices() {
-    if #[ "$(ping -q -W5 -c1 $computerIP   | grep '100% packet loss')" = "" ] ||
-	   [ "$(ping -q -W1 -c1 $smartphoneIP | grep '100% packet loss')" = "" ] #||
-	   #[ "$(ping -q -W5 -c1 $notebookIP   | grep '100% packet loss')" = "" ]; 
+    if [ "$(ping -q -W1 -c1 $smartphoneIP | grep '100% packet loss')" = "" ]
+		#|| [ "$(ping -q -W1 -c1 $notebookIP   | grep '100% packet loss')" = "" ];
+	then
+        echo "ONLINE"
+    else
+        echo "OFFLINE"
+    fi
+}
+
+pingPc() {
+    if [ "$(ping -q -W1 -c1 $computerIP   | grep '100% packet loss')" = "" ]
 	then
         echo "ONLINE"
     else
@@ -51,18 +59,25 @@ sleep 3 #leave tvservice some time to react
 while :; do
 	now=$(date +"%k%M")
 	if (("$startTime" < "$now")) && (("$now" < "$endTime")); then
-#		echo "______________"
-#		echo "Es ist Tag."
+		echo "______________"
+		echo "Es ist Tag."
 		if [ "$isDay" = "NO" ]; then
 			isDay=$"YES"
 		fi
-		if [ "$(pingDevices)" = "ONLINE" ]; then
-#			echo "Gerät online."
+		if [ "$(pingPc)" = "ONLINE" ]; then
+			echo "PC online."
 			lastOnline=$(date "+%s")
 			if [ "$isOn" = "NO" ]; then
 				startSocket
 			fi
-			sleep 1
+			sleep 10
+		elif [ "$(pingDevices)" = "ONLINE" ]; then
+			echo "Gerät online."
+			lastOnline=$(date "+%s")
+			if [ "$isOn" = "NO" ]; then
+				startSocket
+			fi
+			#sleep 1
 		else
 			if [ "$isOn" = "YES" ]; then
 				if [[ "$lastOnline" < "$(date -d "-$offlineIntervalInMinutes minutes" +'+%s')" ]]; then
@@ -72,8 +87,8 @@ while :; do
 			fi
 		fi
 	else
-#		echo "Es ist Nacht."
-#		shutdown -h now
+		echo "Es ist Nacht."
+		shutdown -h now
 		if [ "$isDay" = "YES" ]; then
 			isDay=$"NO"
 			if [ "$isOn" = "YES" ]; then
