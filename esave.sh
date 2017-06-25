@@ -59,9 +59,9 @@ sleep 3 #leave tvservice some time to react
 while :; do
 	now=$(date +"%k%M")
 	if (("$startTime" < "$now")) && (("$now" < "$endTime")); then
-		echo "______________"
-		echo "Es ist Tag."
 		if [ "$isDay" = "NO" ]; then
+			echo "______________"
+			echo "Es ist Tag."
 			isDay=$"YES"
 		fi
 		if [ "$(pingPc)" = "ONLINE" ]; then
@@ -77,7 +77,6 @@ while :; do
 			if [ "$isOn" = "NO" ]; then
 				startSocket
 			fi
-			#sleep 1
 		else
 			if [ "$isOn" = "YES" ]; then
 				if [[ "$lastOnline" < "$(date -d "-$offlineIntervalInMinutes minutes" +'+%s')" ]]; then
@@ -87,16 +86,15 @@ while :; do
 			fi
 		fi
 	else
-		echo "Es ist Nacht."
-		shutdown -h now
 		if [ "$isDay" = "YES" ]; then
+			echo "Es ist Nacht."
 			isDay=$"NO"
 			if [ "$isOn" = "YES" ]; then
 				stopSocket
 			fi
 		fi
 	fi
-	#sleep $loopIntervalInSeconds
+#	sleep $loopIntervalInSeconds
 done
 
 exit 0
