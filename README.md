@@ -2,6 +2,8 @@
 To be run on a RasPi with a webserver (if you want to have an indoor temperature displayed).
 Copy it to /var/www/html/
 
+Don't forget to enable ping response for IPv4 in your devices' firewalls to allow the esave script to work.
+
 ## Can show:
 - Current date and time, optionally with a binary clock
 - Calendar
