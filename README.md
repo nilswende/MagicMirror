@@ -15,7 +15,7 @@ Check `config.js` for all available customization options.
 
 ## Dependencies
 
-JQuery 2.2.2
+JQuery 2.2.4
 
 Live.js 4
 
