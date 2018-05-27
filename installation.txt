@@ -1,0 +1,70 @@
+sudo nano /etc/network/interfaces
+
+auto lo
+iface lo inet loopback
+iface eth0 inet dhcp
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet static
+address 192.168.178.204
+netmask 255.255.255.0
+gateway 192.168.178.1
+wpa-ap-scan 1
+wpa-scan-ssid 1
+wpa-ssid "SSID"
+wpa-psk "KEY"
+
+
+sudo nano /etc/modprobe.d/8192cu.conf
+
+# disable Edimax-WLAN Power Saving
+options 8192cu rtw_power_mgnt=0 rtw_enusbss=0
+
+
+# change default password
+passwd
+
+
+sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get install apache2 php libapache2-mod-php chromium-browser unclutter
+sudo apt-get install zsh
+wget -O ~/.zshrc https://raw.githubusercontent.com/grml/grml-etc-core/master/etc/zsh/zshrc
+chsh (/usr/bin/zsh)
+sudo apt-get clean
+
+
+sudo nano /boot/config.txt
+
+# activating 1-wire with pullup
+dtoverlay=w1-gpio,gpiopin=4,pullup=on
+
+
+sudo nano /etc/modules
+
+w1-gpio pullup=1
+w1-therm
+
+
+sudo chown -R 777 /var/www/html/
+
+
+sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
+# chromium in kioskmode
+#@xscreensaver -no-splash
+@unclutter
+@xset s off
+@xset -dpms
+@xset s noblank
+@chromium-browser --noerrdialogs --kiosk --incognito http://localhost/MagicMirror/index.html
+
+
+sudo nano /etc/rc.local
+
+# disable HDMI at bootup
+tvservice -o;
+
+
+sudo crontab -e
+
+@reboot /home/pi/esave.sh > /dev/null 2>&1
+#@reboot /home/pi/esave.sh > /home/pi/esave.log

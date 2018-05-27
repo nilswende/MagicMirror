@@ -1,5 +1,5 @@
 ﻿var locale = "de";
-var displayDivsAtBottom = true;
+var displayDivsAtBottom = false;
 
 var gas = {
 	"url": "https://creativecommons.tankerkoenig.de/json/prices.php",
@@ -43,14 +43,14 @@ var date = {
 
 var weather = {
 	"url": "http://api.openweathermap.org/data/2.5/weather",
-	"cityID": "6555235", /** Bobenheim-Roxheim */
+	"cityID": "2925533", /** FFM */
 	
 	"updateIntervalInMinutes": 10
 };
 
 var forecast = {
 	"url": "http://api.openweathermap.org/data/2.5/forecast",
-	"cityID": "6555235", /** Bobenheim-Roxheim */
+	"cityID": "2925533", /** FFM */
 	"fadeDuration": 0.7 * 1000, /** fade duration for forecast updates */
 	"showCelcius": false,
 

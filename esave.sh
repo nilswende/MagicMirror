@@ -4,13 +4,13 @@ computerIP="192.168.1.201"
 #notebookIP="192.168.1.202"
 smartphoneIP="192.168.1.203"
 
-startTime="630" #without leading zero
-endTime="2258"
+startTime="600" #without leading zero
+endTime="2300"
 
 #loopIntervalInSeconds=0
 offlineIntervalInMinutes=30
 
-isOn="NO"
+isOn="YES"
 isDay="NO"
 lastOnline="$(date '+%s')"
 
