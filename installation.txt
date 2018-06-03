@@ -25,12 +25,17 @@ options 8192cu rtw_power_mgnt=0 rtw_enusbss=0
 passwd
 
 
+# install all needed programs
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install apache2 php libapache2-mod-php chromium-browser unclutter
 sudo apt-get install zsh
 wget -O ~/.zshrc https://raw.githubusercontent.com/grml/grml-etc-core/master/etc/zsh/zshrc
 chsh (/usr/bin/zsh)
 sudo apt-get clean
+
+
+# copy MagicMirror/ to /var/www/html/
+# copy esave.sh to /home/pi/
 
 
 sudo nano /boot/config.txt
@@ -64,6 +69,11 @@ sudo nano /etc/rc.local
 tvservice -o;
 
 
+# mark script as executable
+sudo chmod +x /home/pi/esave.sh
+
+
+# execute the script at startup
 sudo crontab -e
 
 @reboot /home/pi/esave.sh > /dev/null 2>&1

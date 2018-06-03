@@ -1,35 +1,33 @@
 #!/bin/bash
 
-computerIP="192.168.1.201"
-#notebookIP="192.168.1.202"
-smartphoneIP="192.168.1.203"
+computerIP="192.168.178.201"
+#notebookIP="192.168.178.202"
+smartphoneIP="192.168.178.203"
 
 startTime="600" #without leading zero
 endTime="2300"
 
-#loopIntervalInSeconds=0
 offlineIntervalInMinutes=30
 
-isOn="YES"
-isDay="NO"
-lastOnline="$(date '+%s')"
+isOn=true
+isDay=false
 
-pingDevices() {
+deviceAvailable() {
     if [ "$(ping -q -W1 -c1 $smartphoneIP | grep '100% packet loss')" = "" ]
 		#|| [ "$(ping -q -W1 -c1 $notebookIP   | grep '100% packet loss')" = "" ];
 	then
-        echo "ONLINE"
+        true
     else
-        echo "OFFLINE"
+        false
     fi
 }
 
-pingPc() {
+pcAvailable() {
     if [ "$(ping -q -W1 -c1 $computerIP   | grep '100% packet loss')" = "" ]
 	then
-        echo "ONLINE"
+        true
     else
-        echo "OFFLINE"
+        false
     fi
 }
 
@@ -38,14 +36,14 @@ startSocket() {
 	tvservice -p;
 	sudo chvt 1;
 	sudo chvt 7;
-	isOn=$"YES"
+	isOn=true
 	echo "Monitor wurde angeschaltet."
 }
 
 stopSocket() {
 	echo "[$(date +"%d.%m.%Y %H:%M:%S")] Monitor wird ausgeschaltet."
 	tvservice -o;
-	isOn=$"NO"
+	isOn=false
 	echo "Monitor wurde ausgeschaltet."
 }
 
@@ -59,26 +57,26 @@ sleep 3 #leave tvservice some time to react
 while :; do
 	now=$(date +"%k%M")
 	if (("$startTime" < "$now")) && (("$now" < "$endTime")); then
-		if [ "$isDay" = "NO" ]; then
+		if [ "$isDay" = false ]; then
 			echo "______________"
 			echo "Es ist Tag."
-			isDay=$"YES"
+			isDay=true
 		fi
-		if [ "$(pingPc)" = "ONLINE" ]; then
+		if pcAvailable; then
 			echo "PC online."
 			lastOnline=$(date "+%s")
-			if [ "$isOn" = "NO" ]; then
+			if [ "$isOn" = false ]; then
 				startSocket
 			fi
 			sleep 10
-		elif [ "$(pingDevices)" = "ONLINE" ]; then
+		elif deviceAvailable; then
 			echo "Gerät online."
 			lastOnline=$(date "+%s")
-			if [ "$isOn" = "NO" ]; then
+			if [ "$isOn" = false ]; then
 				startSocket
 			fi
 		else
-			if [ "$isOn" = "YES" ]; then
+			if [ "$isOn" = true ]; then
 				if [[ "$lastOnline" < "$(date -d "-$offlineIntervalInMinutes minutes" +'+%s')" ]]; then
 					echo "Geräte offline seit mind. $offlineIntervalInMinutes Minuten."
 					stopSocket
@@ -86,15 +84,14 @@ while :; do
 			fi
 		fi
 	else
-		if [ "$isDay" = "YES" ]; then
+		if [ "$isDay" = true ]; then
 			echo "Es ist Nacht."
-			isDay=$"NO"
-			if [ "$isOn" = "YES" ]; then
+			isDay=false
+			if [ "$isOn" = true ]; then
 				stopSocket
 			fi
 		fi
 	fi
-#	sleep $loopIntervalInSeconds
 done
 
 exit 0
