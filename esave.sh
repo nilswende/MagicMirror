@@ -11,6 +11,7 @@ offlineIntervalInMinutes=30
 
 isOn=true
 isDay=false
+lastOnline="$(date '+%s')"
 
 deviceAvailable() {
     if [ "$(ping -q -W1 -c1 $smartphoneIP | grep '100% packet loss')" = "" ]
