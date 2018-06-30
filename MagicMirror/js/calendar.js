@@ -37,8 +37,8 @@ calendar.update = function () {
 			}
 			else {
 				cell.removeClass("calOutsideCurrentMonth");
+				cell.removeClass("calToday");
 				if (distance === today) {
-					cell.prev().removeClass("calToday");
 					cell.addClass("calToday");
 				}
 			}
