@@ -1,5 +1,6 @@
 ﻿temp.failCounter = 0;
 temp.errCounter = 0;
+temp.movAvg = new MovAvg(3);
 
 temp.update = function () {
 	var timer = new interval(3 * 1000, temp.aux_update);
@@ -18,7 +19,8 @@ temp.aux_update = function () {
 				if (temp.failCounter !== 0) {
 					temp.failCounter = 0;
 				}
-				field.html(response.temp.toFixed(1));
+				let avg = temp.movAvg.putAndAvg(response.temp);
+				field.html(avg.toFixed(1));
 			}
 			else {
 				handleFail();
