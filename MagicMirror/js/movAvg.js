@@ -2,12 +2,12 @@ function MovAvg (size) {
 	this.pointer = 0;
 	this.buffer = [];
 	this.putAndAvg = function (value) {
-		buffer[pointer] = value;
-		pointer = (pointer + 1) % size;
+		this.buffer[this.pointer] = value;
+		this.pointer = (this.pointer + 1) % size;
 		var sum = 0;
-		for (i = 0; i < buffer.length; i++) {
-			sum += buffer[i];
+		for (var i = 0; i < this.buffer.length; i++) {
+			sum += this.buffer[i];
 		}
-		return sum / buffer.length;
+		return sum / this.buffer.length;
 	};
 }
