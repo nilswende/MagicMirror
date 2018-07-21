@@ -14,6 +14,10 @@ var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast"
 
 var client = &http.Client{}
 
+func rootHandler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("online"))
+}
+
 func gasHandler(w http.ResponseWriter, r *http.Request) {
 	request := newRequest(gasUrl, r.URL.Query())
 	passResponseBody(request, w)
@@ -70,6 +74,7 @@ func forecastHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	http.HandleFunc("/", rootHandler)
 	http.HandleFunc("/gas", gasHandler)
 	http.HandleFunc("/transport", transportHandler)
 	http.HandleFunc("/weather", weatherHandler)
