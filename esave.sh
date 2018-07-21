@@ -7,29 +7,29 @@ smartphoneIP="192.168.178.203"
 startTime="600" #without leading zero
 endTime="2300"
 
-offlineIntervalInMinutes=30
+offlineIntervalInMinutes=40
 
 isOn=true
 isDay=false
 lastOnline="$(date '+%s')"
 
 deviceAvailable() {
-    if [ "$(ping -q -W1 -c1 $smartphoneIP | grep '100% packet loss')" = "" ]
+	if [ "$(ping -q -W1 -c1 $smartphoneIP | grep '100% packet loss')" = "" ]
 		#|| [ "$(ping -q -W1 -c1 $notebookIP   | grep '100% packet loss')" = "" ];
 	then
-        true
-    else
-        false
-    fi
+		true
+	else
+		false
+	fi
 }
 
 pcAvailable() {
-    if [ "$(ping -q -W1 -c1 $computerIP   | grep '100% packet loss')" = "" ]
+	if [ "$(ping -q -W1 -c1 $computerIP | grep '100% packet loss')" = "" ]
 	then
-        true
-    else
-        false
-    fi
+		true
+	else
+		false
+	fi
 }
 
 startSocket() {
@@ -49,11 +49,6 @@ stopSocket() {
 }
 
 echo "[$(date +"%d.%m.%Y %H:%M:%S")] Skript gestartet."
-now=$(date +"%k%M")
-if (("$now" < "$startTime")); then
-	sleep 37 #time to boot and start chromium
-fi
-sleep 3 #leave tvservice some time to react
 
 while :; do
 	now=$(date +"%k%M")
@@ -64,16 +59,16 @@ while :; do
 			isDay=true
 		fi
 		if pcAvailable; then
-			echo "PC online."
 			lastOnline=$(date "+%s")
 			if [ "$isOn" = false ]; then
+				echo "PC online."
 				startSocket
 			fi
 			sleep 10
 		elif deviceAvailable; then
-			echo "Gerät online."
 			lastOnline=$(date "+%s")
 			if [ "$isOn" = false ]; then
+				echo "Gerät online."
 				startSocket
 			fi
 		else

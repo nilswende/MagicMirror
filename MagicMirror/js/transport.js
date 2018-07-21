@@ -40,18 +40,6 @@ transport.aux_update = function () {
 				});
 				opacity -= 0.1;
 			});
-		},
-		error: function (response) {
-			handleError();
 		}
 	});
-
-	function handleError() {
-		if (transport.errCounter < 4) {
-			++transport.errCounter;
-		}
-		else if (field.html() !== "err") {
-			field.html("err");
-		}
-	}
 }
