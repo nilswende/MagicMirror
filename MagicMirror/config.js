@@ -11,6 +11,15 @@ var gas = {
 	"updateIntervalInMinutes": 15
 };
 
+var transport = {
+	"url": "https://www.rmv.de/hapi/departureBoard",
+	"stationID": "3001537", /** Enkheim */
+	"lines": "U4,U7",
+	"maxJourneys": "5",
+
+	"updateIntervalInMinutes": 1
+};
+
 /** order inside each array determines top-down order on screen */
 var position = {
 	"left": [
@@ -21,7 +30,8 @@ var position = {
 		"gas"
 	],
 	"right": [
-		"weather"
+		"weather",
+		"transport"
 	]
 };
 

@@ -42,6 +42,10 @@
 		gas.update();
 	}
 
+	if (chosenDivs.indexOf("transport") !== -1) {
+		transport.update();
+	}
+
 	if (displayDivsAtBottom) {
 		/** wait long enough for chromium to enter kiosk mode */
 		setTimeout(position.pullDivsToBottom, 1700);

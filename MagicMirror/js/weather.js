@@ -35,8 +35,6 @@ weather.aux_update = function () {
 					$("#currentWeatherTemp").html(temp);
 				}
 			}
-
-
 		}
 	});
 }
