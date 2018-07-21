@@ -10,6 +10,7 @@ Don't forget to enable ping response for IPv4 in your devices' firewalls to allo
 - Current weather and a five-day forecast
 - Indoor temperature (if you have an DS18B20 temperature sensor attached)
 - Current gas price at your local gas station
+- Departure times at your local station (if the service provider uses HAFAS ReST API)
 
 Check `config.js` for all available customization options.
 
