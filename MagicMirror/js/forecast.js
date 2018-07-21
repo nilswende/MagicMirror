@@ -21,7 +21,7 @@ forecast.aux_update = function () {
 
 	function extractForecasts(list) {
 		var days = {};
-		for (let i in list) {
+		for (var i = 0; i < list.length; i++) {
 			let singleForecast = list[i];
 			var main = singleForecast.main;
 			var id = singleForecast.weather[0].id;

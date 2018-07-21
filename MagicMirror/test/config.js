@@ -1,5 +1,5 @@
 ﻿var locale = "de";
-var displayDivsAtBottom = true;
+var displayDivsAtBottom = false;
 
 var gas = {
 	"url": "http://localhost/MagicMirror/test/gas.json",
@@ -9,6 +9,17 @@ var gas = {
 	"closingTime": 2000,
 
 	"updateIntervalInMinutes": 0.0167
+};
+
+var transport = {
+	"url": "http://localhost/MagicMirror/test/transport.json",
+	"stationID": "3001537", /** Enkheim */
+	"lines": "U4,U7",
+	"maxJourneys": "5",
+
+	"strip": "Frankfurt (Main) ",
+	"fadeDuration": 0.7 * 1000,
+	"updateIntervalInMinutes": 1
 };
 
 /** order inside each array determines top-down order on screen */
@@ -21,7 +32,8 @@ var position = {
 		"gas"
 	],
 	"right": [
-		"weather"
+		"weather",
+		"transport"
 	]
 };
 

@@ -1,13 +1,11 @@
 ﻿transport.update = function () {
 	var timer = new interval(transport.updateIntervalInMinutes * 60000, function () {
-		transport.aux_update(timer);
+		transport.aux_update();
 	});
 	timer.run();
 }
 
-transport.aux_update = function (timer) {
-	var field = $("#euro");
-
+transport.aux_update = function () {
 	$.getJSON({
 		url: transport.url,
 		data: {
@@ -21,44 +19,32 @@ transport.aux_update = function (timer) {
 			if (transport.errCounter !== 0) {
 				transport.errCounter = 0;
 			}
-			
-			var rows = $(".transport");
-			for (let i in response) {
-				let departure = response.Departure[i];
+			var opacity = 1.0;
+			var departures = response.Departure;
+			$(".transRow").each(function (i) {
+				let departure = departures[i];
 				var direction = departure.direction;
 				var line = departure.Product.line;
 				var time = departure.rtTime;
 				if (time === undefined) {
 					time = departure.time;
 				}
-				time = time.substring(0, 4);
+				time = time.substring(0, 5);
 				
-				var row = rows.get(i);			
-				animateRow(row, 800, 1, function () {
+				var row = $(this);
+				row.delay(i * transport.fadeDuration);
+				animateRow(row, transport.fadeDuration, opacity, function () {
 					row.children(".transLine").html(line);
-					row.children(".transDir").html(direction);
+					row.children(".transDir").html(direction.replace(transport.strip, ""));
 					row.children(".transTime").html(time);
 				});
-			}
+				opacity -= 0.1;
+			});
 		},
 		error: function (response) {
 			handleError();
 		}
 	});
-
-	function getForecastHtml(days, key) {
-		var day = days[key];
-		let dayName = moment(key).format("dd");
-		var dayHtml = "<td class='forecastDay'>" + dayName + "</td>";
-		var iconHtml = "<td class='forecastIcon'><i class='wi wi-owm-" + day.icons + "'></i></td>";
-		var maxHtml = "<td class='forecastTemp'>" + putMinusIfNegative(day.max);
-		var minHtml = "<td class='forecastTemp'>" + putMinusIfNegative(day.min);
-		if (forecast.showCelcius) {
-			maxHtml += "&nbsp;°C";
-			minHtml += "&nbsp;°C";
-		}
-		return dayHtml + iconHtml + maxHtml + "</td>" + minHtml + "</td>";
-	}
 
 	function handleError() {
 		if (transport.errCounter < 4) {

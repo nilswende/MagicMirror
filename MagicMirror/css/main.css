@@ -40,6 +40,12 @@
 	float: right;
 }
 
+.text-overflow-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* time */
 .time {
 	font-size: 2.8125rem;
@@ -144,7 +150,16 @@
 }
 
 /* transport */
+.transRow {
+    font-size: 1.5rem;
+    text-align: right;
+}
 
+.transDir {
+	min-width: 66%;
+    text-align: left;
+	padding-left: 8px;
+}
 
 /* font */
 @font-face {

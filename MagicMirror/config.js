@@ -17,6 +17,8 @@ var transport = {
 	"lines": "U4,U7",
 	"maxJourneys": "5",
 
+	"strip": "Frankfurt (Main) ",
+	"fadeDuration": 0.7 * 1000,
 	"updateIntervalInMinutes": 1
 };
 
