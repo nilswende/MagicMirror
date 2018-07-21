@@ -1,3 +1,5 @@
+Another locally running server which handles all outgoing traffic to prevent stuff like [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) (Cross-Origin Resource Sharing).
+
 # Installation
 
 ## Apache Reverse Proxy
