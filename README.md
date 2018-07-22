@@ -33,11 +33,10 @@ Another locally running server which handles all outgoing traffic to prevent stu
 
 ## Compile for Raspi 2 Model B (Windows)
 	# set user variables for compile
-	setx GOOS linux
-	setx GOARCH arm
-	setx GOARM 7
+	set GOOS=linux
+	set GOARCH=arm
+	set GOARM=7
 
-	# open new cmd
 	cd C:\Users\nilsw\go\src\github.com\nilswende\MagicMirror-server\main
 	go build -o MagicMirror-server main.go
 
