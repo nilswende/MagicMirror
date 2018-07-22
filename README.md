@@ -25,6 +25,8 @@ Moment.js 2.12.0
 Weather Icons 2.0
 
 # Installation
+For Raspbian Stretch.
+
 	# WLAN config # https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
 	sudo raspi-config
 	-> 2 -> SSID / PW
