@@ -3,24 +3,26 @@ package main
 import (
 	"log"
 	"net/http"
-	"io/ioutil"
 	"net/url"
+	"io"
 )
 
-var gasUrl = "https://creativecommons.tankerkoenig.de/json/prices.php"
-var transportUrl = "https://www.rmv.de/hapi/departureBoard"
-var weatherUrl = "http://api.openweathermap.org/data/2.5/weather"
-var forecastUrl = "http://api.openweathermap.org/data/2.5/forecast"
+var pathMapping = map[string]string{
+	"/gas":       "https://creativecommons.tankerkoenig.de/json/prices.php",
+	"/transport": "https://www.rmv.de/hapi/departureBoard",
+	"/weather":   "http://api.openweathermap.org/data/2.5/weather",
+	"/forecast":  "http://api.openweathermap.org/data/2.5/forecast",
+}
 
 var client = &http.Client{}
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("online"))
-}
-
-func gasHandler(w http.ResponseWriter, r *http.Request) {
-	request := newRequest(gasUrl, r.URL.Query())
-	passResponseBody(request, w)
+	if externalUrl, ok := pathMapping[r.URL.Path]; ok {
+		request := newRequest(externalUrl, r.URL.Query())
+		passResponseBody(request, w)
+	} else {
+		w.Write([]byte("online"))
+	}
 }
 
 func newRequest(url string, params url.Values) (*http.Request) {
@@ -47,37 +49,17 @@ func passResponseBody(request *http.Request, w http.ResponseWriter) {
 		return
 	}
 	defer response.Body.Close()
-	body, err := ioutil.ReadAll(response.Body)
+	// pass the status code
+	w.WriteHeader(response.StatusCode)
+	// pass the body (body should be a JSON file)
+	_, err = io.Copy(w, response.Body)
 	if err != nil {
 		w.WriteHeader(500) // Internal Server Error
 		return
 	}
-	// pass the status code
-	w.WriteHeader(response.StatusCode)
-	// pass the body (body should be a JSON file)
-	w.Write(body)
-}
-
-func transportHandler(w http.ResponseWriter, r *http.Request) {
-	request := newRequest(transportUrl, r.URL.Query())
-	passResponseBody(request, w)
-}
-
-func weatherHandler(w http.ResponseWriter, r *http.Request) {
-	request := newRequest(weatherUrl, r.URL.Query())
-	passResponseBody(request, w)
-}
-
-func forecastHandler(w http.ResponseWriter, r *http.Request) {
-	request := newRequest(forecastUrl, r.URL.Query())
-	passResponseBody(request, w)
 }
 
 func main() {
 	http.HandleFunc("/", rootHandler)
-	http.HandleFunc("/gas", gasHandler)
-	http.HandleFunc("/transport", transportHandler)
-	http.HandleFunc("/weather", weatherHandler)
-	http.HandleFunc("/forecast", forecastHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
