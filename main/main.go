@@ -45,7 +45,7 @@ func newRequest(url string, params url.Values) (*http.Request) {
 func passResponseBody(request *http.Request, w http.ResponseWriter) {
 	response, err := client.Do(request)
 	if err != nil {
-		w.WriteHeader(500) // Internal Server Error
+		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
 	defer response.Body.Close()
@@ -54,7 +54,7 @@ func passResponseBody(request *http.Request, w http.ResponseWriter) {
 	// pass the body (body should be a JSON file)
 	_, err = io.Copy(w, response.Body)
 	if err != nil {
-		w.WriteHeader(500) // Internal Server Error
+		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
 }
