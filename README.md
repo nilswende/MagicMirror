@@ -27,14 +27,7 @@
 	</Location>
 	
 ## Compile for Raspi (Windows)
-	# set user variables for compile
-	setx GOOS linux
-	setx GOARCH arm
-	setx GOARM 7
-
-	# open new cmd
-	cd C:\Users\nilsw\go\src\github.com\nilswende\MagicMirror-server\main
-	go build -o MagicMirror-server main.go
+see build.cmd
 
 ## Deployment
 	# copy file to /usr/bin/
