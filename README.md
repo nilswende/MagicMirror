@@ -33,7 +33,7 @@ Another locally running server which handles all outgoing traffic to prevent stu
 	</VirtualHost>
 	
 ## Compile for Raspi 2 Model B (Windows)
-See `build.cmd`
+See `build.cmd`.
 
 ## Deployment
 	# copy file to /usr/bin/
