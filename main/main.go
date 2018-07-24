@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"net/url"
 	"io"
+	"time"
 )
 
 var pathMapping = map[string]string{
@@ -14,7 +15,9 @@ var pathMapping = map[string]string{
 	"/forecast":  "http://api.openweathermap.org/data/2.5/forecast",
 }
 
-var client = &http.Client{}
+var client = &http.Client{
+	Timeout: time.Second * 10,
+}
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
 	if externalUrl, ok := pathMapping[r.URL.Path]; ok {
