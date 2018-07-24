@@ -36,7 +36,8 @@ Another locally running server which handles all outgoing traffic to prevent stu
 See `build.cmd`.
 
 ## Deployment
-	# copy file to /usr/bin/
+	# copy file to ~
+	sudo mv ~/MagicMirror-server /usr/bin
 	sudo chmod +x /usr/bin/MagicMirror-server
 
 	# start the server on startup
