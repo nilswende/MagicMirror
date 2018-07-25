@@ -2,7 +2,7 @@
 gas.errCounter = 0;
 
 gas.update = function () {
-	var timer = new interval(gas.updateIntervalInMinutes * 60000, function () {
+	var timer = new alignedInterval(gas.updateIntervalInMinutes, "minutes", function () {
 		gas.aux_update(timer);
 	});
 	timer.run();

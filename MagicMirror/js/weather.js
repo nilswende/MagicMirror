@@ -1,5 +1,5 @@
 ﻿weather.update = function () {
-	var timer = new interval(weather.updateIntervalInMinutes * 60000,
+	var timer = new alignedInterval(weather.updateIntervalInMinutes, "minutes",
 							weather.aux_update);
 	timer.run();
 }

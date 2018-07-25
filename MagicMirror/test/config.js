@@ -8,11 +8,11 @@ var gas = {
 	"openingTime": 800,
 	"closingTime": 2000,
 
-	"updateIntervalInMinutes": 0.0167
+	"updateIntervalInMinutes": 1
 };
 
 var transport = {
-	"url": "http://localhost/MagicMirror/test/transport.json",
+	"url": "http://localhost/MagicMirror/test/transport_h.json",
 	"stationID": "3001537", /** Enkheim */
 	"lines": "U4,U7",
 	"maxJourneys": "5",
@@ -57,7 +57,7 @@ var weather = {
 	"url": "http://localhost/MagicMirror/test/weather.json",
 	"cityID": "6555235", /** Bobenheim-Roxheim */
 	
-	"updateIntervalInMinutes": 0.16
+	"updateIntervalInMinutes": 1
 };
 
 var forecast = {
@@ -66,5 +66,5 @@ var forecast = {
 	"fadeDuration": 0.7 * 1000, /** fade duration for forecast updates */
 	"showCelcius": false,
 
-	"updateIntervalInMinutes": 0.13
+	"updateIntervalInMinutes": 1
 };

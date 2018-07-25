@@ -1,7 +1,7 @@
 ﻿clock.updateBinary = function () {
 	clock.aux_updateBinary(true);
 	
-	var timer = new interval(0.1 * 1000, clock.aux_updateBinary);
+	var timer = new alignedInterval(1, "seconds", clock.aux_updateBinary);
 	timer.run();
 }
 

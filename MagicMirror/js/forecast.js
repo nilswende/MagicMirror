@@ -1,5 +1,5 @@
 ﻿forecast.update = function () {
-	var timer = new interval(forecast.updateIntervalInMinutes * 60000,
+	var timer = new alignedInterval(forecast.updateIntervalInMinutes, "minutes",
 							forecast.aux_update);
 	timer.run();
 }
