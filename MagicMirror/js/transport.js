@@ -1,5 +1,5 @@
 ﻿transport.update = function () {
-	var timer = new interval(transport.updateIntervalInMinutes * 60000, function () {
+	var timer = new alignedInterval(transport.updateIntervalInMinutes, "minutes", function () {
 		transport.aux_update();
 	});
 	timer.run();
@@ -22,14 +22,26 @@ transport.aux_update = function () {
 			var opacity = 1.0;
 			var departures = response.Departure;
 			$(".transRow").each(function (i) {
-				let departure = departures[i];
-				var direction = departure.direction;
-				var line = departure.Product.line;
-				var time = departure.rtTime;
-				if (time === undefined) {
-					time = departure.time;
+				var direction, line, time;
+				var departure = departures[i];
+				if (departure === undefined) {
+					blankRow();
+				} else {
+					direction = departure.direction;
+					line = departure.Product.line;					
+					if (departure.rtTime === undefined) {
+						time = departure.date + " " + departure.time;
+					} else {
+						time = departure.rtDate + " " + departure.rtTime;
+					}
+					time = moment(time).diff(moment(), "minutes");
+					if (time < 0) {
+						time = -1;
+					}
+					if (time >= 100) {
+						blankRow();
+					}
 				}
-				time = time.substring(0, 5);
 				
 				var row = $(this);
 				row.delay(i * transport.fadeDuration);
@@ -39,6 +51,13 @@ transport.aux_update = function () {
 					row.children(".transTime").html(time);
 				});
 				opacity -= 0.1;
+				
+				
+				function blankRow() {
+					direction = "";
+					line = "";
+					time = "";
+				}
 			});
 		}
 	});

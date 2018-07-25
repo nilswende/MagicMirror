@@ -1,7 +1,7 @@
 {
 	"Departure": [{
 			"JourneyDetailRef": {
-				"ref": "1|17074|5|80|1052018"
+				"ref": "1|17152|11|80|22072018"
 			},
 			"JourneyStatus": "P",
 			"Notes": {
@@ -10,46 +10,7 @@
 						"routeIdxFrom": 0,
 						"routeIdxTo": 19,
 						"type": "I",
-						"value": "70260"
-					}
-				]
-			},
-			"Product": {
-				"admin": "TRAFBU",
-				"cat": "BUh",
-				"catCode": "4",
-				"catOut": "U-Bahn  ",
-				"catOutL": "U-Bahn",
-				"catOutS": "BUh",
-				"line": "U7",
-				"name": "      U7",
-				"num": "12555",
-				"operator": "Stadtwerke Verkehrsgesellschaft Frankfurt",
-				"operatorCode": "VGF"
-			},
-			"date": "2018-05-01",
-			"direction": "Frankfurt (Main) Hausen",
-			"name": "      U7",
-			"reachable": true,
-			"stop": "Frankfurt (Main) Enkheim",
-			"stopExtId": "3001537",
-			"stopid": "A=1@O=Frankfurt (Main) Enkheim@X=8753902@Y=50142567@U=80@L=3001537@",
-			"time": "12:14:00",
-			"trainCategory": "BUh",
-			"trainNumber": "12555",
-			"type": "S"
-		}, {
-			"JourneyDetailRef": {
-				"ref": "1|16301|3|80|1052018"
-			},
-			"JourneyStatus": "P",
-			"Notes": {
-				"Note": [{
-						"key": "FD",
-						"routeIdxFrom": 0,
-						"routeIdxTo": 13,
-						"type": "I",
-						"value": "40335"
+						"value": "70591"
 					}
 				]
 			},
@@ -60,118 +21,38 @@
 				"catOut": "U-Bahn  ",
 				"catOutL": "U-Bahn",
 				"catOutS": "BU5",
-				"line": "U4",
-				"name": "      U4",
-				"num": "5615",
-				"operator": "Stadtwerke Verkehrsgesellschaft Frankfurt",
-				"operatorCode": "VGF"
-			},
-			"date": "2018-05-01",
-			"direction": "Frankfurt (Main) Bockenheimer Warte",
-			"name": "      U4",
-			"reachable": true,
-			"stop": "Frankfurt (Main) Enkheim",
-			"stopExtId": "3001537",
-			"stopid": "A=1@O=Frankfurt (Main) Enkheim@X=8753902@Y=50142567@U=80@L=3001537@",
-			"time": "12:19:00",
-			"trainCategory": "BU5",
-			"trainNumber": "5615",
-			"type": "S"
-		}, {
-			"JourneyDetailRef": {
-				"ref": "1|17074|6|80|1052018"
-			},
-			"JourneyStatus": "P",
-			"Notes": {
-				"Note": [{
-						"key": "FD",
-						"routeIdxFrom": 0,
-						"routeIdxTo": 19,
-						"type": "I",
-						"value": "70262"
-					}
-				]
-			},
-			"Product": {
-				"admin": "TRAFBU",
-				"cat": "BUh",
-				"catCode": "4",
-				"catOut": "U-Bahn  ",
-				"catOutL": "U-Bahn",
-				"catOutS": "BUh",
 				"line": "U7",
 				"name": "      U7",
-				"num": "12556",
+				"num": "13194",
 				"operator": "Stadtwerke Verkehrsgesellschaft Frankfurt",
 				"operatorCode": "VGF"
 			},
-			"date": "2018-05-01",
+			"date": "2018-07-22",
 			"direction": "Frankfurt (Main) Hausen",
-			"name": "      U7",
-			"reachable": true,
-			"rtDate": "2018-05-01",
-			"rtTime": "12:24:00",
-			"stop": "Frankfurt (Main) Enkheim",
-			"stopExtId": "3001537",
-			"stopid": "A=1@O=Frankfurt (Main) Enkheim@X=8753902@Y=50142567@U=80@L=3001537@",
-			"time": "12:24:00",
-			"trainCategory": "BUh",
-			"trainNumber": "12556",
-			"type": "S"
-		}, {
-			"JourneyDetailRef": {
-				"ref": "1|17074|7|80|1052018"
-			},
-			"JourneyStatus": "P",
-			"Notes": {
-				"Note": [{
-						"key": "FD",
-						"routeIdxFrom": 0,
-						"routeIdxTo": 19,
-						"type": "I",
-						"value": "70264"
-					}
-				]
-			},
-			"Product": {
-				"admin": "TRAFBU",
-				"cat": "BUh",
-				"catCode": "4",
-				"catOut": "U-Bahn  ",
-				"catOutL": "U-Bahn",
-				"catOutS": "BUh",
-				"line": "U7",
-				"name": "      U7",
-				"num": "12557",
-				"operator": "Stadtwerke Verkehrsgesellschaft Frankfurt",
-				"operatorCode": "VGF"
-			},
-			"date": "2018-05-01",
-			"direction": "Frankfurt (Main) Bockenheimer Wartetetetete",
 			"name": "      U7",
 			"prognosisType": "PROGNOSED",
 			"reachable": true,
-			"rtDate": "2018-05-01",
-			"rtTime": "12:34:00",
+			"rtDate": "2018-07-22",
+			"rtTime": "10:24:00",
 			"stop": "Frankfurt (Main) Enkheim",
 			"stopExtId": "3001537",
 			"stopid": "A=1@O=Frankfurt (Main) Enkheim@X=8753902@Y=50142567@U=80@L=3001537@",
-			"time": "12:34:00",
-			"trainCategory": "BUh",
-			"trainNumber": "12557",
+			"time": "10:24:00",
+			"trainCategory": "BU5",
+			"trainNumber": "13194",
 			"type": "S"
 		}, {
 			"JourneyDetailRef": {
-				"ref": "1|16301|4|80|1052018"
+				"ref": "1|17153|3|80|22072018"
 			},
 			"JourneyStatus": "P",
 			"Notes": {
 				"Note": [{
 						"key": "FD",
 						"routeIdxFrom": 0,
-						"routeIdxTo": 13,
+						"routeIdxTo": 19,
 						"type": "I",
-						"value": "40340"
+						"value": "70592"
 					}
 				]
 			},
@@ -182,29 +63,113 @@
 				"catOut": "U-Bahn  ",
 				"catOutL": "U-Bahn",
 				"catOutS": "BU5",
-				"line": "U4",
-				"name": "      U4",
-				"num": "5616",
+				"line": "U7",
+				"name": "      U7",
+				"num": "13195",
 				"operator": "Stadtwerke Verkehrsgesellschaft Frankfurt",
 				"operatorCode": "VGF"
 			},
-			"date": "2018-05-01",
-			"direction": "Frankfurt (Main) Bockenheimer Warte",
-			"name": "      U4",
+			"date": "2018-07-22",
+			"direction": "Frankfurt (Main) Hausen",
+			"name": "      U7",
 			"prognosisType": "PROGNOSED",
 			"reachable": true,
-			"rtDate": "2018-05-01",
-			"rtTime": "12:39:00",
+			"rtDate": "2018-07-22",
+			"rtTime": "10:39:00",
 			"stop": "Frankfurt (Main) Enkheim",
 			"stopExtId": "3001537",
 			"stopid": "A=1@O=Frankfurt (Main) Enkheim@X=8753902@Y=50142567@U=80@L=3001537@",
-			"time": "12:39:00",
+			"time": "10:39:00",
 			"trainCategory": "BU5",
-			"trainNumber": "5616",
+			"trainNumber": "13195",
+			"type": "S"
+		}, {
+			"JourneyDetailRef": {
+				"ref": "1|17152|12|80|22072018"
+			},
+			"JourneyStatus": "P",
+			"Notes": {
+				"Note": [{
+						"key": "FD",
+						"routeIdxFrom": 0,
+						"routeIdxTo": 19,
+						"type": "I",
+						"value": "70593"
+					}
+				]
+			},
+			"Product": {
+				"admin": "TRAFBU",
+				"cat": "BU5",
+				"catCode": "4",
+				"catOut": "U-Bahn  ",
+				"catOutL": "U-Bahn",
+				"catOutS": "BU5",
+				"line": "U7",
+				"name": "      U7",
+				"num": "13196",
+				"operator": "Stadtwerke Verkehrsgesellschaft Frankfurt",
+				"operatorCode": "VGF"
+			},
+			"date": "2018-07-22",
+			"direction": "Frankfurt (Main) Hausen",
+			"name": "      U7",
+			"prognosisType": "PROGNOSED",
+			"reachable": true,
+			"rtDate": "2018-07-22",
+			"rtTime": "10:54:00",
+			"stop": "Frankfurt (Main) Enkheim",
+			"stopExtId": "3001537",
+			"stopid": "A=1@O=Frankfurt (Main) Enkheim@X=8753902@Y=50142567@U=80@L=3001537@",
+			"time": "10:54:00",
+			"trainCategory": "BU5",
+			"trainNumber": "13196",
+			"type": "S"
+		}, {
+			"JourneyDetailRef": {
+				"ref": "1|17153|4|80|22072018"
+			},
+			"JourneyStatus": "P",
+			"Notes": {
+				"Note": [{
+						"key": "FD",
+						"routeIdxFrom": 0,
+						"routeIdxTo": 19,
+						"type": "I",
+						"value": "70594"
+					}
+				]
+			},
+			"Product": {
+				"admin": "TRAFBU",
+				"cat": "BU5",
+				"catCode": "4",
+				"catOut": "U-Bahn  ",
+				"catOutL": "U-Bahn",
+				"catOutS": "BU5",
+				"line": "U7",
+				"name": "      U7",
+				"num": "13197",
+				"operator": "Stadtwerke Verkehrsgesellschaft Frankfurt",
+				"operatorCode": "VGF"
+			},
+			"date": "2018-07-22",
+			"direction": "Frankfurt (Main) Hausen",
+			"name": "      U7",
+			"prognosisType": "PROGNOSED",
+			"reachable": true,
+			"rtDate": "2018-07-22",
+			"rtTime": "11:09:00",
+			"stop": "Frankfurt (Main) Enkheim",
+			"stopExtId": "3001537",
+			"stopid": "A=1@O=Frankfurt (Main) Enkheim@X=8753902@Y=50142567@U=80@L=3001537@",
+			"time": "11:09:00",
+			"trainCategory": "BU5",
+			"trainNumber": "13197",
 			"type": "S"
 		}
 	],
 	"dialectVersion": "1.23",
-	"requestId": "1532167863126",
+	"requestId": "1532247134435",
 	"serverVersion": "1.9"
 }

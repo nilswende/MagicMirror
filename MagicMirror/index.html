@@ -31,13 +31,15 @@
 
     <script type="text/javascript" src="./js/position.js"></script>
     <script type="text/javascript" src="./js/controller.js"></script>
-    <script type="text/javascript" src="./js/lib/live.js"></script> <!-- disable it for prod -->
+    <!-- <script type="text/javascript" src="./js/lib/live.js"></script> disable it for prod -->
 </head>
 <body>
 
-    <div class="container left"></div>
-    <div class="container middle"></div>
-    <div class="container right"></div>
+	<div class="container">
+		<div class="cell left"></div>
+		<div class="cell middle"></div>
+		<div class="cell right"></div>
+	</div>
 
     <div class="content time">
         <table id="timeTable">
@@ -206,11 +208,6 @@
 				<td class="transTime"></td>
 			</tr>
             <tr class="transRow t3">
-				<td class="transLine"></td>
-				<td class="transDir text-overflow-truncate"></td>
-				<td class="transTime"></td>
-			</tr>
-            <tr class="transRow t4">
 				<td class="transLine"></td>
 				<td class="transDir text-overflow-truncate"></td>
 				<td class="transTime"></td>

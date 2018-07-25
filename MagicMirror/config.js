@@ -15,7 +15,7 @@ var transport = {
 	"url": "http://localhost/transport",
 	"stationID": "3001537", /** Enkheim */
 	"lines": "U4,U7",
-	"maxJourneys": "5",
+	"maxJourneys": "4",
 
 	"strip": "Frankfurt (Main) ",
 	"fadeDuration": 0.7 * 1000,

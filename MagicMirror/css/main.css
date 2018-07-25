@@ -1,49 +1,49 @@
 ﻿body {
-    background-color: black;
-    color: white;
-    font-family: avenirNext, sans-serif;
+	background-color: black;
+	color: white;
+	font-family: avenirNext, sans-serif;
 	//font-size: 16px;
 }
 
 .container {
-    height: 99%;
+	position:relative;
+	width: 100%;
+}
+
+.cell {
+	position:absolute;
+	width: 33%;
 }
 
 .left {
-    position: absolute;
-    left: 0px;
-    width: 33%;
+	left: 0;
 }
 
 .middle {
-    position: absolute;
-    left: 30%;
-    width: 34%;
-    text-align: center;
+	left: 33%;
 }
 
-.right {
-    position: absolute;
-    right: 0px;
-    width: 33%;
-}
-
-.container > div {
-	padding-top: 40px;
-}
-
-.middle > div > * {
+.middle > .content > * {
 	margin: auto;
 }
 
-.right > div {
-	float: right;
+.right {
+	right: 0;
+}
+
+.right > .content > * {
+	margin-left: auto;
+	margin-right: 0;
+}
+
+.content {
+	padding-top: 40px;
 }
 
 .text-overflow-truncate {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 /* time */
@@ -105,16 +105,16 @@
 }
 
 #currentWeatherIcon, #currentWeatherTemp {
-    text-align: center;
-    font-size: 3.125rem;
+	text-align: center;
+	font-size: 3.125rem;
 }
 
 #currentWeatherIcon {
-    width: 30%;
+	width: 30%;
 }
 
 .forecast {
-    font-size: 1.875rem;
+	font-size: 1.875rem;
 }
 
 .forecastDay, .forecastIcon {
@@ -150,19 +150,33 @@
 }
 
 /* transport */
+
+#transportTable {
+	table-layout: fixed;
+	width: 100%;
+}
+
 .transRow {
-    font-size: 1.5rem;
-    text-align: right;
+	font-size: 1.875rem;
+	text-align: right;
+}
+
+.transLine {
+	width: 12%;
 }
 
 .transDir {
-	min-width: 66%;
-    text-align: left;
+	text-align: left;
+	padding-left: 12px;
+}
+
+.transTime {
+	width: 12%;
 	padding-left: 8px;
 }
 
 /* font */
 @font-face {
-    font-family: avenirNext;
-    src: url(../font/AvenirNextLTPro-Regular.otf);
+	font-family: avenirNext;
+	src: url(../font/AvenirNextLTPro-Regular.otf);
 }
