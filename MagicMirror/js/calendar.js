@@ -1,10 +1,15 @@
 ﻿var calendar = {};
 
 calendar.update = function () {
+	new alignedInterval(1, "day", function () {
+		calendar.aux_update();
+	}).run();
+}
+
+calendar.aux_update = function () {
 	var now = moment();
 	fillWeeks();
 	fillDates();
-	setTimeoutWithDST(now, calendar.update);
 
 
 	function fillWeeks() {
@@ -32,12 +37,12 @@ calendar.update = function () {
 			var cell = $(this);
 			cell.html(date++);
 
+			cell.removeClass("calToday");
 			if (distance < 0 || distance >= lastDayOfMonth) {
 				cell.addClass("calOutsideCurrentMonth");
 			}
 			else {
 				cell.removeClass("calOutsideCurrentMonth");
-				cell.removeClass("calToday");
 				if (distance === today) {
 					cell.addClass("calToday");
 				}
