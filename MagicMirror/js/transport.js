@@ -27,8 +27,8 @@ transport.aux_update = function () {
 				if (departure === undefined) {
 					blankRow();
 				} else {
-					direction = departure.direction;
-					line = departure.Product.line;					
+					direction = departure.direction.replace(transport.strip, "");
+					line = departure.Product.line;
 					if (departure.rtTime === undefined) {
 						time = departure.date + " " + departure.time;
 					} else {
@@ -42,17 +42,33 @@ transport.aux_update = function () {
 						blankRow();
 					}
 				}
-				
+
 				var row = $(this);
-				row.delay(i * transport.fadeDuration);
-				animateRow(row, transport.fadeDuration, opacity, function () {
-					row.children(".transLine").html(line);
-					row.children(".transDir").html(direction.replace(transport.strip, ""));
-					row.children(".transTime").html(time);
-				});
+				if (row.children(".transDir").html() === direction) {
+					animateTime();
+				} else {
+					animateRow();
+				}
 				opacity -= 0.1;
-				
-				
+
+
+				function animateRow() {
+					row.delay(i * transport.fadeDuration);
+					animateElement(row, transport.fadeDuration, opacity, function () {
+						row.children(".transLine").html(line);
+						row.children(".transDir").html(direction);
+						row.children(".transTime").html(time);
+					});
+				}
+
+				function animateTime() {
+					var timeElem = row.children(".transTime");
+					timeElem.delay(i * transport.fadeDuration);
+					animateElement(timeElem, transport.fadeDuration, opacity, function () {
+						timeElem.html(time);
+					});
+				}
+
 				function blankRow() {
 					direction = "";
 					line = "";
