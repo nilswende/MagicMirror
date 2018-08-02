@@ -6,13 +6,7 @@
 	return temp.toFixed(1);
 }
 
-function setTimeoutWithDST (now, fn) {
-	var nextDay = now.clone().add(1, 'days').startOf('day');
-	var timeout = nextDay.diff(now);
-	setTimeout(fn, timeout);
-}
-
-function animateRow (row, duration, opacity, fn) {
-	row.fadeTo(duration, 0, "linear", fn);
-	row.fadeTo(duration, opacity, "linear");
+function animateElement (elem, duration, opacity, fn) {
+	elem.fadeTo(duration, 0, "linear", fn);
+	elem.fadeTo(duration, opacity, "linear");
 }

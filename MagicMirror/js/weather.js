@@ -25,7 +25,7 @@ weather.aux_update = function () {
 			}
 			else {
 				if (weatherID !== weather.iconBefore) {
-					animateRow($("#currentWeather"), 800, 1, function () {
+					animateElement($("#currentWeather"), 800, 1, function () {
 						$("#currentWeatherIcon").html(iconHtml);
 						$("#currentWeatherTemp").html(temp);
 					});

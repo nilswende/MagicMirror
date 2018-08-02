@@ -89,7 +89,7 @@ forecast.aux_update = function () {
 			var row = $(this);
 
 			row.delay(i * forecast.fadeDuration);
-			animateRow(row, forecast.fadeDuration, opacity, function () {
+			animateElement(row, forecast.fadeDuration, opacity, function () {
 				row.html(forecastHtml);
 			});
 			opacity -= 0.1;
