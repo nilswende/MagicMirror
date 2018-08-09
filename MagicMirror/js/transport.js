@@ -16,35 +16,37 @@ transport.aux_update = function () {
 			format: "json"
 		},
 		success: function (response) {
-			if (transport.errCounter !== 0) {
-				transport.errCounter = 0;
-			}
 			var opacity = 1.0;
 			var departures = response.Departure;
-			$(".transRow").each(function (i) {
-				var direction, line, time;
-				var departure = departures[i];
-				if (departure === undefined) {
-					blankRow();
+			var sortedDepartures = new Array(departures.length);
+			for (departure of departures) {
+				var entry = new TransportEntry();
+				if (departure.rtTime === undefined) {
+					entry.time = departure.date + " " + departure.time;
 				} else {
-					direction = departure.direction.replace(transport.strip, "");
-					line = departure.Product.line;
-					if (departure.rtTime === undefined) {
-						time = departure.date + " " + departure.time;
-					} else {
-						time = departure.rtDate + " " + departure.rtTime;
-					}
-					time = moment(time).diff(moment(), "minutes");
-					if (time < 0) {
-						time = -1;
-					}
-					if (time >= 100) {
-						blankRow();
-					}
+					entry.time = departure.rtDate + " " + departure.rtTime;
+				}
+				entry.time = moment(entry.time).diff(moment(), "minutes");
+				if (entry.time < 0) {
+					entry.time = -1;
+				}
+				if (entry.time >= 100) {
+					entry.time = "";
+					continue;
+				}
+				entry.line = departure.Product.line;
+				entry.direction = departure.direction.replace(transport.strip, "");
+				sortedDepartures.push(entry);
+			}
+			sortedDepartures.sort((a, b) => a.time - b.time);
+			$(".transRow").each(function (i) {
+				var departure = sortedDepartures[i];
+				if (departure === undefined) {
+					departure = new TransportEntry();
 				}
 
 				var row = $(this);
-				if (row.children(".transDir").html() === direction) {
+				if (row.children(".transDir").html() === departure.direction) {
 					animateTime();
 				} else {
 					animateRow();
@@ -55,9 +57,9 @@ transport.aux_update = function () {
 				function animateRow() {
 					row.delay(i * transport.fadeDuration);
 					animateElement(row, transport.fadeDuration, opacity, function () {
-						row.children(".transLine").html(line);
-						row.children(".transDir").html(direction);
-						row.children(".transTime").html(time);
+						row.children(".transLine").html(departure.line);
+						row.children(".transDir").html(departure.direction);
+						row.children(".transTime").html(departure.time);
 					});
 				}
 
@@ -65,16 +67,17 @@ transport.aux_update = function () {
 					var timeElem = row.children(".transTime");
 					timeElem.delay(i * transport.fadeDuration);
 					animateElement(timeElem, transport.fadeDuration, opacity, function () {
-						timeElem.html(time);
+						timeElem.html(departure.time);
 					});
-				}
-
-				function blankRow() {
-					direction = "";
-					line = "";
-					time = "";
 				}
 			});
 		}
 	});
+
+
+	function TransportEntry() {
+		this.direction = "";
+		this.line = "";
+		this.time = "";
+	}
 }
