@@ -43,7 +43,8 @@ If you have one, enter your own DS18B20 sensor ID in `temperature.go` (`const se
 See `build.cmd`.
 
 ## Deployment
-	# copy file to /usr/bin/
+	# copy file to ~
+	sudo mv ~/MagicMirror-server /usr/bin
 	sudo chmod +x /usr/bin/MagicMirror-server
 
 	# start the server on startup
