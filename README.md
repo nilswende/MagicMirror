@@ -2,6 +2,9 @@ Another locally running server which handles all outgoing traffic to prevent stu
 
 # Installation
 
+## Temperature Sensor
+If you have one, enter your own DS18B20 sensor ID in `temperature.go` (`const sensorId`).
+
 ## Apache Reverse Proxy
 	# enable Apache modules
 	sudo a2enmod
@@ -30,8 +33,12 @@ Another locally running server which handles all outgoing traffic to prevent stu
 			ProxyPass http://127.0.0.1:8080/forecast
 			ProxyPassReverse http://127.0.0.1:8080/forecast
 		</Location>
+		<Location /temp>
+			ProxyPass http://127.0.0.1:8080/temp
+			ProxyPassReverse http://127.0.0.1:8080/temp
+		</Location>
 	</VirtualHost>
-	
+
 ## Compile for Raspi 2 Model B (Windows)
 See `build.cmd`.
 

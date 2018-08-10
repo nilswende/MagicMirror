@@ -12,5 +12,6 @@ func main() {
 	port := flag.Int("port", 8080, "The port to listen on")
 	flag.Parse()
 	http.HandleFunc("/", serverlib.NewHandler)
+	http.HandleFunc("/temp", serverlib.NewTempHandler)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", *port), nil))
 }
