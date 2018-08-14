@@ -39,6 +39,7 @@ transport.aux_update = function () {
 				sortedDepartures.push(entry);
 			}
 			sortedDepartures.sort((a, b) => a.time - b.time);
+			var animateFollowingRows = false;
 			$(".transRow").each(function (i) {
 				var departure = sortedDepartures[i];
 				if (departure === undefined) {
@@ -46,10 +47,12 @@ transport.aux_update = function () {
 				}
 
 				var row = $(this);
-				if (row.children(".transDir").html() === departure.direction) {
+				if (!animateFollowingRows
+						&& row.children(".transDir").html() === departure.direction) {
 					animateTime();
 				} else {
 					animateRow();
+					animateFollowingRows = true;
 				}
 				opacity -= 0.1;
 
