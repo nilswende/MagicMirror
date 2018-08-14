@@ -38,8 +38,8 @@ var position = {
 };
 
 var temp = {
-	url: "http://localhost/MagicMirror/php/temp.php",
-	"sensorAttached": true /** don't forget to enter its ID in /php/temp.php */
+	url: "http://localhost/temp",
+	"sensorAttached": true /** don't forget to enter its ID in the server */
 };
 
 var clock = {

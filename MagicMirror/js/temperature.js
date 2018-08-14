@@ -15,11 +15,11 @@ temp.aux_update = function () {
 			if (temp.errCounter !== 0) {
 				temp.errCounter = 0;
 			}
-			if (response.status === "yes") {
+			if (response.Status === "yes") {
 				if (temp.failCounter !== 0) {
 					temp.failCounter = 0;
 				}
-				let avg = temp.movAvg.putAndAvg(response.temp);
+				let avg = temp.movAvg.putAndAvg(response.Temp);
 				field.html(avg.toFixed(1));
 			}
 			else {

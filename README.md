@@ -1,6 +1,5 @@
 # MagicMirror
-To be run on a RasPi with a webserver (if you want to have an indoor temperature displayed).
-Copy it to /var/www/html/
+Uses a [custom webserver](https://github.com/nilswende/MagicMirror-server) to handle outgoing requests and filesystem operations.
 
 Don't forget to enable ping response for IPv4 in your devices' firewalls to allow the esave script to work.
 
@@ -49,16 +48,13 @@ For Raspbian Stretch.
 
 
 	# install all needed programs
-	sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install apache2 php libapache2-mod-php chromium-browser unclutter zsh -y
+	sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install chromium-browser unclutter zsh -y
 	wget -O ~/.zshrc https://raw.githubusercontent.com/grml/grml-etc-core/master/etc/zsh/zshrc
 	chsh (/usr/bin/zsh)
 	sudo apt-get clean
 
 
-	sudo chown -R pi:pi /var/www/html/
-
-
-	# copy MagicMirror/ to /var/www/html/
+	# copy MagicMirror/ to /home/pi/
 	# copy esave.sh to /home/pi/
 
 
@@ -70,7 +66,7 @@ For Raspbian Stretch.
 	@xset s off
 	@xset -dpms
 	@xset s noblank
-	@chromium-browser --noerrdialogs --kiosk --incognito http://localhost/MagicMirror/index.html
+	@chromium-browser --noerrdialogs --kiosk --incognito http://localhost/site
 
 
 	# sudo nano /etc/rc.local

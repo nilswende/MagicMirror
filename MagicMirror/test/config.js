@@ -2,7 +2,7 @@
 var displayDivsAtBottom = false;
 
 var gas = {
-	"url": "http://localhost/MagicMirror/test/gas.json",
+	"url": "./test/gas.json",
 	"gasType": "diesel", /** choose from "e5", "e10", "diesel" */
 	"stationID": "8e04a261-815f-43f8-a5ba-20d12c5b3273", /** Globus gas station Bob.-Roxheim */
 	"openingTime": 800,
@@ -12,7 +12,7 @@ var gas = {
 };
 
 var transport = {
-	"url": "http://localhost/MagicMirror/test/transport_h.json",
+	"url": "./test/transport_h.json",
 	"stationID": "3001537", /** Enkheim */
 	"lines": "U4,U7",
 	"maxJourneys": "5",
@@ -38,8 +38,8 @@ var position = {
 };
 
 var temp = {
-	url: "http://localhost/MagicMirror/test/temp.php",
-	"sensorAttached": true /** don't forget to enter its ID in /php/temp.php */
+	url: "./test/temp.json",
+	"sensorAttached": true
 };
 
 var clock = {
@@ -54,14 +54,14 @@ var date = {
 };
 
 var weather = {
-	"url": "http://localhost/MagicMirror/test/weather.json",
+	"url": "./test/weather.json",
 	"cityID": "6555235", /** Bobenheim-Roxheim */
 	
 	"updateIntervalInMinutes": 1
 };
 
 var forecast = {
-	"url": "http://localhost/MagicMirror/test/forecast.json",
+	"url": "./test/forecast.json",
 	"cityID": "6555235", /** Bobenheim-Roxheim */
 	"fadeDuration": 0.7 * 1000, /** fade duration for forecast updates */
 	"showCelcius": false,
