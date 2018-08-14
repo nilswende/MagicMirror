@@ -52,12 +52,12 @@ func passResponseBody(request *http.Request, w http.ResponseWriter) {
 		return
 	}
 	defer response.Body.Close()
-	// pass the status code
-	w.WriteHeader(response.StatusCode)
 	// pass the body (body should be a JSON file)
 	_, err = io.Copy(w, response.Body)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
+	// pass the status code
+	w.WriteHeader(response.StatusCode)
 }
