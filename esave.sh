@@ -4,14 +4,18 @@ computerIP="192.168.178.201"
 #notebookIP="192.168.178.202"
 smartphoneIP="192.168.178.203"
 
-startTime="600" # without leading zero
+startTime="545" # without leading zero
 endTime="2300"
 
-offlineIntervalInMinutes=60
+offlineIntervalInMinutes=45
 
 isOn=true
 isDay=false
 lastOnline="$(date '+%s')"
+
+setLastOnline() {
+	lastOnline="$(date '+%s')"
+}
 
 log() {
 	echo "[$(date +"%d.%m.%Y %H:%M:%S")] $1"
@@ -63,14 +67,14 @@ while :; do
 			isDay=true
 		fi
 		if pcAvailable; then
-			lastOnline=$(date "+%s")
+			setLastOnline
 			if [ "$isOn" = false ]; then
 				log "PC online."
 				startSocket
 			fi
 			sleep 10
 		elif deviceAvailable; then
-			lastOnline=$(date "+%s")
+			setLastOnline
 			if [ "$isOn" = false ]; then
 				log "Gerät online."
 				startSocket
@@ -78,8 +82,15 @@ while :; do
 		else
 			if [ "$isOn" = true ]; then
 				if [[ "$lastOnline" < "$(date -d "-$offlineIntervalInMinutes minutes" +'+%s')" ]]; then
-					log "Geräte offline seit mind. $offlineIntervalInMinutes Minuten."
-					stopSocket
+					# workaround for NTP time jump: stopSocket only up to a minute after we hit the timeout
+					if [[ "$(date -d "-$(($offlineIntervalInMinutes + 1)) minutes" +'+%s')" < "$lastOnline" ]]; then
+						log "Geräte offline seit mind. $offlineIntervalInMinutes Minuten."
+						stopSocket
+					else
+						# if we're way after the timeout, a timesync may have happened
+						log "Reset lastOnline"
+						setLastOnline
+					fi
 				fi
 			fi
 		fi

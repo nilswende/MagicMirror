@@ -1,4 +1,8 @@
-﻿$(document).ready(function () {
+﻿$(document).ready(() => {
+	/** check for timesyncs */
+	window.addEventListener(timesync.eventName, () => alignedInterval.resetAll());
+	new timesync().check();
+
 	/** set moment.js to desired locale */
 	moment.locale(locale);
 

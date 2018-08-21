@@ -41,12 +41,21 @@ function interval(duration, fn) {
 	Example: alignedInterval(5, 'minute', fn) executes fn at the start of every 5-minute-interval in an hour.
 */
 function alignedInterval(length, unit, fn) {
+	alignedInterval.actives = [];
 	this.baseline = undefined;
+
+	alignedInterval.resetAll = function() {
+		for (active of actives) {
+			active.stop();
+			active.baseline = undefined;
+			active.run();
+		}
+	}
 
 	this.run = function() {
 		if (this.baseline === undefined) {
-			this.baseline = moment().startOf(unit);
-			this.baseline.add(10, "ms"); // rather late than early
+			resetBaseline(this);
+			alignedInterval.actives.push(this);
 		}
 		fn();
 		var end = moment();
@@ -54,6 +63,8 @@ function alignedInterval(length, unit, fn) {
 		this.baseline.add(length, unit);
 		var nextTick = this.baseline.diff(end);
 		if (nextTick < 0) {
+			resetBaseline(this);
+			this.baseline.add(length, unit);
 			nextTick = 0;
 		}
 		(function(i) {
@@ -61,9 +72,16 @@ function alignedInterval(length, unit, fn) {
 				i.run();
 			}, nextTick)
 		}(this));
+
+
+		function resetBaseline(that) {
+			that.baseline = moment().startOf(unit);
+			that.baseline.add(10, "ms"); // rather be late than early
+		}
 	}
 
 	this.stop = function() {
 		clearTimeout(this.timer);
+		alignedInterval.actives.filter(active => active != this);
 	}
 }
