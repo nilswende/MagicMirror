@@ -60,9 +60,9 @@ log "Skript gestartet."
 
 while :; do
 	now=$(date +"%k%M")
-	if (("$startTime" < "$now")) && (("$now" < "$endTime")); then
+	if (("$startTime" <= "$now")) && (("$now" < "$endTime")); then
 		if [ "$isDay" = false ]; then
-			echo "______________"
+			log "______________"
 			log "Es ist Tag."
 			isDay=true
 		fi
