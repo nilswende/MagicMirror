@@ -1,4 +1,5 @@
 var apiKey = {
 	openWeatherMap: "",
-	tankerkoenig: ""
+	tankerkoenig:   "",
+	transport:      ""
 };

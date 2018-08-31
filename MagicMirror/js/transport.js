@@ -12,7 +12,7 @@ transport.aux_update = function () {
 			id: transport.stationID,
 			lines: transport.lines,
 			maxJourneys: transport.maxJourneys,
-			accessId: apiKey.rmv,
+			accessId: apiKey.transport,
 			format: "json"
 		},
 		success: function (response) {
