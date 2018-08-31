@@ -26,11 +26,6 @@ Weather Icons 2.0
 # Installation
 For Raspbian Stretch.
 
-	# WLAN config # https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
-	sudo raspi-config
-	-> 2 -> SSID / PW
-
-
 	sudo nano /etc/modprobe.d/8192cu.conf
 
 	# disable Edimax-WLAN Power Saving
@@ -39,12 +34,9 @@ For Raspbian Stretch.
 
 	sudo nano /boot/config.txt
 
+	#dtparam=audio=on
 	# activating 1-wire with pullup
 	dtoverlay=w1-gpio,gpiopin=4,pullup=on
-
-
-	# change default password
-	passwd
 
 
 	# install all needed programs
