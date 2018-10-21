@@ -104,13 +104,17 @@
 	font-size: 1.5625rem;
 }
 
-#currentWeatherIcon, #currentWeatherTemp {
-	text-align: center;
+#currentWeather {
 	font-size: 3.125rem;
 }
 
 #currentWeatherIcon {
+	text-align: center;
 	width: 30%;
+}
+
+#currentWeatherTemp {
+	text-align: right;
 }
 
 .forecast {
