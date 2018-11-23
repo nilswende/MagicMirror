@@ -16,4 +16,4 @@ See `build.cmd`.
 	# start the server on startup
 	sudo crontab -e
 
-	@reboot /usr/bin/MagicMirror-server -port 80 -dir /home/pi/MagicMirror
+	@reboot /usr/bin/MagicMirror-server -port 80 -dir /home/pi/MagicMirror 2>>/home/pi/MagicMirror-server.log

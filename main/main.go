@@ -16,5 +16,6 @@ func main() {
 	http.Handle("/site/", http.StripPrefix("/site/", http.FileServer(http.Dir(*dir))))
 	http.HandleFunc("/", serverlib.NewHandler)
 	http.HandleFunc("/temp", serverlib.NewTempHandler)
+	http.HandleFunc("/log", serverlib.NewLogHandler)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", *port), nil))
 }

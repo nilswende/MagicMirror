@@ -6,6 +6,7 @@ import (
 	"net/url"
 	"io"
 	"time"
+	"io/ioutil"
 )
 
 var pathMapping = map[string]string{
@@ -51,6 +52,8 @@ func passResponseBody(request *http.Request, w http.ResponseWriter) {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
+	// pass the status code
+	w.WriteHeader(response.StatusCode)
 	defer response.Body.Close()
 	// pass the body (body should be a JSON file)
 	_, err = io.Copy(w, response.Body)
@@ -58,6 +61,14 @@ func passResponseBody(request *http.Request, w http.ResponseWriter) {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
-	// pass the status code
-	w.WriteHeader(response.StatusCode)
+}
+
+func NewLogHandler(w http.ResponseWriter, r *http.Request) {
+	defer r.Body.Close()
+	bytes, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	log.Printf("%s", bytes)
 }
