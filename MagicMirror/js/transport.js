@@ -37,6 +37,10 @@ transport.aux_update = function () {
 				entry.line = departure.Product.line;
 				entry.direction = departure.direction.replace(transport.strip, "");
 				sortedDepartures.push(entry);
+				if (!departure.rtTime || !departure.reachable) {
+					// log possible cancellation
+					log.post(entry + ", departure.rtTime=" + departure.rtTime + ", departure.reachable=" + departure.reachable);
+				}
 			}
 			sortedDepartures.sort((a, b) => a.time - b.time);
 			var animateFollowingRows = false;
