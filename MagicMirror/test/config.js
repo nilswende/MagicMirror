@@ -68,3 +68,7 @@ var forecast = {
 
 	"updateIntervalInMinutes": 1
 };
+
+var log = {
+	"url": "http://localhost/log"
+};
