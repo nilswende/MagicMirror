@@ -6,29 +6,16 @@
 }
 
 .container {
-	position:relative;
 	width: 100%;
 }
 
 .cell {
-	position:absolute;
-	width: 33%;
-}
-
-.left {
-	left: 0;
-}
-
-.middle {
-	left: 33%;
+	float: left;
+	width: 33.33%;
 }
 
 .middle > .content > * {
 	margin: auto;
-}
-
-.right {
-	right: 0;
 }
 
 .right > .content > * {
