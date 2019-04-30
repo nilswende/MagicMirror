@@ -82,4 +82,6 @@ For Raspbian Stretch.
 
 	@reboot /home/pi/esave.sh > /dev/null 2>&1
 	#@reboot /home/pi/esave.sh > /home/pi/esave.log
-	0 23 * * * shutdown -h 0
+	#0 23 * * * shutdown -h 0
+	@weekly reboot
+	@reboot rm -rf /home/pi/.config/chromium/Singleton*
