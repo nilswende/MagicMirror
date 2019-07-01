@@ -14,7 +14,7 @@ var gas = {
 var transport = {
 	"url": "./test/transport_h.json",
 	"stationID": "3001537", /** Enkheim */
-	"lines": "U4,U7",
+	"lines": "U4,U7,U4E,U7E",
 	"maxJourneys": "5",
 
 	"strip": "Frankfurt (Main) ",
