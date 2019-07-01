@@ -39,6 +39,12 @@ For Raspbian Stretch.
 	dtoverlay=w1-gpio,gpiopin=4,pullup=on
 
 
+	sudo raspi-config
+
+	# set hostname
+	2 -> N1: magic-mirror
+
+
 	# install all needed programs
 	sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install chromium-browser unclutter zsh -y
 	wget -O ~/.zshrc https://raw.githubusercontent.com/grml/grml-etc-core/master/etc/zsh/zshrc
@@ -76,4 +82,6 @@ For Raspbian Stretch.
 
 	@reboot /home/pi/esave.sh > /dev/null 2>&1
 	#@reboot /home/pi/esave.sh > /home/pi/esave.log
-	0 23 * * * shutdown -h 0
+	#0 23 * * * shutdown -h 0
+	@weekly reboot
+	@reboot rm -rf /home/pi/.config/chromium/Singleton*
