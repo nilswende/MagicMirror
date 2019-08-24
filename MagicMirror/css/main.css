@@ -166,6 +166,10 @@
 	padding-left: 8px;
 }
 
+.transCancelled {
+	text-decoration: line-through;
+}
+
 /* font */
 @font-face {
 	font-family: avenirNext;

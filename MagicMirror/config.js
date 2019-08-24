@@ -1,6 +1,12 @@
 ﻿var locale = "de";
 var displayDivsAtBottom = false;
 
+var toggle = {
+	"transport" : {
+		"cancellation" : true
+	}
+}
+
 var gas = {
 	"url": "http://localhost/gas",
 	"gasType": "diesel", /** choose from "e5", "e10", "diesel" */
@@ -19,7 +25,10 @@ var transport = {
 
 	"strip": "Frankfurt (Main) ",
 	"fadeDuration": 0.7 * 1000,
-	"updateIntervalInMinutes": 1
+	"updateIntervalInMinutes": 1,
+	"detail" : {
+		"url": "http://localhost/transportDetail"
+	}
 };
 
 /** order inside each array determines top-down order on screen */

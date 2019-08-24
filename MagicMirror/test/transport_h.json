@@ -1,175 +1,123 @@
 {
 	"Departure": [{
 			"JourneyDetailRef": {
-				"ref": "1|17152|11|80|22072018"
+				"ref": "1|129638|0|80|29052019"
 			},
 			"JourneyStatus": "P",
+			"Product": {
+				"name": "      S7",
+				"num": "1765",
+				"line": "S38",
+				"catOut": "S       ",
+				"cat": "SB3",
+				"catCode": "3",
+				"catOutS": "SB3",
+				"catOutL": "S-Bahn",
+				"operatorCode": "DBR",
+				"operator": "DB Regio AG S-Bahn Rhein-Main",
+				"admin": "800528"
+			},
 			"Notes": {
 				"Note": [{
-						"key": "FD",
+						"value": "Fahrzeuggebundene Einstiegshilfe vorhanden",
+						"key": "sp",
+						"type": "A",
+						"priority": 560,
 						"routeIdxFrom": 0,
-						"routeIdxTo": 19,
+						"routeIdxTo": 9
+					}, {
+						"value": "Klimaanlage",
+						"key": "sd",
+						"type": "A",
+						"priority": 610,
+						"routeIdxFrom": 0,
+						"routeIdxTo": 9
+					}, {
+						"value": "35779",
+						"key": "FD",
 						"type": "I",
-						"value": "70591"
+						"routeIdxFrom": 0,
+						"routeIdxTo": 9
 					}
 				]
 			},
-			"Product": {
-				"admin": "TRAFBU",
-				"cat": "BU5",
-				"catCode": "4",
-				"catOut": "U-Bahn  ",
-				"catOutL": "U-Bahn",
-				"catOutS": "BU5",
-				"line": "U7",
-				"name": "      U7",
-				"num": "13194",
-				"operator": "Stadtwerke Verkehrsgesellschaft Frankfurt",
-				"operatorCode": "VGF"
-			},
-			"date": "2018-07-22",
-			"direction": "Frankfurt (Main) Hausen",
-			"name": "      U7",
+			"name": "      S7",
+			"type": "S",
+			"stop": "Frankfurt (Main) Hauptbahnhof",
+			"stopid": "A=1@O=Frankfurt (Main) Hauptbahnhof@X=8662653@Y=50106808@U=80@L=3000010@",
+			"stopExtId": "3000010",
 			"prognosisType": "PROGNOSED",
+			"time": "22:50:00",
+			"date": "2019-05-29",
+			"track": "3",
+			"rtTime": "22:50:00",
+			"rtDate": "2019-05-29",
+			"rtTrack": "3",
 			"reachable": true,
-			"rtDate": "2018-07-22",
-			"rtTime": "10:24:00",
-			"stop": "Frankfurt (Main) Enkheim",
-			"stopExtId": "3001537",
-			"stopid": "A=1@O=Frankfurt (Main) Enkheim@X=8753902@Y=50142567@U=80@L=3001537@",
-			"time": "10:24:00",
-			"trainCategory": "BU5",
-			"trainNumber": "13194",
-			"type": "S"
+			"direction": "Riedstadt-Goddelau Bahnhof",
+			"trainNumber": "1765",
+			"trainCategory": "SB3"
 		}, {
 			"JourneyDetailRef": {
-				"ref": "1|17153|3|80|22072018"
+				"ref": "1|129639|0|80|29052019"
 			},
 			"JourneyStatus": "P",
+			"Product": {
+				"name": "      S7",
+				"num": "1712",
+				"line": "S39",
+				"catOut": "S       ",
+				"cat": "SB3",
+				"catCode": "3",
+				"catOutS": "SB3",
+				"catOutL": "S-Bahn",
+				"operatorCode": "DBR",
+				"operator": "DB Regio AG S-Bahn Rhein-Main",
+				"admin": "800528"
+			},
 			"Notes": {
 				"Note": [{
-						"key": "FD",
+						"value": "Fahrzeuggebundene Einstiegshilfe vorhanden",
+						"key": "sp",
+						"type": "A",
+						"priority": 560,
 						"routeIdxFrom": 0,
-						"routeIdxTo": 19,
+						"routeIdxTo": 9
+					}, {
+						"value": "Klimaanlage",
+						"key": "sd",
+						"type": "A",
+						"priority": 610,
+						"routeIdxFrom": 0,
+						"routeIdxTo": 9
+					}, {
+						"value": "35781",
+						"key": "FD",
 						"type": "I",
-						"value": "70592"
+						"routeIdxFrom": 0,
+						"routeIdxTo": 9
 					}
 				]
 			},
-			"Product": {
-				"admin": "TRAFBU",
-				"cat": "BU5",
-				"catCode": "4",
-				"catOut": "U-Bahn  ",
-				"catOutL": "U-Bahn",
-				"catOutS": "BU5",
-				"line": "U7",
-				"name": "      U7",
-				"num": "13195",
-				"operator": "Stadtwerke Verkehrsgesellschaft Frankfurt",
-				"operatorCode": "VGF"
-			},
-			"date": "2018-07-22",
-			"direction": "Frankfurt (Main) Hausen",
-			"name": "      U7",
+			"name": "      S7",
+			"type": "S",
+			"stop": "Frankfurt (Main) Hauptbahnhof",
+			"stopid": "A=1@O=Frankfurt (Main) Hauptbahnhof@X=8662653@Y=50106808@U=80@L=3000010@",
+			"stopExtId": "3000010",
 			"prognosisType": "PROGNOSED",
+			"time": "23:20:00",
+			"date": "2019-05-29",
+			"track": "3",
+			"rtTime": "23:20:00",
+			"rtDate": "2019-05-29",
+			"rtTrack": "3",
 			"reachable": true,
-			"rtDate": "2018-07-22",
-			"rtTime": "10:39:00",
-			"stop": "Frankfurt (Main) Enkheim",
-			"stopExtId": "3001537",
-			"stopid": "A=1@O=Frankfurt (Main) Enkheim@X=8753902@Y=50142567@U=80@L=3001537@",
-			"time": "10:39:00",
-			"trainCategory": "BU5",
-			"trainNumber": "13195",
-			"type": "S"
-		}, {
-			"JourneyDetailRef": {
-				"ref": "1|17152|12|80|22072018"
-			},
-			"JourneyStatus": "P",
-			"Notes": {
-				"Note": [{
-						"key": "FD",
-						"routeIdxFrom": 0,
-						"routeIdxTo": 19,
-						"type": "I",
-						"value": "70593"
-					}
-				]
-			},
-			"Product": {
-				"admin": "TRAFBU",
-				"cat": "BU5",
-				"catCode": "4",
-				"catOut": "U-Bahn  ",
-				"catOutL": "U-Bahn",
-				"catOutS": "BU5",
-				"line": "U7",
-				"name": "      U7",
-				"num": "13196",
-				"operator": "Stadtwerke Verkehrsgesellschaft Frankfurt",
-				"operatorCode": "VGF"
-			},
-			"date": "2018-07-22",
-			"direction": "Frankfurt (Main) Hausen",
-			"name": "      U7",
-			"prognosisType": "PROGNOSED",
-			"reachable": true,
-			"rtDate": "2018-07-22",
-			"rtTime": "10:54:00",
-			"stop": "Frankfurt (Main) Enkheim",
-			"stopExtId": "3001537",
-			"stopid": "A=1@O=Frankfurt (Main) Enkheim@X=8753902@Y=50142567@U=80@L=3001537@",
-			"time": "10:54:00",
-			"trainCategory": "BU5",
-			"trainNumber": "13196",
-			"type": "S"
-		}, {
-			"JourneyDetailRef": {
-				"ref": "1|17153|4|80|22072018"
-			},
-			"JourneyStatus": "P",
-			"Notes": {
-				"Note": [{
-						"key": "FD",
-						"routeIdxFrom": 0,
-						"routeIdxTo": 19,
-						"type": "I",
-						"value": "70594"
-					}
-				]
-			},
-			"Product": {
-				"admin": "TRAFBU",
-				"cat": "BU5",
-				"catCode": "4",
-				"catOut": "U-Bahn  ",
-				"catOutL": "U-Bahn",
-				"catOutS": "BU5",
-				"line": "U7",
-				"name": "      U7",
-				"num": "13197",
-				"operator": "Stadtwerke Verkehrsgesellschaft Frankfurt",
-				"operatorCode": "VGF"
-			},
-			"date": "2018-07-22",
-			"direction": "Frankfurt (Main) Hausen",
-			"name": "      U7",
-			"prognosisType": "PROGNOSED",
-			"reachable": true,
-			"rtDate": "2018-07-22",
-			"rtTime": "11:09:00",
-			"stop": "Frankfurt (Main) Enkheim",
-			"stopExtId": "3001537",
-			"stopid": "A=1@O=Frankfurt (Main) Enkheim@X=8753902@Y=50142567@U=80@L=3001537@",
-			"time": "11:09:00",
-			"trainCategory": "BU5",
-			"trainNumber": "13197",
-			"type": "S"
+			"direction": "Riedstadt-Goddelau Bahnhof",
+			"trainNumber": "1712",
+			"trainCategory": "SB3"
 		}
 	],
+	"serverVersion": "1.9",
 	"dialectVersion": "1.23",
-	"requestId": "1532247134435",
-	"serverVersion": "1.9"
+	"requestId": "1559162488199"
 }
