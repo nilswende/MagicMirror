@@ -36,11 +36,11 @@ function interval(duration, fn) {
 }
 
 /**
-	Repeats fn aligned to the interval of length and unit.
+	Repeats fn aligned to the interval of length and unit, with a random maximum time offset of maxOffset in milliseconds.
 
 	Example: alignedInterval(5, 'minute', fn) executes fn at the start of every 5-minute-interval in an hour.
 */
-function alignedInterval(length, unit, fn) {
+function alignedInterval(length, unit, fn, maxOffset) {
 	alignedInterval.actives = [];
 	this.baseline = undefined;
 
@@ -66,6 +66,9 @@ function alignedInterval(length, unit, fn) {
 			resetBaseline(this);
 			this.baseline.add(length, unit);
 			nextTick = 0;
+		}
+		if (maxOffset !== undefined) {
+			nextTick += randomInt(maxOffset);
 		}
 		(function(i) {
 			i.timer = setTimeout(function() {

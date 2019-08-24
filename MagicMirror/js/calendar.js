@@ -1,9 +1,8 @@
 ﻿var calendar = {};
 
 calendar.update = function () {
-	new alignedInterval(1, "day", function () {
-		calendar.aux_update();
-	}).run();
+	var timer = new alignedInterval(1, "day", calendar.aux_update);
+	timer.run();
 }
 
 calendar.aux_update = function () {

@@ -10,11 +10,18 @@ endTime="2300"
 offlineIntervalInMinutes=45
 
 isOn=true
-isDay=false
+isDay=true
+lastOnlinePrev="$(date '+%s')"
 lastOnline="$(date '+%s')"
 
 setLastOnline() {
+	lastOnlinePrev=lastOnline
 	lastOnline="$(date '+%s')"
+}
+
+syncLastOnline() {
+	lastOnlineDiff="$($lastOnline - $lastOnlinePrev)"
+	lastOnline="$(date -d "-$lastOnlineDiff minutes" +'+%s')"
 }
 
 log() {
@@ -65,6 +72,7 @@ while :; do
 			log "______________"
 			log "Es ist Tag."
 			isDay=true
+			startSocket
 		fi
 		if pcAvailable; then
 			setLastOnline
@@ -88,8 +96,8 @@ while :; do
 						stopSocket
 					else
 						# if we're way after the timeout, a timesync may have happened
-						log "Reset lastOnline"
-						setLastOnline
+						log "Sync lastOnline"
+						syncLastOnline
 					fi
 				fi
 			fi

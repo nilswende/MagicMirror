@@ -1,7 +1,6 @@
 ﻿date.update = function () {
-	new alignedInterval(1, "day", function () {
-		date.aux_update();
-	}).run();
+	var timer = new alignedInterval(1, "day", date.aux_update);
+	timer.run();
 }
 
 date.aux_update = function () {
