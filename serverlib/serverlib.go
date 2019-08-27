@@ -12,6 +12,7 @@ import (
 var pathMapping = map[string]string{
 	"/gas":       "https://creativecommons.tankerkoenig.de/json/prices.php",
 	"/transport": "https://www.rmv.de/hapi/departureBoard",
+	"/transportDetail": "https://www.rmv.de/hapi/journeyDetail",
 	"/weather":   "http://api.openweathermap.org/data/2.5/weather",
 	"/forecast":  "http://api.openweathermap.org/data/2.5/forecast",
 }
