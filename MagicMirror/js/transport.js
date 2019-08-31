@@ -64,11 +64,6 @@ transport.aux_update = function () {
 			}
 
 			var row = $(this);
-			if (departure.cancelled) {
-				row.children(".transDir").addClass("transCancelled");
-			} else {
-				row.children(".transDir").removeClass("transCancelled");
-			}
 			if (!animateFollowingRows
 					&& row.children(".transDir").html() === departure.direction) {
 				animateTime();
@@ -82,8 +77,10 @@ transport.aux_update = function () {
 			function animateRow() {
 				row.delay(i * transport.fadeDuration);
 				animateElement(row, transport.fadeDuration, opacity, function () {
+					var dirElem = row.children(".transDir");
+					dirElem.html(departure.direction);
+					markCancellation(departure, dirElem);
 					row.children(".transLine").html(departure.line);
-					row.children(".transDir").html(departure.direction);
 					row.children(".transTime").html(departure.time);
 				});
 			}
@@ -92,8 +89,17 @@ transport.aux_update = function () {
 				var timeElem = row.children(".transTime");
 				timeElem.delay(i * transport.fadeDuration);
 				animateElement(timeElem, transport.fadeDuration, opacity, function () {
+					markCancellation(departure, row.children(".transDir"));
 					timeElem.html(departure.time);
 				});
+			}
+
+			function markCancellation(departure, elem) {
+				if (departure.cancelled) {
+					elem.addClass("transCancelled");
+				} else {
+					elem.removeClass("transCancelled");
+				}
 			}
 		});
 	}
