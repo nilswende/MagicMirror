@@ -64,8 +64,10 @@ transport.aux_update = function () {
 			}
 
 			var row = $(this);
+			var dirElem = row.children(".transDir");
 			if (!animateFollowingRows
-					&& row.children(".transDir").html() === departure.direction) {
+					&& dirElem.html() === departure.direction
+					&& dirElem.hasClass("transCancelled") === departure.cancelled) {
 				animateTime();
 			} else {
 				animateRow();
@@ -73,6 +75,14 @@ transport.aux_update = function () {
 			}
 			opacity -= 0.1;
 
+
+			function animateTime() {
+				var timeElem = row.children(".transTime");
+				timeElem.delay(i * transport.fadeDuration);
+				animateElement(timeElem, transport.fadeDuration, opacity, function () {
+					timeElem.html(departure.time);
+				});
+			}
 
 			function animateRow() {
 				row.delay(i * transport.fadeDuration);
@@ -82,15 +92,6 @@ transport.aux_update = function () {
 					markCancellation(departure, dirElem);
 					row.children(".transLine").html(departure.line);
 					row.children(".transTime").html(departure.time);
-				});
-			}
-
-			function animateTime() {
-				var timeElem = row.children(".transTime");
-				timeElem.delay(i * transport.fadeDuration);
-				animateElement(timeElem, transport.fadeDuration, opacity, function () {
-					markCancellation(departure, row.children(".transDir"));
-					timeElem.html(departure.time);
 				});
 			}
 

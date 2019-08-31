@@ -25,7 +25,7 @@ var transport = {
 
 	"strip": "Frankfurt (Main) ",
 	"fadeDuration": 0.7 * 1000,
-	"updateIntervalInMinutes": 1,
+	"updateIntervalInMinutes": 0.2,
 	detail : {
 		"url": "./test/transportDetail_h.json"
 	}
