@@ -47,9 +47,7 @@ transport.aux_update = function () {
 
 	function setCancellation(objects, departures) {
 		for (let [index, val] of Object.entries(objects)) {
-			if (val[0].cancelled) {
-				departures[index].cancelled = true;
-			}
+			departures[index].cancelled = !!val[0].cancelled;
 		}
 	}
 
@@ -65,13 +63,13 @@ transport.aux_update = function () {
 
 			var row = $(this);
 			var dirElem = row.children(".transDir");
-			if (!animateFollowingRows
-					&& dirElem.html() === departure.direction
-					&& dirElem.hasClass("transCancelled") === departure.cancelled) {
-				animateTime();
-			} else {
+			if (animateFollowingRows
+					|| dirElem.html() !== departure.direction
+					|| dirElem.hasClass("transCancelled") !== departure.cancelled) {
 				animateRow();
 				animateFollowingRows = true;
+			} else {
+				animateTime();
 			}
 			opacity -= 0.1;
 
