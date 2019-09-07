@@ -5,24 +5,40 @@
 }
 
 transport.aux_update = function () {
+	var actualJourneys = Math.ceil(transport.maxJourneys * 1.5);
 	$.getJSON({
 		url: transport.url,
 		data: {
 			id: transport.stationID,
 			lines: transport.lines,
-			maxJourneys: transport.maxJourneys,
+			maxJourneys: actualJourneys,
 			accessId: apiKey.transport,
 			format: "json"
 		}
 	})
 	.done(function (data) {
 		var departures = data.Departure;
+		departures = retainStatusP(departures);
 		checkCancellation(departures).done(function () {
 			var objects = arguments;
 			setCancellation(objects, departures);
 			displayDepartures(departures);
 		});
 	});
+
+	function retainStatusP(departures) {
+		var p = new Array();
+		var maxJourneys = transport.maxJourneys;
+		for (departure of departures) {
+			if (departure.JourneyStatus === "P") {
+				p.push(departure);
+				if (--maxJourneys === 0) {
+					return p;
+				}
+			}
+		}
+		return p;
+	}
 
 	function checkCancellation(departures) {
 		if (toggle.transport.cancellation !== true) {
@@ -102,7 +118,7 @@ transport.aux_update = function () {
 			}
 		});
 	}
-	
+
 	function sortDepatures(departures) {
 		var sortedDepartures = new Array();
 		for (departure of departures) {
