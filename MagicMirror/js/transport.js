@@ -1,24 +1,23 @@
 ﻿transport.update = function () {
-	var timer = new alignedInterval(transport.updateIntervalInMinutes, "minutes",
-							transport.aux_update);
-	timer.run();
+	new alignedInterval(transport.updateIntervalInMinutes, "minutes",
+			transport.aux_update)
+		.run();
 }
 
 transport.aux_update = function () {
-	var actualJourneys = Math.ceil(transport.maxJourneys * 1.5);
 	$.getJSON({
 		url: transport.url,
 		data: {
 			id: transport.stationID,
 			lines: transport.lines,
-			maxJourneys: actualJourneys,
+			maxJourneys: transport.maxJourneys * 2, // every journey could be duplicated
 			accessId: apiKey.transport,
 			format: "json"
 		}
 	})
 	.done(function (data) {
 		var departures = data.Departure;
-		departures = retainStatusP(departures);
+		departures = removeDuplicatedJourneys(departures);
 		checkCancellation(departures).done(function () {
 			var objects = arguments;
 			setCancellation(objects, departures);
@@ -26,7 +25,7 @@ transport.aux_update = function () {
 		});
 	});
 
-	function retainStatusP(departures) {
+	function removeDuplicatedJourneys(departures) {
 		var p = new Array();
 		var maxJourneys = transport.maxJourneys;
 		for (departure of departures) {
