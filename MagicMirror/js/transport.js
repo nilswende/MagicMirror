@@ -18,7 +18,8 @@ transport.aux_update = function () {
 	.done(function (data) {
 		var departures = data.Departure;
 		departures = removeDuplicatedJourneys(departures);
-		checkCancellation(departures).done(function () {
+		checkCancellation(departures)
+		.done(function () {
 			var objects = arguments;
 			setCancellation(objects, departures);
 			displayDepartures(departures);
@@ -27,11 +28,11 @@ transport.aux_update = function () {
 
 	function removeDuplicatedJourneys(departures) {
 		var p = new Array();
-		var maxJourneys = transport.maxJourneys;
+		var limit = transport.maxJourneys;
 		for (departure of departures) {
 			if (departure.JourneyStatus === "P") {
 				p.push(departure);
-				if (--maxJourneys === 0) {
+				if (--limit === 0) {
 					return p;
 				}
 			}
@@ -120,15 +121,16 @@ transport.aux_update = function () {
 
 	function sortDepatures(departures) {
 		var sortedDepartures = new Array();
+		var now = moment().startOf('minute');
 		for (departure of departures) {
-			var entry = new TransportEntry(departure);
+			var entry = new TransportEntry(departure, now);
 			sortedDepartures.push(entry);
 		}
 		sortedDepartures.sort((a, b) => a.time - b.time);
 		return sortedDepartures;
 	}
 
-	function TransportEntry(departure) {
+	function TransportEntry(departure, now) {
 		this.direction = "";
 		this.line = "";
 		this.time = "";
@@ -142,12 +144,12 @@ transport.aux_update = function () {
 		} else {
 			this.time = departure.rtDate + " " + departure.rtTime;
 		}
-		this.time = moment(this.time).diff(moment(), "minutes");
+		this.time = moment(this.time).diff(now, "minutes");
 		if (this.time < 0) {
 			this.time = -1;
 		}
-		if (this.time >= 100) {
-			this.time = "";
+		if (this.time > 99) {
+			this.time = "99+";
 			return;
 		}
 		this.line = departure.Product.line;
