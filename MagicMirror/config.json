@@ -1,0 +1,25 @@
+{
+	"position" : {
+		"left": [
+			"time",
+			"calendar"
+		],
+		"middle": [
+			"gas"
+		],
+		"right": [
+			"weather",
+			"transport"
+		]
+	},
+	"time" : {
+		"showWithSeconds" : true,
+		"binary" : false,
+		"enableBinaryEasyMode" : false,
+		"showYear" : true,
+		"alwaysBreakYear" : false
+	},
+	"temp" : {
+		"sensorAttached" : true
+	}
+}

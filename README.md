@@ -11,7 +11,7 @@ Don't forget to enable ping response for IPv4 in your devices' firewalls to allo
 - Current gas price at your local gas station
 - Departure times at your local station (if the service provider uses HAFAS ReST API)
 
-Check `config.js` for all available customization options.
+Check `config.json` for all available customization options. The config needs to be added as parameter to the site request – see the entry in `/home/pi/.config/lxsession/LXDE-pi/autostart` below.
 
 ## Dependencies
 
@@ -64,7 +64,7 @@ For Raspbian Stretch.
 	@xset s off
 	@xset -dpms
 	@xset s noblank
-	@chromium-browser --noerrdialogs --kiosk --incognito http://localhost/site
+	@chromium-browser --noerrdialogs --kiosk --incognito http://localhost/site?config={"position":{"left":["time","calendar"],"middle":["gas"],"right":["weather","transport"]},"time":{"showWithSeconds":true,"showYear":true},"temp":{"sensorAttached":true}}
 
 
 	# sudo nano /etc/rc.local

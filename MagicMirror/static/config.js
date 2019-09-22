@@ -31,36 +31,15 @@ var transport = {
 	}
 };
 
-/** order inside each array determines top-down order on screen */
-var position = {
-	"left": [
-		"time",
-		"calendar"
-	],
-	"middle": [
-		"gas"
-	],
-	"right": [
-		"weather",
-		"transport"
-	]
-};
+var position = {};
 
 var temp = {
-	url: "http://localhost/temp",
-	"sensorAttached": true /** don't forget to enter its ID in the server */
+	url: "http://localhost/temp"
 };
 
-var clock = {
-	"showBinary": false,
-	"enableBinaryEasyMode": false,
-	"showWithSeconds": true
-};
+var clock = {};
 
-var date = {
-	"alwaysBreakYear": false,
-	"showYear": true
-};
+var date = {};
 
 var weather = {
 	"url": "http://localhost/weather",

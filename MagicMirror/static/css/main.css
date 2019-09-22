@@ -42,7 +42,7 @@
 	font-size: 4.375rem;
 }
 
-#seconds {
+#clockSeconds {
     opacity: 0.6;
     vertical-align: 30px;
 	font-size: 1.75rem;
@@ -130,10 +130,6 @@
     vertical-align: -7px;
 }
 
-#gasTextRow {
-	opacity: 0;
-}
-
 #milli {
 	font-size: 0.9375rem;
     opacity: 0.6;
@@ -170,8 +166,8 @@
 	text-decoration: line-through;
 }
 
-/* font */
+/* font, provide your own file */
 @font-face {
 	font-family: avenirNext;
-	src: url(../font/AvenirNextLTPro-Regular.otf);
+	src: url(/static/font/AvenirNextLTPro-Regular.otf);
 }

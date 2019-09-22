@@ -1,4 +1,5 @@
 ﻿clock.updateBinary = function () {
+	clock.showWithSeconds = $("#binaryClock #binSec").length > 0;
 	clock.aux_updateBinary(true);
 	
 	var timer = new alignedInterval(1, "seconds", clock.aux_updateBinary);

@@ -1,0 +1,42 @@
+{{define "binaryClock"}}
+	<td id="binaryClock">
+		<table id="binClkTable">
+			<tr id="binHour">
+				<td class="bh bh32"></td>
+				<td class="bh bh16"></td>
+				<td class="bh bh8"></td>
+				<td class="bh bh4"></td>
+				<td class="bh bh2"></td>
+				<td class="bh bh1"></td>
+			</tr>
+			<tr id="binMin">
+				<td class="bm bm32"></td>
+				<td class="bm bm16"></td>
+				<td class="bm bm8"></td>
+				<td class="bm bm4"></td>
+				<td class="bm bm2"></td>
+				<td class="bm bm1"></td>
+			</tr>
+			{{if .Time.ShowWithSeconds}}
+				<tr id="binSec">
+					<td class="bs bs32"></td>
+					<td class="bs bs16"></td>
+					<td class="bs bs8"></td>
+					<td class="bs bs4"></td>
+					<td class="bs bs2"></td>
+					<td class="bs bs1"></td>
+				</tr>
+			{{end}}
+			{{if .Time.EnableBinaryEasyMode}}
+				<tr id="binEasy">
+					<td>32</td>
+					<td>16</td>
+					<td>8</td>
+					<td>4</td>
+					<td>2</td>
+					<td>1</td>
+				</tr>
+			{{end}}
+		</table>
+	</td>
+{{end}}

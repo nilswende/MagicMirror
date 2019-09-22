@@ -1,4 +1,6 @@
 ﻿date.update = function () {
+	date.showYear = $("#date").hasClass("showYear");
+	date.alwaysBreakYear = $("#date").hasClass("alwaysBreakYear");
 	var timer = new alignedInterval(1, "day", date.aux_update);
 	timer.run();
 }

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta charset="utf-8" />
+    <meta name="google" value="notranslate" />
+
+    <title>Magic Mirror</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/weather-icons.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+
+    <script type="text/javascript" src="/static/js/lib/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="/static/js/lib/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="/static/js/lib/interval.js"></script>
+    <script type="text/javascript" src="/static/js/lib/timesync.js"></script>
+    <script type="text/javascript" src="{{if .Test}}/test{{else}}/static{{end}}/config.js"></script>
+    <script type="text/javascript" src="/static/js/global.js"></script>
+    <script type="text/javascript" src="/static/js/keys.js"></script>
+    <script type="text/javascript" src="/static/js/movAvg.js"></script>
+    <script type="text/javascript" src="/static/js/log.js"></script>
+
+    <script type="text/javascript" src="/static/js/binaryClock.js"></script>
+    <script type="text/javascript" src="/static/js/calendar.js"></script>
+    <script type="text/javascript" src="/static/js/clock.js"></script>
+    <script type="text/javascript" src="/static/js/date.js"></script>
+    <script type="text/javascript" src="/static/js/forecast.js"></script>
+    <script type="text/javascript" src="/static/js/gas.js"></script>
+    <script type="text/javascript" src="/static/js/temperature.js"></script>
+    <script type="text/javascript" src="/static/js/weather.js"></script>
+    <script type="text/javascript" src="/static/js/transport.js"></script>
+
+    <script type="text/javascript" src="/static/js/position.js"></script>
+    <script type="text/javascript" src="/static/js/controller.js"></script>
+    <!-- <script type="text/javascript" src="/static/js/lib/live.js"></script> disable it for prod -->
+</head>
+<body>
+
+    {{template "container" .}}
+
+</body>
+</html>

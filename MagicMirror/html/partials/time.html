@@ -1,0 +1,19 @@
+{{define "time"}}
+    <article class="content time">
+        <table id="timeTable">
+            <tr>
+                {{if .Time.Binary}}
+					{{template "binaryClock" .}}
+				{{else}}
+					{{template "clock" .}}
+				{{end}}
+            </tr>
+            <tr>
+                <td id="date" class="
+					{{if .Time.ShowYear}}showYear{{end}}
+					{{if .Time.AlwaysBreakYear}}alwaysBreakYear{{end}}
+				"></td>
+            </tr>
+        </table>
+    </article>
+{{end}}

@@ -23,6 +23,6 @@ $RECYCLE.BIN/
 
 
 ### custom ###
-MagicMirror/font/AvenirNextLTPro-Regular.otf
-MagicMirror/js/keys.js
+AvenirNextLTPro-Regular.otf
+# keys.js
 curl.txt
