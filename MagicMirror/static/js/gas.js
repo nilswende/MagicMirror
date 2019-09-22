@@ -1,16 +1,14 @@
-﻿gas.failCounter = 0;
+﻿$(document).ready(() => {
+	new alignedInterval(gas.updateIntervalInMinutes, "minutes", gas.update)
+		.run();
+});
+
+gas.failCounter = 0;
 gas.errCounter = 0;
 
 gas.update = function () {
-	var timer = new alignedInterval(gas.updateIntervalInMinutes, "minutes", function () {
-		gas.aux_update(timer);
-	});
-	timer.run();
-}
-
-gas.aux_update = function (timer) {
 	var field = $("#euro");
-	let isOpen = isStationOpen(timer);
+	let isOpen = isStationOpen();
 
 	if (isOpen || !$.isNumeric(field.html())) {
 		$.getJSON({
@@ -41,16 +39,9 @@ gas.aux_update = function (timer) {
 	}
 
 
-	function isStationOpen(timer) {
+	function isStationOpen() {
 		var now = moment().format("Hmm");
-		if (now < gas.openingTime - gas.updateIntervalInMinutes) {
-			return false;
-		}
-		if (now > gas.closingTime + gas.updateIntervalInMinutes) {
-			timer.stop();
-			return false;
-		}
-		return true;
+		return gas.openingTime - gas.updateIntervalInMinutes <= now && now <= gas.closingTime + gas.updateIntervalInMinutes;
 	}
 
 	function showNewGasPrice(currentPrice) {

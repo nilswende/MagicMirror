@@ -1,13 +1,13 @@
-﻿temp.failCounter = 0;
+﻿$(document).ready(() => {
+	new alignedInterval(3, "seconds", temp.update)
+		.run();
+});
+
+temp.failCounter = 0;
 temp.errCounter = 0;
 temp.movAvg = new MovAvg(3);
 
 temp.update = function () {
-	var timer = new interval(3 * 1000, temp.aux_update);
-	timer.run();
-}
-
-temp.aux_update = function () {
 	var field = $("#indoorTempData");
 	$.getJSON({
 		url: temp.url,

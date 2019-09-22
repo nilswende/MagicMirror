@@ -1,5 +1,13 @@
-﻿var locale = "de";
-var displayDivsAtBottom = false;
+﻿$(document).ready(() => {
+	/** set moment.js to desired locale */
+	moment.locale(locale);
+});
+
+var locale = "de";
+
+var position = {
+	"displayDivsAtBottom" : false
+};
 
 var toggle = {
 	"transport" : {
@@ -31,15 +39,9 @@ var transport = {
 	}
 };
 
-var position = {};
-
 var temp = {
 	url: "/test/temp.json"
 };
-
-var clock = {};
-
-var date = {};
 
 var weather = {
 	"url": "/test/weather.json",

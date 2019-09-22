@@ -1,10 +1,10 @@
-﻿weather.update = function () {
-	var timer = new alignedInterval(weather.updateIntervalInMinutes, "minutes",
-							weather.aux_update);
-	timer.run();
-}
+﻿$(document).ready(() => {
+	new alignedInterval(weather.updateIntervalInMinutes, "minutes",
+							weather.update)
+		.run();
+});
 
-weather.aux_update = function () {
+weather.update = function () {
 	$.getJSON({
 		url: weather.url,
 		data: {

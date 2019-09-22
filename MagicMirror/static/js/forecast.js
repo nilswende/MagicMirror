@@ -1,10 +1,10 @@
-﻿forecast.update = function () {
-	var timer = new alignedInterval(forecast.updateIntervalInMinutes, "minutes",
-							forecast.aux_update, forecast.updateIntervalInMinutes * 1000);
-	timer.run();
-}
+﻿$(document).ready(() => {
+	new alignedInterval(forecast.updateIntervalInMinutes, "minutes",
+							forecast.update, forecast.updateIntervalInMinutes * 1000)
+		.run();
+});
 
-forecast.aux_update = function () {
+forecast.update = function () {
 	$.getJSON({
 		url: forecast.url,
 		data: {

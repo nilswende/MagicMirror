@@ -1,10 +1,10 @@
-﻿transport.update = function () {
+﻿$(document).ready(() => {
 	new alignedInterval(transport.updateIntervalInMinutes, "minutes",
-			transport.aux_update)
+			transport.update)
 		.run();
-}
+});
 
-transport.aux_update = function () {
+transport.update = function () {
 	$.getJSON({
 		url: transport.url,
 		data: {

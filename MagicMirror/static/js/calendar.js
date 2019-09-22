@@ -1,11 +1,11 @@
-﻿var calendar = {};
+﻿$(document).ready(() => {
+	new alignedInterval(1, "day", calendar.update)
+		.run();
+});
+
+var calendar = {};
 
 calendar.update = function () {
-	var timer = new alignedInterval(1, "day", calendar.aux_update);
-	timer.run();
-}
-
-calendar.aux_update = function () {
 	var now = moment();
 	fillWeeks();
 	fillDates();

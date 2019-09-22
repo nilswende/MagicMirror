@@ -1,10 +1,12 @@
-﻿clock.update = function () {
+﻿$(document).ready(() => {
 	clock.showWithSeconds = $("#clock #clockSeconds").length > 0;
-	var timer = new alignedInterval(1, "seconds", clock.aux_update);
-	timer.run();
-}
+	new alignedInterval(1, "seconds", clock.update)
+		.run();
+});
 
-clock.aux_update = function () {
+var clock = {};
+
+clock.update = function () {
 	var now = moment();
 	var currentTime = now.format("LT");
 	if (clock.showWithSeconds) {

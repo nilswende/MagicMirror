@@ -1,4 +1,11 @@
-﻿position.pullDivsToBottom = function () {
+﻿$(document).ready(() => {
+	if (position.displayDivsAtBottom) {
+		/** wait long enough for chromium to enter kiosk mode */
+		setTimeout(position.pullDivsToBottom, 2000);
+	}
+});
+
+position.pullDivsToBottom = function () {
 	var heightLeft = 0, heightMiddle = 0, heightRight = 0;
 	var padding = 40;
 

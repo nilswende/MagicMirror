@@ -19,19 +19,23 @@
     <script type="text/javascript" src="/static/js/keys.js"></script>
     <script type="text/javascript" src="/static/js/movAvg.js"></script>
     <script type="text/javascript" src="/static/js/log.js"></script>
+    <script type="text/javascript" src="/static/js/position.js"></script>
 
-    <script type="text/javascript" src="/static/js/binaryClock.js"></script>
+	{{if .Time.Binary}}
+		<script type="text/javascript" src="/static/js/binaryClock.js"></script>
+	{{else}}
+		<script type="text/javascript" src="/static/js/clock.js"></script>
+	{{end}}
     <script type="text/javascript" src="/static/js/calendar.js"></script>
-    <script type="text/javascript" src="/static/js/clock.js"></script>
     <script type="text/javascript" src="/static/js/date.js"></script>
     <script type="text/javascript" src="/static/js/forecast.js"></script>
     <script type="text/javascript" src="/static/js/gas.js"></script>
-    <script type="text/javascript" src="/static/js/temperature.js"></script>
+	{{if .Temp.SensorAttached}}
+		<script type="text/javascript" src="/static/js/temperature.js"></script>
+	{{end}}
     <script type="text/javascript" src="/static/js/weather.js"></script>
     <script type="text/javascript" src="/static/js/transport.js"></script>
 
-    <script type="text/javascript" src="/static/js/position.js"></script>
-    <script type="text/javascript" src="/static/js/controller.js"></script>
     <!-- <script type="text/javascript" src="/static/js/lib/live.js"></script> disable it for prod -->
 </head>
 <body>

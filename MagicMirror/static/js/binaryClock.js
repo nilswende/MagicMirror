@@ -1,12 +1,13 @@
-﻿clock.updateBinary = function () {
+﻿$(document).ready(() => {
 	clock.showWithSeconds = $("#binaryClock #binSec").length > 0;
-	clock.aux_updateBinary(true);
-	
-	var timer = new alignedInterval(1, "seconds", clock.aux_updateBinary);
-	timer.run();
-}
+	clock.updateBinary(true);
+	new alignedInterval(1, "seconds", clock.updateBinary)
+		.run();
+});
 
-clock.aux_updateBinary = function (isFirstRun) {
+var clock = {};
+
+clock.updateBinary = function (isFirstRun) {
 	var now = moment().toObject(),
 		bin;
 
