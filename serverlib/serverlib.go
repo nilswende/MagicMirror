@@ -1,20 +1,20 @@
 package serverlib
 
 import (
+	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
-	"io"
 	"time"
-	"io/ioutil"
 )
 
 var pathMapping = map[string]string{
-	"/gas":       "https://creativecommons.tankerkoenig.de/json/prices.php",
-	"/transport": "https://www.rmv.de/hapi/departureBoard",
+	"/gas":             "https://creativecommons.tankerkoenig.de/json/prices.php",
+	"/transport":       "https://www.rmv.de/hapi/departureBoard",
 	"/transportDetail": "https://www.rmv.de/hapi/journeyDetail",
-	"/weather":   "http://api.openweathermap.org/data/2.5/weather",
-	"/forecast":  "http://api.openweathermap.org/data/2.5/forecast",
+	"/weather":         "http://api.openweathermap.org/data/2.5/weather",
+	"/forecast":        "http://api.openweathermap.org/data/2.5/forecast",
 }
 
 var client = &http.Client{
