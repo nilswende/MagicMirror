@@ -11,17 +11,10 @@ offlineIntervalInMinutes=45
 
 isOn=true
 isDay=true
-lastOnlinePrev="$(date '+%s')"
 lastOnline="$(date '+%s')"
 
 setLastOnline() {
-	lastOnlinePrev=lastOnline
 	lastOnline="$(date '+%s')"
-}
-
-syncLastOnline() {
-	lastOnlineDiff="$($lastOnline - $lastOnlinePrev)"
-	lastOnline="$(date -d "-$lastOnlineDiff minutes" +'+%s')"
 }
 
 log() {
@@ -90,15 +83,8 @@ while :; do
 		else
 			if [ "$isOn" = true ]; then
 				if [[ "$lastOnline" < "$(date -d "-$offlineIntervalInMinutes minutes" +'+%s')" ]]; then
-					# workaround for NTP time jump: stopSocket only up to a minute after we hit the timeout
-					if [[ "$(date -d "-$(($offlineIntervalInMinutes + 1)) minutes" +'+%s')" < "$lastOnline" ]]; then
-						log "Geräte offline seit mind. $offlineIntervalInMinutes Minuten."
-						stopSocket
-					else
-						# if we're way after the timeout, a timesync may have happened
-						log "Sync lastOnline"
-						syncLastOnline
-					fi
+					log "Geräte offline seit mind. $offlineIntervalInMinutes Minuten."
+					stopSocket
 				fi
 			fi
 		fi
