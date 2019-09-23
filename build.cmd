@@ -3,5 +3,5 @@ set GOOS=linux
 set GOARCH=arm
 set GOARM=7
 
-cd %GOPATH%\src\github.com\nilswende\MagicMirror-server\main
+cd %GOPATH%\src\github.com\nilswende\MagicMirror\main
 go build -o MagicMirror-server main.go
