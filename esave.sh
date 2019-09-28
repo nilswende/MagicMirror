@@ -56,16 +56,22 @@ stopSocket() {
 	log "Monitor wurde ausgeschaltet."
 }
 
+startDay() {
+	log "______________"
+	log "Es ist Tag."
+	isDay=true
+	setLastOnline
+	startSocket
+}
+
 log "Skript gestartet."
 
 while :; do
 	now=$(date +"%k%M")
+	sleepTime=0.5
 	if (("$startTime" <= "$now")) && (("$now" < "$endTime")); then
 		if [ "$isDay" = false ]; then
-			log "______________"
-			log "Es ist Tag."
-			isDay=true
-			startSocket
+			startDay
 		fi
 		if pcAvailable; then
 			setLastOnline
@@ -73,7 +79,7 @@ while :; do
 				log "PC online."
 				startSocket
 			fi
-			sleep 10
+			sleepTime=10
 		elif deviceAvailable; then
 			setLastOnline
 			if [ "$isOn" = false ]; then
@@ -97,6 +103,7 @@ while :; do
 			fi
 		fi
 	fi
+	sleep "$sleepTime"
 done
 
 exit 0
