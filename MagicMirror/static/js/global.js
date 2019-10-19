@@ -19,3 +19,7 @@ function animateElement (elem, duration, opacity, fn) {
 function randomInt (max) {
 	return Math.floor(Math.random() * Math.floor(max));
 }
+
+function isNumeric (s) {
+	return !Number.isNaN(Number(s));
+}

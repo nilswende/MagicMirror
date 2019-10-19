@@ -1,5 +1,5 @@
-﻿$(document).ready(() => {
-	clock.showWithSeconds = $("#binaryClock #binSec").length > 0;
+﻿document.addEventListener("DOMContentLoaded", function(event) {
+	clock.showWithSeconds = document.querySelector("#binaryClock #binSec") !== null;
 	clock.updateBinary(true);
 	new alignedInterval(1, "seconds", clock.updateBinary)
 		.run();
@@ -31,13 +31,13 @@ clock.updateBinary = function (isFirstRun) {
 	}
 
 	function setBgColors(row, bin) {
-		$(row + " > td").each(function (i) {
+		for (let [i, cell] of document.querySelectorAll(row + " > td").entries()) {
 			if (bin.charAt(i) === "1") {
-				$(this).css("background-color", "white");
+				cell.style["background-color"] = "white";
 			}
 			else {
-				$(this).css("background-color", "");
+				cell.style["background-color"] = "";
 			}
-		});
+		}
 	}
 }

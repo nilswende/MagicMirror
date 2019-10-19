@@ -1,4 +1,4 @@
-﻿$(document).ready(() => {
+﻿document.addEventListener("DOMContentLoaded", function(event) {
 	new alignedInterval(1, "day", calendar.update)
 		.run();
 });
@@ -13,8 +13,8 @@ calendar.update = function () {
 
 	function fillWeeks() {
 		var date = now.clone().subtract(1, 'months').endOf('month');
-		$(".calWeek").each(function (i) {
-			$(this).html(date.week() + ".");
+		document.querySelectorAll(".calWeek").forEach(function (elem) {
+			elem.textContent = date.week() + ".";
 			date.add(1, 'week');
 		});
 	}
@@ -28,24 +28,23 @@ calendar.update = function () {
 		if (firstDayOfMonth === 0) {
 			firstDayOfMonth = 7;
 		}
-		$(".calDate").each(function (i) {
+		for (let [i, cell] of document.querySelectorAll(".calDate").entries()) {
 			var distance = i - firstDayOfMonth;
 			if (distance === 0 || distance === lastDayOfMonth) {
 				date = 1;
 			}
-			var cell = $(this);
-			cell.html(date++);
+			cell.textContent = date++;
 
-			cell.removeClass("calToday");
+			cell.classList.remove("calToday");
 			if (distance < 0 || distance >= lastDayOfMonth) {
-				cell.addClass("calOutsideCurrentMonth");
+				cell.classList.add("calOutsideCurrentMonth");
 			}
 			else {
-				cell.removeClass("calOutsideCurrentMonth");
+				cell.classList.remove("calOutsideCurrentMonth");
 				if (distance === today) {
-					cell.addClass("calToday");
+					cell.classList.add("calToday");
 				}
 			}
-		});
+		};
 	}
 }

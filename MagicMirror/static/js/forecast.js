@@ -1,22 +1,22 @@
-﻿$(document).ready(() => {
+﻿document.addEventListener("DOMContentLoaded", function(event) {
 	new alignedInterval(forecast.updateIntervalInMinutes, "minutes",
 							forecast.update, forecast.updateIntervalInMinutes * 1000)
 		.run();
 });
 
 forecast.update = function () {
-	$.getJSON({
-		url: forecast.url,
-		data: {
+	var url = new URL(forecast.url);
+	url.search = new URLSearchParams({
 			id: forecast.cityID,
 			lang: locale,
 			units: "metric",
 			appid: apiKey.openWeatherMap
-		},
-		success: function (response) {
-			var forecastsPerDay = extractForecasts(response.list);
-			writeForecastsToHtml(forecastsPerDay);
-		}
+		});
+	fetch(url)
+	.then(res => res.json())
+	.then(response => {
+		var forecastsPerDay = extractForecasts(response.list);
+		writeForecastsToHtml(forecastsPerDay);
 	});
 
 	function extractForecasts(list) {

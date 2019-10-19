@@ -1,6 +1,6 @@
-﻿$(document).ready(() => {
-	date.showYear = $("#date").hasClass("showYear");
-	date.alwaysBreakYear = $("#date").hasClass("alwaysBreakYear");
+﻿document.addEventListener("DOMContentLoaded", function(event) {
+	date.showYear = document.querySelector("#date").classList.contains("showYear");
+	date.alwaysBreakYear = document.querySelector("#date").classList.contains("alwaysBreakYear");
 	new alignedInterval(1, "day", date.update)
 		.run();
 });
@@ -14,5 +14,5 @@ date.update = function () {
 	if (date.showYear) {
 		dateString += (date.alwaysBreakYear ? "<br/>" : " ") + longDate[3];
 	}
-	$("#date").html(dateString);
+	document.querySelector("#date").innerHTML = dateString;
 }

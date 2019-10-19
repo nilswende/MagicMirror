@@ -1,4 +1,4 @@
-﻿$(document).ready(() => {
+﻿document.addEventListener("DOMContentLoaded", function(event) {
 	new alignedInterval(3, "seconds", temp.update)
 		.run();
 });
@@ -8,35 +8,33 @@ temp.errCounter = 0;
 temp.movAvg = new MovAvg(3);
 
 temp.update = function () {
-	var field = $("#indoorTempData");
-	$.getJSON({
-		url: temp.url,
-		success: function (response) {
-			if (temp.errCounter !== 0) {
-				temp.errCounter = 0;
-			}
-			if (response.Status === "yes") {
-				if (temp.failCounter !== 0) {
-					temp.failCounter = 0;
-				}
-				let avg = temp.movAvg.putAndAvg(response.Temp);
-				field.html(avg.toFixed(1));
-			}
-			else {
-				handleFail();
-			}
-		},
-		error: function (response) {
-			handleError();
+	var field = document.querySelector("#indoorTempData");
+	var url = new URL(temp.url);
+	fetch(url)
+	.then(res => res.json())
+	.then(response => {
+		if (temp.errCounter !== 0) {
+			temp.errCounter = 0;
 		}
-	});
+		if (response.Status === "yes") {
+			if (temp.failCounter !== 0) {
+				temp.failCounter = 0;
+			}
+			let avg = temp.movAvg.putAndAvg(response.Temp);
+			field.textContent = avg.toFixed(1);
+		}
+		else {
+			handleFail();
+		}
+	})
+	.catch(res => handleError());
 
 	function handleFail() {
 		if (temp.failCounter < 4) {
 			++temp.failCounter;
 		}
-		else if (field.html() !== "--.-") {
-			field.html("--.-");
+		else if (field.textContent !== "--.-") {
+			field.textContent = "--.-";
 		}
 	}
 
@@ -44,8 +42,8 @@ temp.update = function () {
 		if (temp.errCounter < 4) {
 			++temp.errCounter;
 		}
-		else if (field.html() !== "err") {
-			field.html("err");
+		else if (field.textContent !== "err") {
+			field.textContent = "err";
 		}
 	}
 }

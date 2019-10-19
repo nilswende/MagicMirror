@@ -1,5 +1,5 @@
-﻿$(document).ready(() => {
-	clock.showWithSeconds = $("#clock #clockSeconds").length > 0;
+﻿document.addEventListener("DOMContentLoaded", function(event) {
+	clock.showWithSeconds = document.querySelector("#clock #clockSeconds") !== null;
 	new alignedInterval(1, "seconds", clock.update)
 		.run();
 });
@@ -12,5 +12,5 @@ clock.update = function () {
 	if (clock.showWithSeconds) {
 		currentTime += "<span id='clockSeconds'>" + now.format("ss") + "</span>";
 	}
-	$("#clock").html(currentTime);
+	document.querySelector("#clock").innerHTML = currentTime;
 }

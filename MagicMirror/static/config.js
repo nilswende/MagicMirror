@@ -1,4 +1,4 @@
-﻿$(document).ready(() => {
+﻿document.addEventListener("DOMContentLoaded", function(event) {
 	/** set moment.js to desired locale */
 	moment.locale(locale);
 });
@@ -26,7 +26,7 @@ var gas = {
 };
 
 var transport = {
-	"url": "http://localhost/transport",
+	"url": "http://127.0.0.1/transport",
 	"stationID": "3001537", /** Enkheim */
 	"lines": "U4,U7,U4E,U7E",
 	"maxJourneys": 4,

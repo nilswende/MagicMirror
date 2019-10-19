@@ -1,27 +1,27 @@
-﻿$(document).ready(() => {
+﻿document.addEventListener("DOMContentLoaded", function(event) {
 	new alignedInterval(transport.updateIntervalInMinutes, "minutes",
 			transport.update)
 		.run();
 });
 
 transport.update = function () {
-	$.getJSON({
-		url: transport.url,
-		data: {
+	var url = new URL(transport.url);
+	url.search = new URLSearchParams({
 			id: transport.stationID,
 			lines: transport.lines,
 			maxJourneys: transport.maxJourneys * 2, // every journey could be duplicated
 			accessId: apiKey.transport,
 			format: "json"
-		}
-	})
-	.done(function (data) {
+		});
+	fetch(url)
+	.then(res => res.json())
+	.then(data => {
 		var departures = data.Departure;
 		departures = removeDuplicatedJourneys(departures);
 		checkCancellation(departures)
-		.done(function () {
-			var objects = arguments;
-			setCancellation(objects, departures);
+		.then(function () {
+			var responses = arguments[0];
+			setCancellation(responses, departures);
 			displayDepartures(departures);
 		});
 	});
@@ -42,28 +42,24 @@ transport.update = function () {
 
 	function checkCancellation(departures) {
 		if (toggle.transport.cancellation !== true) {
-			return $.when();
+			return Promise.all();
 		}
 		var deferreds = new Array();
 		for (departure of departures) {
-			var id = departure.JourneyDetailRef.ref;
-			deferreds.push(
-				$.getJSON({
-					url: transport.detail.url,
-					data: {
-						id: id,
-						accessId: apiKey.transport,
-						format: "json"
-					}
-				})
-			);
+			var url = new URL(transport.detail.url);
+			url.search = new URLSearchParams({
+					id: departure.JourneyDetailRef.ref,
+					accessId: apiKey.transport,
+					format: "json"
+				});
+			deferreds.push(fetch(url));
 		}
-		return $.when.apply($, deferreds);
+		return Promise.all(deferreds);
 	}
 
-	function setCancellation(objects, departures) {
-		for (let [index, val] of Object.entries(objects)) {
-			departures[index].cancelled = !!val[0].cancelled;
+	function setCancellation(responses, departures) {
+		for (let [index, val] of responses.entries()) {
+			departures[index].cancelled = !!val.json().cancelled;
 		}
 	}
 

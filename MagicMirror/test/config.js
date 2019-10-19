@@ -16,7 +16,7 @@ var toggle = {
 }
 
 var gas = {
-	"url": "/test/gas.json",
+	"url": "http://localhost/test/gas.json",
 	"gasType": "diesel", /** choose from "e5", "e10", "diesel" */
 	"stationID": "8e04a261-815f-43f8-a5ba-20d12c5b3273", /** Globus gas station Bob.-Roxheim */
 	"openingTime": 800,
@@ -26,7 +26,7 @@ var gas = {
 };
 
 var transport = {
-	"url": "/test/transport_h_old.json",
+	"url": "http://localhost/test/transport_h_old.json",
 	"stationID": "3001537", /** Enkheim */
 	"lines": "U4,U7,U4E,U7E",
 	"maxJourneys": "5",
@@ -35,23 +35,23 @@ var transport = {
 	"fadeDuration": 0.7 * 1000,
 	"updateIntervalInMinutes": 1,
 	"detail" : {
-		"url": "/test/transportDetail_h.json"
+		"url": "http://localhost/test/transportDetail_h.json"
 	}
 };
 
 var temp = {
-	url: "/test/temp.json"
+	url: "http://localhost/test/temp.json"
 };
 
 var weather = {
-	"url": "/test/weather.json",
+	"url": "http://localhost/test/weather.json",
 	"cityID": "6555235", /** Bobenheim-Roxheim */
 	
 	"updateIntervalInMinutes": 1
 };
 
 var forecast = {
-	"url": "/test/forecast.json",
+	"url": "http://localhost/test/forecast.json",
 	"cityID": "6555235", /** Bobenheim-Roxheim */
 	"fadeDuration": 0.7 * 1000, /** fade duration for forecast updates */
 	"showCelcius": false,
