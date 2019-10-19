@@ -1,5 +1,5 @@
 ﻿Number.prototype.mod = function (m) {
-	var r = this % m;
+	let r = this % m;
 	return r < 0 ? r + m : r;
 }
 
@@ -11,9 +11,18 @@ function putMinusIfNegative (temp) {
 	return temp.toFixed(1);
 }
 
-function animateElement (elem, duration, opacity, fn) {
-	elem.fadeTo(duration, 0, "linear", fn);
-	elem.fadeTo(duration, opacity, "linear");
+function animateElement (elem, opacity, fnMiddle, fnEnd) {
+	elem.addEventListener("transitionend", function (e) {
+		if (fnMiddle !== undefined) {
+			fnMiddle.call(elem);
+		}
+		e.target.removeEventListener(e.type, arguments.callee);
+		elem.style.opacity = opacity;
+		if (fnEnd !== undefined) {
+			fnEnd.call(elem);
+		}
+	});
+	elem.style.opacity = 0;
 }
 
 function randomInt (max) {
@@ -21,5 +30,6 @@ function randomInt (max) {
 }
 
 function isNumeric (s) {
-	return !Number.isNaN(Number(s));
+	let d = Number(s);
+	return s !== "" && !Number.isNaN(d);
 }

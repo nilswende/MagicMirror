@@ -6,13 +6,13 @@
 var calendar = {};
 
 calendar.update = function () {
-	var now = moment();
+	let now = moment();
 	fillWeeks();
 	fillDates();
 
 
 	function fillWeeks() {
-		var date = now.clone().subtract(1, 'months').endOf('month');
+		let date = now.clone().subtract(1, 'months').endOf('month');
 		document.querySelectorAll(".calWeek").forEach(function (elem) {
 			elem.textContent = date.week() + ".";
 			date.add(1, 'week');
@@ -20,16 +20,16 @@ calendar.update = function () {
 	}
 
 	function fillDates() {
-		var today = now.clone().date() - 1;
-		var firstDayOfMonth = now.clone().startOf('month').weekday();
-		var lastDayOfMonth = now.clone().endOf('month').date();
-		var date = now.clone().subtract(1, 'months').endOf('month').startOf('week').date();
+		let today = now.clone().date() - 1;
+		let firstDayOfMonth = now.clone().startOf('month').weekday();
+		let lastDayOfMonth = now.clone().endOf('month').date();
+		let date = now.clone().subtract(1, 'months').endOf('month').startOf('week').date();
 
 		if (firstDayOfMonth === 0) {
 			firstDayOfMonth = 7;
 		}
 		for (let [i, cell] of document.querySelectorAll(".calDate").entries()) {
-			var distance = i - firstDayOfMonth;
+			let distance = i - firstDayOfMonth;
 			if (distance === 0 || distance === lastDayOfMonth) {
 				date = 1;
 			}

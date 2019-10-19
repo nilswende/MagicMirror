@@ -5,7 +5,7 @@
 });
 
 weather.update = function () {
-	var url = new URL(weather.url);
+	let url = new URL(weather.url);
 	url.search = new URLSearchParams({
 			id: weather.cityID,
 			lang: locale,
@@ -15,19 +15,16 @@ weather.update = function () {
 	fetch(url)
 	.then(res => res.json())
 	.then(response => {
-		var weatherID = response.weather[0].id;
-		var iconHtml = "<i class='wi wi-owm-" + weatherID + "'></i>";
-		var temp = putMinusIfNegative(response.main.temp) + "&nbsp;°C";
+		let weatherID = response.weather[0].id;
+		let iconHtml = "<i class='wi wi-owm-" + weatherID + "'></i>";
+		let temp = putMinusIfNegative(response.main.temp) + "&nbsp;°C";
 
 		if (weatherID !== weather.iconBefore) {
-			var elem = document.querySelector("#currentWeather");
-			elem.addEventListener("transitionend", function (e) {
-				document.querySelector("#currentWeatherIcon").innerHTML = iconHtml;
-				document.querySelector("#currentWeatherTemp").innerHTML = temp;
-				e.target.removeEventListener(e.type, arguments.callee);
-				elem.style.opacity = 1;
-			});
-			elem.style.opacity = 0;
+			animateElement(document.querySelector("#currentWeather"), 1, function () {
+						document.querySelector("#currentWeatherIcon").innerHTML = iconHtml;
+						document.querySelector("#currentWeatherTemp").innerHTML = temp;
+					}
+			);
 			weather.iconBefore = weatherID;
 		}
 		else {

@@ -7,11 +7,11 @@ gas.failCounter = 0;
 gas.errCounter = 0;
 
 gas.update = function () {
-	var field = document.querySelector("#euro");
+	let field = document.querySelector("#euro");
 	let isOpen = isStationOpen();
 
-	if (isOpen || isNumeric(field.textContent)) {
-		var url = new URL(gas.url);
+	if (isOpen || !isNumeric(field.textContent)) {
+		let url = new URL(gas.url);
 		url.search = new URLSearchParams({
 				ids: JSON.stringify([gas.stationID]),
 				apikey: apiKey.tankerkoenig
@@ -38,16 +38,18 @@ gas.update = function () {
 
 
 	function isStationOpen() {
-		var now = moment().format("Hmm");
-		return gas.openingTime - gas.updateIntervalInMinutes <= now && now <= gas.closingTime + gas.updateIntervalInMinutes;
+		let now = moment().format("Hmm");
+		return gas.openingTime - gas.updateIntervalInMinutes <= now 
+				&& now <= gas.closingTime + gas.updateIntervalInMinutes;
 	}
 
 	function showNewGasPrice(currentPrice) {
-		currentPrice = (currentPrice - 0.009).toFixed(2);
+		currentPrice = (Math.trunc(currentPrice * 100) / 100);
 		if (field.textContent !== currentPrice) {
-			animateElement($("#gasTextCell"), 800, 1, function () {
-				field.textContent = currentPrice;
-			});
+			animateElement(document.querySelector("#gasTextCell"), 1, function () {
+						field.textContent = currentPrice;
+					}
+			);
 		}
 	}
 

@@ -5,7 +5,7 @@
 });
 
 forecast.update = function () {
-	var url = new URL(forecast.url);
+	let url = new URL(forecast.url);
 	url.search = new URLSearchParams({
 			id: forecast.cityID,
 			lang: locale,
@@ -15,19 +15,19 @@ forecast.update = function () {
 	fetch(url)
 	.then(res => res.json())
 	.then(response => {
-		var forecastsPerDay = extractForecasts(response.list);
+		let forecastsPerDay = extractForecasts(response.list);
 		writeForecastsToHtml(forecastsPerDay);
 	});
 
 	function extractForecasts(list) {
-		var days = {};
-		for (var i = 0; i < list.length; i++) {
+		let days = {};
+		for (let i = 0; i < list.length; i++) {
 			let singleForecast = list[i];
-			var main = singleForecast.main;
-			var id = singleForecast.weather[0].id;
-			var date = singleForecast.dt_txt.substring(0, 10);
+			let main = singleForecast.main;
+			let id = singleForecast.weather[0].id;
+			let date = singleForecast.dt_txt.substring(0, 10);
 			let hour = singleForecast.dt_txt.substring(12, 13);
-			var isDay = (hour !== "00" && hour !== "03"); /** skip weather icons at night */
+			let isDay = (hour !== "00" && hour !== "03"); /** skip weather icons at night */
 
 			if (days[date] === undefined) {
 				days[date] = {
@@ -66,13 +66,13 @@ forecast.update = function () {
 
 	/** if two have the same number of ocurrences, the one ocurring first is returned */
 	function getMostCommonIconPerDay(day) {
-		var sortedDay = sortObjectDescToArray(day.icons);
+		let sortedDay = sortObjectDescToArray(day.icons);
 		return sortedDay[0][0];
 		//return (sortedDay[0][1] == sortedDay[1][1]) ? undefined : sortedDay[0][0];
 	}
 
 	function sortObjectDescToArray(obj) {
-		var sortable = [];
+		let sortable = [];
 		for (let key in obj) {
 			sortable.push([key, obj[key]]);
 		}
@@ -81,28 +81,33 @@ forecast.update = function () {
 	}
 
 	function writeForecastsToHtml(days) {
-		var opacity = 1.0;
-		var sortedKeys = Object.keys(days).sort();
-		$(".forecast").each(function (i) {
-			let key = sortedKeys[i];
-			var forecastHtml = getForecastHtml(days, key);
-			var row = $(this);
+		let sortedKeys = Object.keys(days).sort();
+		let htmls = sortedKeys.map(key => getForecastHtml(key, days[key]));
 
-			row.delay(i * forecast.fadeDuration);
-			animateElement(row, forecast.fadeDuration, opacity, function () {
-				row.html(forecastHtml);
-			});
-			opacity -= 0.1;
-		});
+		let i = 0;
+		animate(document.querySelector(".forecast"));
+
+		function animate(row) {
+			if (row !== null) {
+				animateElement(row, 1.0 - i * 0.1,
+						function () {
+							this.innerHTML = htmls[i];
+						},
+						function () {
+							i++;
+							animate(this.nextElementSibling);
+						}
+				);
+			}
+		}
 	}
 
-	function getForecastHtml(days, key) {
-		var day = days[key];
+	function getForecastHtml(key, day) {
 		let dayName = moment(key).format("dd");
-		var dayHtml = "<td class='forecastDay'>" + dayName + "</td>";
-		var iconHtml = "<td class='forecastIcon'><i class='wi wi-owm-" + day.icons + "'></i></td>";
-		var maxHtml = "<td class='forecastTemp'>" + putMinusIfNegative(day.max);
-		var minHtml = "<td class='forecastTemp'>" + putMinusIfNegative(day.min);
+		let dayHtml  = "<td class='forecastDay'>" + dayName + "</td>";
+		let iconHtml = "<td class='forecastIcon'><i class='wi wi-owm-" + day.icons + "'></i></td>";
+		let maxHtml  = "<td class='forecastTemp'>" + putMinusIfNegative(day.max);
+		let minHtml  = "<td class='forecastTemp'>" + putMinusIfNegative(day.min);
 		if (forecast.showCelcius) {
 			maxHtml += "&nbsp;°C";
 			minHtml += "&nbsp;°C";

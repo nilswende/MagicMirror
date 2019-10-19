@@ -107,6 +107,7 @@
 
 .forecast {
 	font-size: 1.875rem;
+	transition: opacity 0.7s linear 0s;
 }
 
 .forecastDay, .forecastIcon {
@@ -124,6 +125,10 @@
 /* gas */
 #gasTable {
 	font-size: 1.875rem;
+}
+
+#gasTextCell {
+	transition: opacity 0.7s linear 0s;
 }
 
 #svg {
@@ -147,6 +152,7 @@
 .transRow {
 	font-size: 1.875rem;
 	text-align: right;
+	transition: opacity 0.7s linear 0s;
 }
 
 .transLine {
@@ -161,6 +167,7 @@
 .transTime {
 	width: 12%;
 	padding-left: 8px;
+	transition: opacity 0.7s linear 0s;
 }
 
 .transCancelled {
