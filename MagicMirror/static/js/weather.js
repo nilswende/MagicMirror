@@ -20,10 +20,14 @@ weather.update = function () {
 		var temp = putMinusIfNegative(response.main.temp) + "&nbsp;°C";
 
 		if (weatherID !== weather.iconBefore) {
-			animateElement($("#currentWeather"), 800, 1, function () {
+			var elem = document.querySelector("#currentWeather");
+			elem.addEventListener("transitionend", function (e) {
 				document.querySelector("#currentWeatherIcon").innerHTML = iconHtml;
 				document.querySelector("#currentWeatherTemp").innerHTML = temp;
+				e.target.removeEventListener(e.type, arguments.callee);
+				elem.style.opacity = 1;
 			});
+			elem.style.opacity = 0;
 			weather.iconBefore = weatherID;
 		}
 		else {
