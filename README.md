@@ -15,10 +15,6 @@ Check `config.json` for all available customization options. The config needs to
 
 ## Dependencies
 
-JQuery 2.2.4
-
-Live.js 4
-
 Moment.js 2.12.0
 
 Weather Icons 2.0

@@ -1,4 +1,4 @@
-﻿$(document).ready(() => {
+﻿document.addEventListener("DOMContentLoaded", function(event) {
 	/** set moment.js to desired locale */
 	moment.locale(locale);
 });
