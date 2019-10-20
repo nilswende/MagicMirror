@@ -32,7 +32,6 @@ var transport = {
 	"maxJourneys": "5",
 
 	"strip": "Frankfurt (Main) ",
-	"fadeDuration": 0.7 * 1000,
 	"updateIntervalInMinutes": 1,
 	"detail" : {
 		"url": "http://localhost/test/transportDetail_h.json"
@@ -53,7 +52,6 @@ var weather = {
 var forecast = {
 	"url": "http://localhost/test/forecast.json",
 	"cityID": "6555235", /** Bobenheim-Roxheim */
-	"fadeDuration": 0.7 * 1000, /** fade duration for forecast updates */
 	"showCelcius": false,
 
 	"updateIntervalInMinutes": 1

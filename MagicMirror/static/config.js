@@ -32,7 +32,6 @@ var transport = {
 	"maxJourneys": 4,
 
 	"strip": "Frankfurt (Main) ",
-	"fadeDuration": 0.7 * 1000,
 	"updateIntervalInMinutes": 1,
 	"detail" : {
 		"url": "http://localhost/transportDetail"
@@ -53,7 +52,6 @@ var weather = {
 var forecast = {
 	"url": "http://localhost/forecast",
 	"cityID": "2925533", /** FFM */
-	"fadeDuration": 0.7 * 1000, /** fade duration for forecast updates */
 	"showCelcius": false,
 
 	"updateIntervalInMinutes": 20
