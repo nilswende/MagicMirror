@@ -44,12 +44,11 @@ gas.update = function () {
 	}
 
 	function showNewGasPrice(currentPrice) {
-		currentPrice = (Math.trunc(currentPrice * 100) / 100);
+		currentPrice = (Math.trunc(currentPrice * 100) / 100).toFixed(2);
 		if (field.textContent !== currentPrice) {
 			animateElement(document.querySelector("#gasTextCell"), 1, function () {
-						field.textContent = currentPrice;
-					}
-			);
+				field.textContent = currentPrice;
+			});
 		}
 	}
 
