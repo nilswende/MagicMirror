@@ -1,8 +1,10 @@
 ﻿document.addEventListener("DOMContentLoaded", function(event) {
-	date.showYear = document.querySelector("#date").classList.contains("showYear");
-	date.alwaysBreakYear = document.querySelector("#date").classList.contains("alwaysBreakYear");
-	new alignedInterval(1, "day", date.update)
-		.run();
+	if (contentExists("time")) {
+		date.showYear = document.querySelector("#date").classList.contains("showYear");
+		date.alwaysBreakYear = document.querySelector("#date").classList.contains("alwaysBreakYear");
+		new alignedInterval(1, "day", date.update)
+			.run();
+	}
 });
 
 var date = {};

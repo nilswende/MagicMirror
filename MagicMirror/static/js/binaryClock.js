@@ -1,8 +1,10 @@
 ﻿document.addEventListener("DOMContentLoaded", function(event) {
-	clock.showWithSeconds = document.querySelector("#binaryClock #binSec") !== null;
-	clock.updateBinary(true);
-	new alignedInterval(1, "seconds", clock.updateBinary)
-		.run();
+	if (contentExists("time") && document.querySelector("#binaryClock")) {
+		clock.showWithSeconds = document.querySelector("#binaryClock #binSec") !== null;
+		clock.updateBinary(true);
+		new alignedInterval(1, "seconds", clock.updateBinary)
+			.run();
+	}
 });
 
 var clock = {};

@@ -1,7 +1,9 @@
 ﻿document.addEventListener("DOMContentLoaded", function(event) {
-	new alignedInterval(weather.updateIntervalInMinutes, "minutes",
-							weather.update)
-		.run();
+	if (contentExists("weather")) {
+		new alignedInterval(weather.updateIntervalInMinutes, "minutes",
+								weather.update)
+			.run();
+	}
 });
 
 weather.update = function () {

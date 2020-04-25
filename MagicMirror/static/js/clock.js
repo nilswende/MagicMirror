@@ -1,7 +1,9 @@
 ﻿document.addEventListener("DOMContentLoaded", function(event) {
-	clock.showWithSeconds = document.querySelector("#clock #clockSeconds") !== null;
-	new alignedInterval(1, "seconds", clock.update)
-		.run();
+	if (contentExists("time") && document.querySelector("#clock")) {
+		clock.showWithSeconds = document.querySelector("#clock #clockSeconds") !== null;
+		new alignedInterval(1, "seconds", clock.update)
+			.run();
+	}
 });
 
 var clock = {};

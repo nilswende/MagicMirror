@@ -33,3 +33,8 @@ function isNumeric (s) {
 	let d = Number(s);
 	return s !== "" && !Number.isNaN(d);
 }
+
+function contentExists (contentClass) {
+	let path = "body > .container > .cell > .content." + contentClass;
+	return document.querySelector(path) !== null;
+}

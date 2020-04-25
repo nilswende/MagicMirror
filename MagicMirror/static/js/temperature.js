@@ -1,6 +1,8 @@
 ﻿document.addEventListener("DOMContentLoaded", function(event) {
-	new alignedInterval(3, "seconds", temp.update)
-		.run();
+	if (contentExists("weather") && document.querySelector("#indoorTemp")) {
+		new alignedInterval(3, "seconds", temp.update)
+			.run();
+	}
 });
 
 temp.failCounter = 0;

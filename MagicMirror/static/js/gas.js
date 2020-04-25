@@ -1,10 +1,13 @@
 ﻿document.addEventListener("DOMContentLoaded", function(event) {
-	new alignedInterval(gas.updateIntervalInMinutes, "minutes", gas.update)
-		.run();
+	if (contentExists("gas")) {
+		new alignedInterval(gas.updateIntervalInMinutes, "minutes", gas.update)
+			.run();
+	}
 });
 
 gas.failCounter = 0;
 gas.errCounter = 0;
+gas.retry;
 
 gas.update = function () {
 	let field = document.querySelector("#euro");
@@ -19,6 +22,10 @@ gas.update = function () {
 		fetch(url)
 		.then(res => res.json())
 		.then(response => {
+			if (gas.retry) {
+				clearTimeout(gas.retry);
+				gas.retry = undefined;
+			}
 			if (gas.errCounter !== 0) {
 				gas.errCounter = 0;
 			}
@@ -52,9 +59,10 @@ gas.update = function () {
 		}
 	}
 
-	function handleFail() { //TODO retry after a minute
+	function handleFail() {
 		if (gas.failCounter < 4) {
-			++gas.failCounter;
+			gas.failCounter++;
+			retry(gas.update, 1, 'minutes');
 		}
 		else if (field.textContent !== "-.--") {
 			field.textContent = "-.--";
@@ -63,10 +71,15 @@ gas.update = function () {
 
 	function handleError() {
 		if (gas.errCounter < 4) {
-			++gas.errCounter;
+			gas.errCounter++;
+			retry(gas.update, 1, 'minutes');
 		}
 		else if (field.textContent !== "err") {
 			field.textContent = "err";
 		}
+	}
+
+	function retry(fn, length, unit) {
+		gas.retry = setTimeout(fn, moment.duration(length, unit).asMilliseconds());
 	}
 }

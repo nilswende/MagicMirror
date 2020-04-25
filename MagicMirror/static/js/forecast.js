@@ -1,7 +1,9 @@
 ﻿document.addEventListener("DOMContentLoaded", function(event) {
-	new alignedInterval(forecast.updateIntervalInMinutes, "minutes",
-							forecast.update, forecast.updateIntervalInMinutes * 1000)
-		.run();
+	if (contentExists("weather")) {
+		new alignedInterval(forecast.updateIntervalInMinutes, "minutes",
+								forecast.update, forecast.updateIntervalInMinutes * 1000)
+			.run();
+	}
 });
 
 forecast.update = function () {

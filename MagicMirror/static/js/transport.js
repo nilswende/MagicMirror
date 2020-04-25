@@ -1,7 +1,9 @@
 ﻿document.addEventListener("DOMContentLoaded", function(event) {
-	new alignedInterval(transport.updateIntervalInMinutes, "minutes",
-			transport.update)
-		.run();
+	if (contentExists("transport")) {
+		new alignedInterval(transport.updateIntervalInMinutes, "minutes",
+				transport.update)
+			.run();
+	}
 });
 
 transport.update = function () {

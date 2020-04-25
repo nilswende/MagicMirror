@@ -1,6 +1,8 @@
 ﻿document.addEventListener("DOMContentLoaded", function(event) {
-	new alignedInterval(1, "day", calendar.update)
-		.run();
+	if (contentExists("calendar")) {
+		new alignedInterval(1, "day", calendar.update)
+			.run();
+	}
 });
 
 var calendar = {};
