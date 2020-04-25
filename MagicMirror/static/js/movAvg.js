@@ -4,10 +4,7 @@ function MovAvg (size) {
 	this.putAndAvg = function (value) {
 		this.buffer[this.pointer] = value;
 		this.pointer = (this.pointer + 1) % size;
-		var sum = 0;
-		for (var i = 0; i < this.buffer.length; i++) {
-			sum += this.buffer[i];
-		}
+		let sum = this.buffer.reduce((prev, curr) => prev + curr);
 		return sum / this.buffer.length;
 	};
 }
