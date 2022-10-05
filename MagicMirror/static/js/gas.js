@@ -2,6 +2,8 @@
 	if (contentExists("gas")) {
 		new alignedInterval(gas.updateIntervalInMinutes, "minutes", gas.update)
 			.run();
+		let img = document.querySelector("#gasIcon");
+		img.src = "/static/img/" + gas.gasType + ".svg";
 	}
 });
 

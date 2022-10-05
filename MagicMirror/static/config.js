@@ -17,7 +17,7 @@ var toggle = {
 
 var gas = {
 	"url": "http://localhost/gas",
-	"gasType": "diesel", /** choose from "e5", "e10", "diesel" */
+	"gasType": "e10", /** choose from "e5", "e10", "diesel" */
 	"stationID": "8e04a261-815f-43f8-a5ba-20d12c5b3273", /** Globus gas station Bob.-Roxheim */
 	"openingTime": 800,
 	"closingTime": 2000,
