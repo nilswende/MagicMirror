@@ -60,7 +60,7 @@ For Raspbian Stretch.
 	@xset s off
 	@xset -dpms
 	@xset s noblank
-	@chromium-browser --noerrdialogs --kiosk --incognito http://localhost/site?config={"position":{"left":["time","calendar"],"middle":["gas"],"right":["weather","transport"]},"time":{"showWithSeconds":true,"showYear":true},"temp":{"sensorAttached":true}}
+	@chromium-browser --noerrdialogs --kiosk --incognito http://localhost:8080/site?config={"position":{"left":["time","calendar"],"middle":["gas"],"right":["weather","transport"]},"time":{"showWithSeconds":true,"showYear":true},"temp":{"sensorAttached":true}}
 
 
 	# sudo nano /etc/rc.local
@@ -101,4 +101,4 @@ See `build.cmd`.
 	# start the server on startup
 	sudo crontab -e
 
-	@reboot /usr/bin/MagicMirror-server -port 80 -dir /home/pi/MagicMirror 2>>/home/pi/MagicMirror-server.log
+	@reboot /usr/bin/MagicMirror-server -port 8080 -dir /home/pi/MagicMirror 2>>/home/pi/MagicMirror-server.log

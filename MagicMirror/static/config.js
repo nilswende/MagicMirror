@@ -5,6 +5,10 @@
 
 var locale = "de";
 
+var server = {
+	"url": "http://localhost:8080/"
+};
+
 var position = {
 	"displayDivsAtBottom" : false
 };
@@ -16,7 +20,7 @@ var toggle = {
 }
 
 var gas = {
-	"url": "http://localhost/gas",
+	"url": server.url + "gas",
 	"gasType": "e10", /** choose from "e5", "e10", "diesel" */
 	"stationID": "8e04a261-815f-43f8-a5ba-20d12c5b3273", /** Globus gas station Bob.-Roxheim */
 	"openingTime": 800,
@@ -26,7 +30,7 @@ var gas = {
 };
 
 var transport = {
-	"url": "http://localhost/transport",
+	"url": server.url + "transport",
 	"stationID": "3001537", /** Enkheim */
 	"lines": "U4,U7,U4E,U7E",
 	"maxJourneys": 4,
@@ -34,23 +38,23 @@ var transport = {
 	"strip": "Frankfurt (Main) ",
 	"updateIntervalInMinutes": 1,
 	"detail" : {
-		"url": "http://localhost/transportDetail"
+		"url": server.url + "transportDetail"
 	}
 };
 
 var temp = {
-	url: "http://localhost/temp"
+	url: server.url + "temp"
 };
 
 var weather = {
-	"url": "http://localhost/weather",
+	"url": server.url + "weather",
 	"cityID": "2925533", /** FFM */
 	
 	"updateIntervalInMinutes": 10
 };
 
 var forecast = {
-	"url": "http://localhost/forecast",
+	"url": server.url + "forecast",
 	"cityID": "2925533", /** FFM */
 	"showCelcius": false,
 
@@ -58,5 +62,5 @@ var forecast = {
 };
 
 var log = {
-	"url": "http://localhost/log"
+	"url": server.url + "log"
 };
