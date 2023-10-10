@@ -35,6 +35,8 @@ func newRequest(url string, params url.Values) (*http.Request) {
 	if err != nil {
 		log.Print(err)
 	}
+	// prevent user-agent fingerprinting
+	request.Header.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/118.0")
 	request.Header.Add("Accept", "application/json")
 	query := request.URL.Query()
 
