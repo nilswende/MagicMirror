@@ -1,6 +1,8 @@
 # MagicMirror
 Uses a custom webserver to handle outgoing requests and filesystem operations.
 
+Don't forget to enable ping response for IPv4 in your devices' firewalls to allow the esave script to work.
+
 ## Can show:
 - Current date and time, optionally with a binary clock
 - Calendar
@@ -33,6 +35,7 @@ For Raspberry Pi OS Bookworm.
 
 
 	# copy MagicMirror/ to /home/pi/
+	# copy esave.sh to /home/pi/
 
 
 	sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
@@ -44,6 +47,17 @@ For Raspberry Pi OS Bookworm.
 	@xset -dpms
 	@xset s noblank
 	@chromium-browser --noerrdialogs --kiosk --incognito http://localhost:8080/site?config={"position":{"left":["time","calendar"],"middle":["gas"],"right":["weather","transport"]},"time":{"showWithSeconds":true,"showYear":true},"temp":{"sensorAttached":true}}
+	
+	
+	# mark script as executable
+	sudo chmod +x /home/pi/esave.sh
+	
+	
+	# execute the script at startup
+	sudo crontab -e
+	
+	@reboot /home/pi/esave.sh > /dev/null 2>&1
+	#@reboot /home/pi/esave.sh > /home/pi/esave.log
 
 
 # Server
