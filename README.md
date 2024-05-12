@@ -46,7 +46,7 @@ For Raspberry Pi OS Bookworm.
 	@xset s off
 	@xset -dpms
 	@xset s noblank
-	@chromium-browser --noerrdialogs --kiosk --incognito http://localhost:8080/site?config={"position":{"left":["time","calendar"],"middle":["gas"],"right":["weather","transport"]},"time":{"showWithSeconds":true,"showYear":true},"temp":{"sensorAttached":true}}
+	@chromium-browser --kiosk --incognito --noerrdialogs --disable-background-networking --disable-features=OptimizationGuideModelDownloading,OptimizationHintsFetching,OptimizationTargetPrediction,OptimizationHints http://localhost:8080/site?config={"position":{"left":["time","calendar"],"middle":["gas"],"right":["weather","transport"]},"time":{"showWithSeconds":true,"showYear":true},"temp":{"sensorAttached":true}}
 	
 	
 	# mark script as executable
