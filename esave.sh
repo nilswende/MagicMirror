@@ -42,16 +42,14 @@ pcAvailable() {
 
 startSocket() {
 	log "Monitor wird eingeschaltet."
-	tvservice -p;
-	sudo chvt 1;
-	sudo chvt 7;
+	xrandr --display :0 --output HDMI-1 --auto;
 	isOn=true
 	log "Monitor wurde angeschaltet."
 }
 
 stopSocket() {
 	log "Monitor wird ausgeschaltet."
-	tvservice -o;
+	xrandr --display :0 --output HDMI-1 --off;
 	isOn=false
 	log "Monitor wurde ausgeschaltet."
 }
